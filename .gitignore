@@ -1,0 +1,23 @@
+﻿# Escombros y scripts temporales
+*.txt
+*.js
+!frontend/**/*.js
+!migracion/**/*.js
+
+*.py
+*.bak
+*.bak.*
+*.mp4
+
+# Archivos de datos sensibles de la migración
+migracion/*.csv
+migracion/*.xlsx
+migracion/*.pdf
+
+# Archivos temporales
+.agents/
+.gemini/
+node_modules/
+dist/
+.env
+.DS_Store

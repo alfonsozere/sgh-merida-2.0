@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SGH - Sistema de Gestión Humana</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Background animated elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div id="app" class="glass-container">
+      <!-- Login Section -->
+      <div id="login-section" class="auth-box active">
+        <div class="header">
+          <h2>Bienvenido al SGH</h2>
+          <p>Módulo de Mérida</p>
+        </div>
+        <form id="login-form">
+          <div class="input-group">
+            <label for="login-email">Correo Electrónico Auténtico</label>
+            <input type="email" id="login-email" placeholder="tucorreo@ejemplo.com" required />
+          </div>
+          <div class="input-group">
+            <label for="login-password">Contraseña SGH</label>
+            <input type="password" id="login-password" placeholder="••••••••" required />
+          </div>
+          <button type="submit" class="btn primary-btn">Ingresar al Sistema</button>
+        </form>
+        <p class="switch-mode">
+          ¿Nuevo Director? <a href="#" id="go-to-register">Reclama tu Plantel</a>
+        </p>
+      </div>
+
+      <!-- Registration Section -->
+      <div id="register-section" class="auth-box">
+        <div class="header">
+          <h2>Reclamar Plantel</h2>
+          <p>Solo para Directores</p>
+        </div>
+        <form id="register-form">
+          <div class="input-group">
+            <label for="reg-codigo">Código del Plantel (DEA)</label>
+            <input type="text" id="reg-codigo" placeholder="Ej: OD12341401" required pattern="^([A-Za-z]{2}\d{4}|S\d{4}[A-Za-z])14(?:0[1-9]|1[0-9]|2[0-3])$" title="Debe ser un código válido del estado Mérida (Termina en 1401 al 1423)" />
+            <small class="hint">Valida el formato automáticamente</small>
+          </div>
+          <div class="input-group">
+            <label for="reg-email">Correo Electrónico Auténtico</label>
+            <input type="email" id="reg-email" placeholder="director@ejemplo.com" required />
+          </div>
+          <div class="input-group">
+            <label for="reg-password">Nueva Contraseña (NO la del correo)</label>
+            <input type="password" id="reg-password" placeholder="••••••••" required />
+          </div>
+          <button type="submit" class="btn primary-btn">Verificar y Reclamar</button>
+        </form>
+        <p class="switch-mode">
+          ¿Ya tienes cuenta? <a href="#" id="go-to-login">Inicia Sesión</a>
+        </p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+    <div id="toast-container" class="toast-container"></div>
+  </body>
+</html>

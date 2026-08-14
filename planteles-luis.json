@@ -1,0 +1,95 @@
+[
+{
+    "municipio": "SANTOS MARQUINA",
+    "parroquia": "TABAY",
+    "denominacion": "LICEO",
+    "nombre-plantel": {
+        "nominal": "C B DR MIGUEL OTERO SILVA",
+        "nuevo-eponimo": "DOCTOR MIGUEL OTERO SILVA"
+    },
+    "codigos": {
+        "plantel": "S1539D1419",
+        "dependencia": [
+            7918580
+        ],
+        "estadistico": 140807
+    },
+    "dependencia": "NACIONAL",
+    "planes-estudio": {
+        "31059": {
+            "especialidad": "MEDIA GENERAL",
+            "mencion": "CIENCIAS"
+        },
+        "31060": {
+            "especialidad": "MEDIA GENERAL",
+            "mencion": "CIENCIAS Y TECNOLOGIA"
+        }
+    },
+    "ubicacion-geografica": "RURAL",
+    "nivel": "MEDIA GENERAL",
+    "turno-plantel": "DOBLE TURNO",
+    "secciones-planes": {
+        "31059": {
+            "1": 4,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 4
+        },
+        "31060": {
+            "1": 0,
+            "2": 4,
+            "3": 4,
+            "4": 4,
+            "5": 0
+        }
+    },
+    "matricula": {
+        "media-general": {
+            "31059": {
+                "fem": 0,
+                "mas": 0,
+                "total": 0
+            },
+            "31060": {
+                "fem": 0,
+                "mas": 0,
+                "total": 0
+            }
+        },
+        "total": 0
+    }
+},
+{
+    "municipio": "SANTOS MARQUINA",
+    "parroquia": "TABAY",
+    "denominacion": "LICEO",
+    "nombre-plantel": {
+        "nominal": "C B DR MIGUEL OTERO SILVA",
+        "nuevo-eponimo": "DOCTOR MIGUEL OTERO SILVA"
+    },
+    "codigos": {
+        "plantel": "S1539D1419",
+        "dependencia": [
+            7918580
+        ],
+        "estadistico": 140807
+    },
+    "dependencia": "NACIONAL",
+    "planes-estudio": {
+        "31059": {
+            "especialidad": null,
+            "mencion": null
+        },
+        "31060": {
+            "especialidad": null,
+            "mencion": null
+        }
+    },
+    "ubicacion-geografica": "RURAL",
+    "nivel": "MEDIA GENERAL",
+    "turno-plantel": "DOBLE TURNO",
+    "secciones-planes": {},
+    "matricula": {}
+}
+]

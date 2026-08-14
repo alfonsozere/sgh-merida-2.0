@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Migrador SGH a Firebase (Anti-Cuotas)</title>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; margin: 0; padding: 40px; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h1 { color: #1a73e8; text-align: center; margin-bottom: 5px; }
+        .alert { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; padding: 15px; border-radius: 6px; font-weight: bold; margin-bottom: 20px; }
+        .box { border: 2px dashed #ccc; padding: 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; background: #fafafa; }
+        input[type="file"] { display: none; }
+        label.btn-file { background: #1a73e8; color: white; padding: 10px 20px; border-radius: 6px; cursor: pointer; display: inline-block; font-weight: bold; }
+        label.btn-file:hover { background: #1557b0; }
+        .controls { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 20px; }
+        .control-group { flex: 1; display: flex; flex-direction: column; }
+        .control-group label { font-weight: bold; margin-bottom: 5px; }
+        .control-group input { padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; }
+        button.btn-migrate { background: #34a853; color: white; padding: 15px 30px; border-radius: 6px; cursor: pointer; font-size: 18px; font-weight: bold; border: none; width: 100%; margin-top: 10px; }
+        button.btn-migrate:disabled { background: #ccc; cursor: not-allowed; }
+        .log-area { background: #1e1e1e; color: #00ff00; font-family: monospace; padding: 15px; border-radius: 6px; height: 300px; overflow-y: auto; margin-top: 20px; font-size: 13px; }
+        .progress-container { width: 100%; background-color: #e0e0e0; border-radius: 6px; margin-top: 10px; display: none; }
+        .progress-bar { width: 0%; height: 24px; background-color: #34a853; border-radius: 6px; transition: width 0.3s; text-align: center; color: white; font-weight: bold; line-height: 24px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Migrador SGH a Firebase</h1>
+        <p style="text-align:center;">Herramienta con protección de límites de cuota diaria (Plan Spark).</p>
+
+        <div class="alert">
+            🔥 ATENCIÓN: Firebase gratuito permite solo 20.000 escrituras al día.<br>
+            Como tienes ~22.000 registros, dividiremos el trabajo: Hoy sube hasta el registro 19.500, y mañana en la mañana subes los restantes.
+        </div>
+
+        <div class="box">
+            <h3>1. Cargar CSV de PERSONAL</h3>
+            <label class="btn-file" for="file-personal">Seleccionar PERSONAL ENRIQUECIDO.csv</label>
+            <input type="file" id="file-personal" accept=".csv">
+            <p id="name-personal" style="color: #666; margin-top: 10px;">Ningún archivo seleccionado</p>
+        </div>
+
+        <div class="box">
+            <h3>2. Cargar CSV de PLANTELES</h3>
+            <label class="btn-file" for="file-planteles">Seleccionar PLANTELES.csv</label>
+            <input type="file" id="file-planteles" accept=".csv">
+            <p id="name-planteles" style="color: #666; margin-top: 10px;">Ningún archivo seleccionado</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="input-inicio">Fila Inicio (Personal)</label>
+                <input type="number" id="input-inicio" value="1" min="1">
+            </div>
+            <div class="control-group">
+                <label for="input-fin">Fila Fin (Personal)</label>
+                <input type="number" id="input-fin" value="20000">
+            </div>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="input-inicio-plan">Fila Inicio (Planteles)</label>
+                <input type="number" id="input-inicio-plan" value="801" min="1">
+            </div>
+            <div class="control-group">
+                <label for="input-fin-plan">Fila Fin (Planteles)</label>
+                <input type="number" id="input-fin-plan" value="3000">
+            </div>
+        </div>
+
+        <button id="btn-start" class="btn-migrate" disabled>Iniciar Migración por Lotes</button>
+
+        <div class="progress-container" id="progress-container">
+            <div class="progress-bar" id="progress-bar">0%</div>
+        </div>
+
+        <div class="log-area" id="log"> Esperando archivos...<br></div>
+    </div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDSdDRB10kbtor5ROR50AsCxVmk0fOpqFo",
+            authDomain: "sgh-merida.firebaseapp.com",
+            projectId: "sgh-merida",
+            storageBucket: "sgh-merida.firebasestorage.app",
+            messagingSenderId: "873672016601",
+            appId: "1:873672016601:web:3024d5b94ee3926c8e34c8"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        let dataPersonal = [];
+        let dataPlanteles = [];
+
+        function logMsg(msg) {
+            const logBox = document.getElementById('log');
+            logBox.innerHTML += `> ${msg}<br>`;
+            logBox.scrollTop = logBox.scrollHeight;
+        }
+
+        function procesarAtributosJSON(obj) {
+            for (let key in obj) {
+                // Si la columna no tiene nombre (como pasó con VACANTES), la bautizamos
+                if (key.trim() === '') {
+                    obj['VACANTES'] = obj[key];
+                    delete obj[key];
+                    key = 'VACANTES'; // Actualizamos la variable para que el código de abajo la procese
+                }
+                let val = obj[key];
+                if (typeof val === 'string' && val.trim().startsWith('{') && val.trim().endsWith('}')) {
+                    try {
+                        obj[key] = JSON.parse(val.trim());
+                    } catch (e) {}
+                }
+            }
+            return obj;
+        }
+
+        document.getElementById('file-personal').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById('name-personal').textContent = "Cargado: " + file.name;
+                logMsg(`Procesando ${file.name}...`);
+                Papa.parse(file, {
+                    header: true,
+                    skipEmptyLines: true,
+                    encoding: "UTF-8",
+                    complete: function(results) {
+                        dataPersonal = results.data;
+                        logMsg(`✅ PERSONAL listo: ${dataPersonal.length} registros detectados.`);
+                        checkReady();
+                    }
+                });
+            }
+        });
+
+        document.getElementById('file-planteles').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById('name-planteles').textContent = "Cargado: " + file.name;
+                logMsg(`Procesando ${file.name}...`);
+                Papa.parse(file, {
+                    header: true,
+                    skipEmptyLines: true,
+                    encoding: "UTF-8",
+                    complete: function(results) {
+                        dataPlanteles = results.data;
+                        logMsg(`✅ PLANTELES listo: ${dataPlanteles.length} registros detectados.`);
+                        checkReady();
+                    }
+                });
+            }
+        });
+
+        function checkReady() {
+            if (dataPersonal.length > 0 || dataPlanteles.length > 0) {
+                document.getElementById('btn-start').disabled = false;
+                logMsg("🟢 Listo. Se migrarán las colecciones cargadas con datos.");
+            }
+        }
+
+        async function subirColeccion(nombreColeccion, datosOriginales, nombreCampoID, isPlanteles) {
+            let inicio = parseInt(document.getElementById(isPlanteles ? 'input-inicio-plan' : 'input-inicio').value) - 1;
+            let fin = parseInt(document.getElementById(isPlanteles ? 'input-fin-plan' : 'input-fin').value);
+            
+            let datosASubir = datosOriginales.slice(Math.max(0, inicio), fin);
+
+            let procesados = 0;
+            const total = datosASubir.length;
+            if(total === 0) return;
+            
+            const batchSize = 400;
+            
+            for (let i = 0; i < total; i += batchSize) {
+                const batch = db.batch();
+                const actualLote = datosASubir.slice(i, i + batchSize);
+                
+                for (let j = 0; j < actualLote.length; j++) {
+                    let registro = procesarAtributosJSON(actualLote[j]);
+                    
+                    let docID;
+                    if (!isPlanteles) {
+                        let cedula = registro['CEDULA'] || registro['CÉDULA'] || 'SIN_CED';
+                        let cantidad = registro['CANTIDAD'] || (inicio + procesados + j);
+                        docID = String(cedula).trim() + "_" + String(cantidad).trim();
+                    } else {
+                        docID = registro[nombreCampoID];
+                    }
+                    
+                    if (!docID) docID = "SIN_ID_" + (inicio + procesados + j);
+                    
+                    // Sanitizar ID para evitar que Firebase lo tome como subcolección
+                    docID = String(docID).replace(/\//g, '-');
+                    
+                    const docRef = db.collection(nombreColeccion).doc(String(docID));
+                    batch.set(docRef, registro);
+                }
+                
+                await batch.commit();
+                procesados += actualLote.length;
+                
+                let porcentaje = Math.round((procesados / total) * 100);
+                document.getElementById('progress-bar').style.width = porcentaje + '%';
+                document.getElementById('progress-bar').textContent = porcentaje + '%';
+                logMsg(`Enviando a ${nombreColeccion}... ${procesados} de ${total}`);
+            }
+            logMsg(`🎉 Subida a ${nombreColeccion} terminada con éxito.`);
+        }
+
+        document.getElementById('btn-start').addEventListener('click', async function() {
+            this.disabled = true;
+            document.getElementById('progress-container').style.display = 'block';
+            
+            try {
+                logMsg("🚀 INICIANDO MIGRACIÓN...");
+                let fInicio = document.getElementById('input-inicio').value;
+                let fFin = document.getElementById('input-fin').value;
+                logMsg(`Procesando filas de la ${fInicio} a la ${fFin}`);
+                
+                if (dataPersonal.length > 0) {
+                    let keyPersonal = Object.keys(dataPersonal[0])[1];
+                    for(let k of Object.keys(dataPersonal[0])){ if(k.trim().toUpperCase() === 'CEDULA' || k.trim().toUpperCase() === 'CÉDULA') { keyPersonal = k; break; } }
+                    
+                    logMsg(`>> Subiendo PERSONAL a colección 'cargos_personal'...`);
+                    await subirColeccion("cargos_personal", dataPersonal, keyPersonal, false);
+                }
+                
+                if (dataPlanteles.length > 0) {
+                    let keyPlanteles = Object.keys(dataPlanteles[0]).find(k => k.trim().toUpperCase() === 'CODIGO DEL PLANTEL') || 'CODIGO DEL PLANTEL';
+                    logMsg(`>> Subiendo PLANTELES a colección 'planteles'...`);
+                    await subirColeccion("planteles", dataPlanteles, keyPlanteles, true);
+                }
+                
+                document.getElementById('progress-bar').style.width = '100%';
+                
+                logMsg(`>> 🟢 ¡ÉXITO! Lote procesado correctamente.`);
+                logMsg(`>> Mañana debes colocar Inicio: 20001, Fin: 30000 para terminar los 5.639 restantes.`);
+                logMsg("✅ LOTE FINALIZADO.");
+                
+            } catch (error) {
+                logMsg("❌ ERROR: " + error.message);
+                console.error(error);
+            } finally {
+                this.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
