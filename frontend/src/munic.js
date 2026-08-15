@@ -1,3 +1,5 @@
+import { showToast } from './uiUtils.js';
+import { safeSetDoc, safeUpdateDoc, safeAddDoc } from './dbUtils.js';
 import { collection, query, where, getDocs, doc, updateDoc } from 'firebase/firestore';
 
 export function initMunicDashboard(db, userData) {
@@ -67,13 +69,13 @@ export function initMunicDashboard(db, userData) {
 
   async function setValidacion(uid, estado) {
     try {
-      await updateDoc(doc(db, 'usuarios', uid), {
+      await safeUpdateDoc(doc(db, 'usuarios', uid), {
         validacion_municipal: estado
       });
       loadDirectors(); // recargar
     } catch(err) {
       console.error(err);
-      alert('Error actualizando estado.');
+      showToast('Error actualizando estado.', 'error');
     }
   }
 

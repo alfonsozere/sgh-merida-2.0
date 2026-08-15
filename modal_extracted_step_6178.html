@@ -1,0 +1,35 @@
+# Plan de Acción: Restaurar el Wizard de Personal (Glassmorphism)
+
+¡Excelente! La bóveda de GitHub está cerrada y todo el código está seguro en la nube. 
+Ahora vamos a terminar nuestro trabajo pendiente: **Reconstruir la interfaz de Registro de Personal**.
+
+Actualmente, el botón "Registrar Personal" abre un modal de prueba muy feo que puse de emergencia para que el sistema no colapsara. 
+Vamos a reemplazarlo por el diseño original en formato **Wizard** (Paso a paso) con la estética "Glassmorphism" que tenías.
+
+## ¿Qué voy a hacer?
+
+Voy a editar el archivo `frontend/dashboard.html` para inyectar el código HTML del modal.
+
+### Estructura del Wizard
+El formulario se dividirá en tres pasos (`.wizard-step`), tal como espera la lógica de tu archivo `dashboard.js`:
+
+1. **Paso 1: Datos Personales**
+   - Cédula, Nombres, Apellidos, Fecha de Nacimiento, Edad, Nacionalidad, Teléfonos y Datos de Vivienda/Estado Civil.
+2. **Paso 2: Datos Laborales (Cargo y Función)**
+   - Situación Laboral (Estatus), Dependencia, Tipo de Personal, Sub-categoría, Cargo y Código RAC.
+   - Fecha de Ingreso y Antigüedad.
+3. **Paso 3: Funciones Específicas**
+   - A qué nivel/modalidad atiende y Especialidad que imparte.
+
+### Componentes Visuales
+- **Barra de Progreso (`.step-indicators`)**: Círculos brillantes que mostrarán en qué paso vas (Paso 1, 2 o 3).
+- **Botones Dinámicos**: 
+  - `btn-wizard-prev` (Atrás)
+  - `btn-wizard-next` (Siguiente)
+  - `btn-wizard-submit` (Guardar Personal)
+- Todo encapsulado en un fondo de cristal (`glass-panel`).
+
+## User Review Required
+
+> [!NOTE]
+> Este diseño reemplazará el bloque temporal `<div id="modal-crud">` que inyecté en el paso anterior. ¿Estás de acuerdo con este plan para proceder a escribir el código? Haz clic en **Proceed** si me das luz verde.

@@ -1,7 +1,40 @@
+
+window.showLoading = (msg) => {
+    const modal = document.getElementById('global-loading-modal');
+    if(modal) {
+        document.getElementById('global-loading-text').textContent = msg || 'Cargando...';
+        modal.style.display = 'flex';
+    }
+};
+window.hideLoading = () => {
+    const modal = document.getElementById('global-loading-modal');
+    if(modal) modal.style.display = 'none';
+};
+
+import { showToast, showAlert } from './uiUtils.js';
+
+// --- CAPA VISUAL: FORZAR MAYÚSCULAS GLOBALES ---
+document.addEventListener('input', (e) => {
+    if (e.target.tagName === 'INPUT' && (e.target.type === 'text' || e.target.type === 'search' || !e.target.type)) {
+        const start = e.target.selectionStart;
+        const end = e.target.selectionEnd;
+        e.target.value = e.target.value.toUpperCase();
+        if(e.target.setSelectionRange) e.target.setSelectionRange(start, end);
+    } else if (e.target.tagName === 'TEXTAREA') {
+        const start = e.target.selectionStart;
+        const end = e.target.selectionEnd;
+        e.target.value = e.target.value.toUpperCase();
+        if(e.target.setSelectionRange) e.target.setSelectionRange(start, end);
+    } else if (e.target.tagName === 'INPUT' && e.target.type === 'email') {
+        e.target.value = e.target.value.toLowerCase();
+    }
+});
+
+import { safeSetDoc, safeUpdateDoc, safeAddDoc } from './dbUtils.js';
 import './style.css';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut, setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { initAuth } from './auth.js';
 import { initSeed } from './seed.js';
 
@@ -38,6 +71,7 @@ const plantelForm = document.getElementById('plantel-form');
 
 // --- Navegación ---
 function showView(viewId) {
+    if (window.hideLoading) window.hideLoading();
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.getElementById(viewId).classList.add('active');
 }
@@ -90,6 +124,8 @@ async function loadMunicipios() {
 // --- Lógica Central de Autenticación (Guardián) ---
 initAuth(auth, db, {
   onLogout: () => {
+    localStorage.removeItem('sgh_catalogos');
+    sessionStorage.removeItem('sgh_despliegue_config');
     document.getElementById('login-form')?.reset();
     showView('login-view');
   },
@@ -179,21 +215,34 @@ document.getElementById('login-form')?.addEventListener('submit', async (e) => {
 
   try {
     loginError.style.display = 'none';
-    const btn = document.querySelector('#login-form button');
-    btn.textContent = "Verificando...";
-    btn.disabled = true;
+    const btn = document.querySelector('#login-form button[type="submit"]');
+    btn.innerHTML = 'Verificando...'; btn.disabled = true; window.showLoading("Autenticando y verificando permisos...");
+    const loginFormElements = document.getElementById('login-form').querySelectorAll('input, button.toggle-password');
+    loginFormElements.forEach(el => el.disabled = true);
+    const linkRegister = document.getElementById('link-go-register');
+    if (linkRegister) { linkRegister.style.pointerEvents = 'none'; linkRegister.style.opacity = '0.5'; }
 
+    await setPersistence(auth, browserSessionPersistence);
+    
     await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
     loginError.textContent = "Credenciales inválidas.";
     loginError.style.display = 'block';
   } finally {
-    const btn = document.querySelector('#login-form button');
-    if(btn) {
-      btn.textContent = "Iniciar Sesión";
-      btn.disabled = false;
+        const btn = document.querySelector('#login-form button[type="submit"]');
+        if(btn) {
+            btn.innerHTML = 'Iniciar Sesión';
+            btn.disabled = false;
+            const loginFormElements = document.getElementById('login-form').querySelectorAll('input, button.toggle-password');
+            loginFormElements.forEach(el => el.disabled = false);
+            const linkRegister = document.getElementById('link-go-register');
+            if (linkRegister) { linkRegister.style.pointerEvents = 'auto'; linkRegister.style.opacity = '1'; }
+        }
+        // Solo quitamos el modal aquí si hubo un error visible. Si no hay error, el modal se quita al cambiar de pantalla.
+        if (loginError.style.display === 'block') {
+            window.hideLoading();
+        }
     }
-  }
 });
 
 // --- Lógica del Registro ---
@@ -203,7 +252,13 @@ document.getElementById('register-form')?.addEventListener('submit', async (e) =
     const err = document.getElementById('register-error');
     err.style.display = 'none';
     btn.disabled = true;
-    btn.textContent = "Registrando...";
+    btn.innerHTML = 'Registrando...'; window.showLoading("Creando cuenta y asignando rol...");
+    // Inhabilitar campos
+    const regForm = document.getElementById('register-form');
+    const formElements = regForm.querySelectorAll('input, select');
+    formElements.forEach(el => el.disabled = true);
+    const linkLogin = document.getElementById('link-go-login');
+    if (linkLogin) { linkLogin.style.pointerEvents = 'none'; linkLogin.style.opacity = '0.5'; }
 
     const nombre = document.getElementById('reg-nombre').value.trim();
     const cedula = document.getElementById('reg-cedula').value.trim();
@@ -238,7 +293,7 @@ document.getElementById('register-form')?.addEventListener('submit', async (e) =
             jerarquia.plantel_codigo = dea;
         }
 
-        await setDoc(doc(db, 'usuarios', cred.user.uid), {
+        await safeSetDoc(doc(db, 'usuarios', cred.user.uid), {
             nombre,
             cedula,
             telefono,
@@ -249,7 +304,7 @@ document.getElementById('register-form')?.addEventListener('submit', async (e) =
             creado_el: new Date().toISOString()
         });
 
-        alert("¡Registro exitoso! Revise su correo electrónico para verificar su cuenta y comuníquese con su superior para la aprobación.");
+        await showAlert("¡Registro Exitoso!", "Revise su correo electrónico para verificar su cuenta y comuníquese con su superior para la aprobación.", "success");
         await signOut(auth);
 
     } catch (error) {
@@ -258,10 +313,15 @@ document.getElementById('register-form')?.addEventListener('submit', async (e) =
             err.textContent = "Error al registrarse. Revise sus datos e intente de nuevo.";
             if(error.code === 'auth/email-already-in-use') err.textContent = "El correo ya está en uso.";
             err.style.display = 'block';
+        window.hideLoading();
         }
     } finally {
         btn.disabled = false;
-        btn.textContent = "Registrarse";
+        btn.innerHTML = 'Registrarse';
+        const formElements = document.getElementById('register-form').querySelectorAll('input, select');
+    formElements.forEach(el => el.disabled = false);
+    const linkLogin = document.getElementById('link-go-login');
+    if (linkLogin) { linkLogin.style.pointerEvents = 'auto'; linkLogin.style.opacity = '1'; }
     }
 });
 
@@ -385,7 +445,7 @@ function _renderizarDetalleSecciones(planes) {
     contDinamico.innerHTML = html;
 }
 
-function _abrirModalVacantes() {
+async function _abrirModalVacantes() {
     let mat = parseInt(document.getElementById('secMat')?.value) || 0;
     let pre = parseInt(document.getElementById('secPre')?.value) || 0;
     let pri = parseInt(document.getElementById('secPri')?.value) || 0;
@@ -398,7 +458,7 @@ function _abrirModalVacantes() {
     if (pri === 0 && VAC['primaria'] && Object.keys(VAC['primaria']).length > 0) pri = 6;
 
     if (mat === 0 && pre === 0 && pri === 0) {
-        alert('Primero declare las secciones en el formulario de matrícula para Educación Inicial o Primaria.');
+        await showAlert('Secciones Requeridas', 'Primero declare las secciones en el formulario de matrícula para Educación Inicial o Primaria.', 'warning');
         return;
     }
 
@@ -691,15 +751,15 @@ async function mostrarCandado(codigoDEA, dataParcial) {
                   ultima_actualizacion: new Date().toISOString()
               };
               
-              await setDoc(docRef, payload, { merge: true });
+              await safeSetDoc(docRef, payload, { merge: true });
               
               // Desbloqueamos
               showView('dashboard-view');
-              alert("¡Datos del plantel actualizados con éxito!");
+              showToast("¡Datos del plantel actualizados con éxito!", "success");
               
           } catch (error) {
               console.error("Error guardando el plantel:", error);
-              alert("Ocurrió un error al guardar los datos.");
+              showToast("Ocurrió un error al guardar los datos.", "error");
           } finally {
               btn.textContent = "Guardar y Desbloquear Sistema";
               btn.disabled = false;

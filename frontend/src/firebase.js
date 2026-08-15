@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, browserSessionPersistence, setPersistence } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -16,7 +16,17 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-// Instancia Secundaria Fantasma (Para crear usuarios sin cerrar sesión)
+// --- SESIÓN SÓLO POR PESTAÑA ---
+// Al cerrar la pestaña o el navegador, la sesión se destruye automáticamente.
+// El usuario SIEMPRE tendrá que iniciar sesión al abrir una nueva pestaña o ventana.
+setPersistence(auth, browserSessionPersistence).catch(console.error);
+auth.languageCode = 'es';
+
+// Instancia Secundaria Fantasma (Para crear usuarios sin cerrar sesión del admin)
 const secondaryApp = initializeApp(firebaseConfig, "Secondary");
 export const secondaryAuth = getAuth(secondaryApp);
 export const secondaryDb = getFirestore(secondaryApp);
+
+// La instancia secundaria también debe ser de sesión
+setPersistence(secondaryAuth, browserSessionPersistence).catch(console.error);
+secondaryAuth.languageCode = 'es';

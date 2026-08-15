@@ -1,0 +1,6751 @@
+{
+  "catalogos_maestros": {
+    "planes_estudio": {
+      "20000": {
+        "mencion": null,
+        "especialidad": null
+      },
+      "21000": {
+        "mencion": null,
+        "especialidad": null
+      },
+      "31059": {
+        "grados": [
+          {
+            "anio": 1,
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "CASTELLANO",
+                "horas": 4
+              },
+              {
+                "nombre": "INGLES",
+                "horas": 6
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "nombre": "CIENCIAS NATURALES",
+                "horas": 6
+              },
+              {
+                "horas": 6,
+                "nombre": "GEO-HIST-CIUD."
+              },
+              {
+                "horas": 6,
+                "nombre": "GRUPOS DE CREACIÓN"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y CONV."
+              },
+              {
+                "horas": 4,
+                "nombre": "ARTE Y PATRIMONIO"
+              },
+              {
+                "horas": 6,
+                "nombre": "EDUC. FISICA"
+              }
+            ]
+          },
+          {
+            "anio": 2,
+            "asignaturas": [
+              {
+                "nombre": "CASTELLANO",
+                "horas": 4
+              },
+              {
+                "horas": 6,
+                "nombre": "INGLES"
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "nombre": "CIENCIAS NATURALES",
+                "horas": 6
+              },
+              {
+                "horas": 6,
+                "nombre": "GEO-HIST-CIUD."
+              },
+              {
+                "horas": 6,
+                "nombre": "GRUPOS DE CREACIÓN"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y CONV.",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "ARTE Y PATRIMONIO"
+              },
+              {
+                "horas": 6,
+                "nombre": "EDUC. FISICA"
+              }
+            ],
+            "label": "2DO AÑO"
+          },
+          {
+            "anio": 3,
+            "asignaturas": [
+              {
+                "nombre": "CASTELLANO",
+                "horas": 4
+              },
+              {
+                "nombre": "INGLES",
+                "horas": 6
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMATICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGIA"
+              },
+              {
+                "nombre": "FISICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "QUIMICA"
+              },
+              {
+                "horas": 6,
+                "nombre": "GEO-HIST-CIUD."
+              },
+              {
+                "horas": 2,
+                "nombre": "GRUPOS DE CREACIÓN"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y CONV.",
+                "horas": 6
+              },
+              {
+                "nombre": "EDUC. FISICA",
+                "horas": 6
+              }
+            ],
+            "label": "3ER AÑO"
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "CASTELLANO"
+              },
+              {
+                "nombre": "INGLES",
+                "horas": 6
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "nombre": "BIOLOGIA",
+                "horas": 6
+              },
+              {
+                "horas": 4,
+                "nombre": "FISICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "QUIMICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEO-HIST-CIUD."
+              },
+              {
+                "nombre": "FORMACIÓN PARA LA SOBERANIA",
+                "horas": 4
+              },
+              {
+                "horas": 6,
+                "nombre": "GRUPOS DE CREACIÓN"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y CONV.",
+                "horas": 2
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUC. FISICA"
+              }
+            ],
+            "anio": 4,
+            "label": "4TO AÑO"
+          },
+          {
+            "anio": 5,
+            "label": "5TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "CASTELLANO"
+              },
+              {
+                "nombre": "INGLES",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMATICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGIA"
+              },
+              {
+                "nombre": "FISICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "QUIMICA"
+              },
+              {
+                "nombre": "CIENCIA DE LA TIERRA",
+                "horas": 2
+              },
+              {
+                "nombre": "GEO-HIST-CIUD.",
+                "horas": 4
+              },
+              {
+                "horas": 6,
+                "nombre": "FORMACIÓN PARA LA SOBERANIA"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y CONV.",
+                "horas": 2
+              },
+              {
+                "horas": 2,
+                "nombre": "GRUPOS DE CREACIÓN"
+              },
+              {
+                "horas": 6,
+                "nombre": "EDUC. FISICA"
+              }
+            ]
+          }
+        ],
+        "mencion": "CIENCIAS",
+        "asignaturas": [
+          "CASTELLANO",
+          "INGLES",
+          "MATEMATICA",
+          "CIENCIAS NATURALES",
+          "GEO-HIST-CIUD.",
+          "GRUPOS DE CREACIÓN",
+          "ORIENTACIÓN Y CONV.",
+          "ARTE Y PATRIMONIO",
+          "EDUC. FISICA",
+          "BIOLOGIA",
+          "FISICA",
+          "QUIMICA",
+          "FORMACIÓN PARA LA SOBERANIA",
+          "CIENCIA DE LA TIERRA"
+        ],
+        "codigo": 31059,
+        "numAnios": 5,
+        "especialidad": "MEDIA GENERAL"
+      },
+      "31060": {
+        "mencion": "CIENCIAS Y TECNOLOGIA",
+        "grados": [
+          {
+            "anio": 1,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGIA AMBIENTE Y TECNOLOGIA"
+              },
+              {
+                "nombre": "FISICA",
+                "horas": 2
+              },
+              {
+                "horas": 2,
+                "nombre": "QUIMICA"
+              },
+              {
+                "horas": 6,
+                "nombre": "GEOGRAFIA, HISTORIA Y SOBERANIA NAC."
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN VOCACIONAL"
+              },
+              {
+                "nombre": "INNOVACION TECNOLOGIA Y PRODUCTIVA",
+                "horas": 6
+              },
+              {
+                "nombre": "EDUC. FISICA",
+                "horas": 4
+              }
+            ],
+            "label": "1ER AÑO"
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "nombre": "BIOLOGIA AMBIENTE Y TECNOLOGIA",
+                "horas": 4
+              },
+              {
+                "nombre": "FISICA",
+                "horas": 2
+              },
+              {
+                "horas": 2,
+                "nombre": "QUIMICA"
+              },
+              {
+                "nombre": "GEOGRAFIA, HISTORIA Y SOBERANIA NAC.",
+                "horas": 6
+              },
+              {
+                "nombre": "ORIENTACIÓN VOCACIONAL",
+                "horas": 4
+              },
+              {
+                "horas": 6,
+                "nombre": "INNOVACION TECNOLOGIA Y PRODUCTIVA"
+              },
+              {
+                "nombre": "EDUC. FISICA",
+                "horas": 4
+              }
+            ],
+            "label": "2DO AÑO",
+            "anio": 2
+          },
+          {
+            "anio": 3,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMATICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGIA AMBIENTE Y TECNOLOGIA"
+              },
+              {
+                "nombre": "FISICA",
+                "horas": 4
+              },
+              {
+                "nombre": "QUIMICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFIA, HISTORIA Y SOBERANIA NAC."
+              },
+              {
+                "nombre": "ORIENTACIÓN VOCACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "INNOVACION TECNOLOGIA Y PRODUCTIVA",
+                "horas": 6
+              },
+              {
+                "horas": 4,
+                "nombre": "EDUC. FISICA"
+              }
+            ],
+            "label": "3ER AÑO"
+          },
+          {
+            "anio": 4,
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMATICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGIA AMBIENTE Y TECNOLOGIA"
+              },
+              {
+                "nombre": "FISICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "QUIMICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFIA, HISTORIA Y SOBERANIA NAC."
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN VOCACIONAL"
+              },
+              {
+                "horas": 6,
+                "nombre": "INNOVACION TECNOLOGIA Y PRODUCTIVA"
+              },
+              {
+                "nombre": "EDUC. FISICA",
+                "horas": 4
+              }
+            ]
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "nombre": "BIOLOGIA AMBIENTE Y TECNOLOGIA",
+                "horas": 4
+              },
+              {
+                "nombre": "FISICA",
+                "horas": 4
+              },
+              {
+                "nombre": "QUIMICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFIA, HISTORIA Y SOBERANIA NAC."
+              },
+              {
+                "nombre": "ORIENTACIÓN VOCACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "INNOVACION TECNOLOGIA Y PRODUCTIVA",
+                "horas": 6
+              },
+              {
+                "nombre": "EDUC. FISICA",
+                "horas": 4
+              }
+            ],
+            "anio": 5,
+            "label": "5TO AÑO"
+          }
+        ],
+        "numAnios": 5,
+        "codigo": 31060,
+        "especialidad": "MEDIA GENERAL",
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "IDIOMAS",
+          "MATEMATICA",
+          "BIOLOGIA AMBIENTE Y TECNOLOGIA",
+          "FISICA",
+          "QUIMICA",
+          "GEOGRAFIA, HISTORIA Y SOBERANIA NAC.",
+          "ORIENTACIÓN VOCACIONAL",
+          "INNOVACION TECNOLOGIA Y PRODUCTIVA",
+          "EDUC. FISICA"
+        ]
+      },
+      "41048": {
+        "mencion": "ECOTURISMO",
+        "codigo": 41048,
+        "especialidad": "AGROPECUARIA",
+        "numAnios": 6,
+        "grados": [
+          {
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "AGROECOLOGÍA, TÉCNICA Y PRÁCTICA DEL SERVICIO TURÍSTICO"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 1
+          },
+          {
+            "anio": 2,
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "AGROECOLOGÍA, TÉCNICA Y PRÁCTICA DEL SERVICIO TURÍSTICO"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "label": "2DO AÑO"
+          },
+          {
+            "label": "3ER AÑO",
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "AGROECOLOGÍA, TÉCNICA Y PRÁCTICA DEL SERVICIO TURÍSTICO",
+                "horas": 8
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 3
+          },
+          {
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "AGROECOLOGÍA, TÉCNICA Y PRÁCTICA DEL SERVICIO TURÍSTICO",
+                "horas": 8
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 6
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "anio": 4
+          },
+          {
+            "anio": 5,
+            "label": "5TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "AGROECOLOGÍA, TÉCNICA Y PRÁCTICA DEL SERVICIO TURÍSTICO",
+                "horas": 8
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 6
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "anio": 6,
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ],
+            "label": "6TO AÑO"
+          }
+        ],
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "AGROECOLOGÍA, TÉCNICA Y PRÁCTICA DEL SERVICIO TURÍSTICO",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ]
+      },
+      "41049": {
+        "numAnios": 6,
+        "especialidad": "AGROPECUARIA",
+        "codigo": 41049,
+        "grados": [
+          {
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "PRODUCCIÓN VEGETAL Y ANIMAL"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 1
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "PRODUCCIÓN VEGETAL Y ANIMAL",
+                "horas": 8
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 2,
+            "label": "2DO AÑO"
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "PRODUCCIÓN VEGETAL Y ANIMAL",
+                "horas": 10
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 3,
+            "label": "3ER AÑO"
+          },
+          {
+            "anio": 4,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "PRODUCCIÓN VEGETAL Y ANIMAL",
+                "horas": 10
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "label": "4TO AÑO"
+          },
+          {
+            "anio": 5,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 10,
+                "nombre": "PRODUCCIÓN VEGETAL Y ANIMAL"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "label": "5TO AÑO"
+          },
+          {
+            "label": "6TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "PRÁCTICA PROFESIONAL",
+                "horas": 1440
+              }
+            ],
+            "anio": 6
+          }
+        ],
+        "mencion": "CIENCIAS AGRÍCOLAS Y PECUARIAS",
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "PRODUCCIÓN VEGETAL Y ANIMAL",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ]
+      },
+      "41052": {
+        "especialidad": "AGROPECUARIA",
+        "codigo": 41052,
+        "mencion": "TECNOLOGÍA DE LOS ALIMENTOS",
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "PRODUCCIÓN AGROINDUSTRIAL",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "numAnios": 6,
+        "grados": [
+          {
+            "anio": 1,
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "PRODUCCIÓN AGROINDUSTRIAL",
+                "horas": 8
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ]
+          },
+          {
+            "label": "2DO AÑO",
+            "anio": 2,
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "PRODUCCIÓN AGROINDUSTRIAL",
+                "horas": 8
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "PRODUCCIÓN AGROINDUSTRIAL",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 3,
+            "label": "3ER AÑO"
+          },
+          {
+            "anio": 4,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 10,
+                "nombre": "PRODUCCIÓN AGROINDUSTRIAL"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "label": "4TO AÑO"
+          },
+          {
+            "label": "5TO AÑO",
+            "anio": 5,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 10,
+                "nombre": "PRODUCCIÓN AGROINDUSTRIAL"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "anio": 6,
+            "label": "6TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "PRÁCTICA PROFESIONAL",
+                "horas": 1440
+              }
+            ]
+          }
+        ]
+      },
+      "41056": {
+        "grados": [
+          {
+            "anio": 1,
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "PRODUCCIÓN Y MECANIZACIÓN DEL CACAO",
+                "horas": 8
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ]
+          },
+          {
+            "anio": 2,
+            "label": "2DO AÑO",
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "PRODUCCIÓN Y MECANIZACIÓN DEL CACAO"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ]
+          },
+          {
+            "label": "3ER AÑO",
+            "anio": 3,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "PRODUCCIÓN Y MECANIZACIÓN DEL CACAO",
+                "horas": 8
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ]
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "PRODUCCIÓN Y MECANIZACIÓN DEL CACAO",
+                "horas": 10
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "anio": 4,
+            "label": "4TO AÑO"
+          },
+          {
+            "anio": 5,
+            "label": "5TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "PRODUCCIÓN Y MECANIZACIÓN DEL CACAO",
+                "horas": 10
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ]
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ],
+            "label": "6TO AÑO",
+            "anio": 6
+          }
+        ],
+        "mencion": "CIENCIAS AGRÍCOLAS, OPCIÓN CACAO",
+        "numAnios": 6,
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "PRODUCCIÓN Y MECANIZACIÓN DEL CACAO",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "especialidad": "AGROPECUARIA",
+        "codigo": 41056
+      },
+      "42000": {
+        "codigo": 42000,
+        "numAnios": 6,
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "GEOLOGÍA, EXPLORACIÓN Y PRODUCCIÓN DE HIDROCARBUROS",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "mencion": "PETRÓLEO Y GAS NATURAL",
+        "especialidad": "HIDROCARBUROS",
+        "grados": [
+          {
+            "anio": 1,
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOLOGÍA, EXPLORACIÓN Y PRODUCCIÓN DE HIDROCARBUROS",
+                "horas": 8
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ]
+          },
+          {
+            "label": "2DO AÑO",
+            "anio": 2,
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "GEOLOGÍA, EXPLORACIÓN Y PRODUCCIÓN DE HIDROCARBUROS"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "label": "3ER AÑO",
+            "anio": 3,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "GEOLOGÍA, EXPLORACIÓN Y PRODUCCIÓN DE HIDROCARBUROS"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ]
+          },
+          {
+            "label": "4TO AÑO",
+            "anio": 4,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOLOGÍA, EXPLORACIÓN Y PRODUCCIÓN DE HIDROCARBUROS",
+                "horas": 10
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "label": "5TO AÑO",
+            "anio": 5,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOLOGÍA, EXPLORACIÓN Y PRODUCCIÓN DE HIDROCARBUROS",
+                "horas": 10
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ]
+          },
+          {
+            "anio": 6,
+            "asignaturas": [
+              {
+                "nombre": "PRÁCTICA PROFESIONAL",
+                "horas": 1440
+              }
+            ],
+            "label": "6TO AÑO"
+          }
+        ]
+      },
+      "43291": {
+        "numAnios": 6,
+        "grados": [
+          {
+            "label": "1ER AÑO",
+            "anio": 1,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "TELECOMUNICACIÓN Y CONTROL"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "label": "2DO AÑO",
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "TELECOMUNICACIÓN Y CONTROL"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "anio": 2
+          },
+          {
+            "label": "3ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "TELECOMUNICACIÓN Y CONTROL",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 3
+          },
+          {
+            "anio": 4,
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 10,
+                "nombre": "TELECOMUNICACIÓN Y CONTROL"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "anio": 5,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "TELECOMUNICACIÓN Y CONTROL",
+                "horas": 10
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "label": "5TO AÑO"
+          },
+          {
+            "anio": 6,
+            "label": "6TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ]
+          }
+        ],
+        "codigo": 43291,
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "TELECOMUNICACIÓN Y CONTROL",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "especialidad": "INDUSTRIAL",
+        "mencion": "ELECTRÓNICA"
+      },
+      "43292": {
+        "numAnios": 6,
+        "especialidad": "INDUSTRIAL",
+        "codigo": 43292,
+        "mencion": "CONSTRUCCIÓN CIVIL",
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "OBRAS CIVILES Y SUELOS",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "grados": [
+          {
+            "anio": 1,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "OBRAS CIVILES Y SUELOS",
+                "horas": 8
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "label": "1ER AÑO"
+          },
+          {
+            "anio": 2,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "OBRAS CIVILES Y SUELOS",
+                "horas": 8
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "label": "2DO AÑO"
+          },
+          {
+            "label": "3ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "OBRAS CIVILES Y SUELOS"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 3
+          },
+          {
+            "anio": 4,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 10,
+                "nombre": "OBRAS CIVILES Y SUELOS"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "label": "4TO AÑO"
+          },
+          {
+            "anio": 5,
+            "label": "5TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 10,
+                "nombre": "OBRAS CIVILES Y SUELOS"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "label": "6TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ],
+            "anio": 6
+          }
+        ]
+      },
+      "43293": {
+        "especialidad": "INDUSTRIAL",
+        "grados": [
+          {
+            "label": "1ER AÑO",
+            "anio": 1,
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "SISTEMAS DE REFRIGERACIÓN, AIRE ACONDICIONADO Y CALDERAS",
+                "horas": 8
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "label": "2DO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "SISTEMAS DE REFRIGERACIÓN, AIRE ACONDICIONADO Y CALDERAS"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 2
+          },
+          {
+            "anio": 3,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "SISTEMAS DE REFRIGERACIÓN, AIRE ACONDICIONADO Y CALDERAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "label": "3ER AÑO"
+          },
+          {
+            "label": "4TO AÑO",
+            "anio": 4,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "SISTEMAS DE REFRIGERACIÓN, AIRE ACONDICIONADO Y CALDERAS",
+                "horas": 10
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ]
+          },
+          {
+            "label": "5TO AÑO",
+            "anio": 5,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "SISTEMAS DE REFRIGERACIÓN, AIRE ACONDICIONADO Y CALDERAS",
+                "horas": 10
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ]
+          },
+          {
+            "anio": 6,
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ],
+            "label": "6TO AÑO"
+          }
+        ],
+        "mencion": "MECÁNICA TÉRMICA",
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "SISTEMAS DE REFRIGERACIÓN, AIRE ACONDICIONADO Y CALDERAS",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "codigo": 43293,
+        "numAnios": 6
+      },
+      "43294": {
+        "numAnios": 5,
+        "especialidad": "INDUSTRIAL",
+        "mencion": "MECATRONICA",
+        "codigo": 43294,
+        "asignaturas": [],
+        "grados": [
+          {
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACION FISICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGIA, AMBIENTE Y TECNOLOGIA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFIA HISTORIA Y SOBERANIA NACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMIA SOCIOPRODUCTIVA Y TECNOLOGIA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "SISTEMA DE AUTOMATIZACION Y CONTROL"
+              },
+              {
+                "nombre": "ORIENTACION Y VINCULACION SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "label": "1ER AÑO",
+            "anio": 1
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACION FISICA"
+              },
+              {
+                "nombre": "BIOLOGIA, AMBIENTE Y TECNOLOGIA",
+                "horas": 4
+              },
+              {
+                "nombre": "GEOGRAFIA HISTORIA Y SOBERANIA NACIONAL",
+                "horas": 4
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMIA SOCIOPRODUCTIVA Y TECNOLOGIA",
+                "horas": 8
+              },
+              {
+                "nombre": "SISTEMA DE AUTOMATIZACION Y CONTROL",
+                "horas": 8
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACION Y VINCULACION SOCIOLABORAL"
+              }
+            ],
+            "anio": 2,
+            "label": "2DO AÑO"
+          },
+          {
+            "anio": 3,
+            "label": "3ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACION FISICA"
+              },
+              {
+                "nombre": "BIOLOGIA, AMBIENTE Y TECNOLOGIA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFIA HISTORIA Y SOBERANIA NACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMIA SOCIOPRODUCTIVA Y TECNOLOGIA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "SISTEMA DE AUTOMATIZACION Y CONTROL"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACION Y VINCULACION SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMATICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGIA, AMBIENTE Y TECNOLOGIA"
+              },
+              {
+                "nombre": "GEOGRAFIA HISTORIA Y SOBERANIA NACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMIA SOCIOPRODUCTIVA Y TECNOLOGIA",
+                "horas": 8
+              },
+              {
+                "horas": 10,
+                "nombre": "SISTEMA DE AUTOMATIZACION Y CONTROL"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACION Y VINCULACION SOCIOLABORAL"
+              }
+            ],
+            "label": "4TO AÑO",
+            "anio": 4
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGIA, AMBIENTE Y TECNOLOGIA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFIA HISTORIA Y SOBERANIA NACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMIA SOCIOPRODUCTIVA Y TECNOLOGIA"
+              },
+              {
+                "horas": 10,
+                "nombre": "SISTEMA DE AUTOMATIZACION Y CONTROL"
+              },
+              {
+                "nombre": "ORIENTACION Y VINCULACION SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "anio": 5,
+            "label": "5TO AÑO"
+          }
+        ]
+      },
+      "43295": {
+        "grados": [
+          {
+            "anio": 1,
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "MANTENIMIENTO, MÁQUINAS Y HERRAMIENTAS",
+                "horas": 8
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "label": "2DO AÑO",
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "MANTENIMIENTO, MÁQUINAS Y HERRAMIENTAS"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 2
+          },
+          {
+            "label": "3ER AÑO",
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "MANTENIMIENTO, MÁQUINAS Y HERRAMIENTAS",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 3
+          },
+          {
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 10,
+                "nombre": "MANTENIMIENTO, MÁQUINAS Y HERRAMIENTAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 4
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 10,
+                "nombre": "MANTENIMIENTO, MÁQUINAS Y HERRAMIENTAS"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "label": "5TO AÑO",
+            "anio": 5
+          },
+          {
+            "anio": 6,
+            "label": "6TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "PRÁCTICA PROFESIONAL",
+                "horas": 1440
+              }
+            ]
+          }
+        ],
+        "especialidad": "INDUSTRIAL",
+        "numAnios": 6,
+        "codigo": 43295,
+        "mencion": "METALMECÁNICA",
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "MANTENIMIENTO, MÁQUINAS Y HERRAMIENTAS",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ]
+      },
+      "43298": {
+        "numAnios": 5,
+        "codigo": 43298,
+        "asignaturas": [],
+        "mencion": "TELEMATICA",
+        "especialidad": "INDUSTRIAL",
+        "grados": [
+          {
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "nombre": "EDUCACION FISICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGIA, AMBIENTE Y TECNOLOGIA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFIA, HISTORIA Y SOBERANIA NACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMIA SOCIOPRODUCTIVA Y TECNOLOGIA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "PROGRAMACION Y DISEÑO DE SOFTWARE Y REDES"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACION Y VINCULACION SOCIOLABORAL"
+              }
+            ],
+            "anio": 1
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACION FISICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGIA, AMBIENTE Y TECNOLOGIA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFIA, HISTORIA Y SOBERANIA NACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMIA SOCIOPRODUCTIVA Y TECNOLOGIA"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROGRAMACION Y DISEÑO DE SOFTWARE Y REDES"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACION Y VINCULACION SOCIOLABORAL"
+              }
+            ],
+            "label": "2DO AÑO",
+            "anio": 2
+          },
+          {
+            "anio": 3,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACION FISICA",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGIA, AMBIENTE Y TECNOLOGIA"
+              },
+              {
+                "nombre": "GEOGRAFIA, HISTORIA Y SOBERANIA NACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMIA SOCIOPRODUCTIVA Y TECNOLOGIA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "PROGRAMACION Y DISEÑO DE SOFTWARE Y REDES"
+              },
+              {
+                "nombre": "ORIENTACION Y VINCULACION SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "label": "3ER AÑO"
+          },
+          {
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMATICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "BIOLOGIA, AMBIENTE Y TECNOLOGIA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFIA, HISTORIA Y SOBERANIA NACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMIA SOCIOPRODUCTIVA Y TECNOLOGIA",
+                "horas": 8
+              },
+              {
+                "nombre": "PROGRAMACION Y DISEÑO DE SOFTWARE Y REDES",
+                "horas": 10
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACION Y VINCULACION SOCIOLABORAL"
+              }
+            ],
+            "anio": 4
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMATICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGIA, AMBIENTE Y TECNOLOGIA"
+              },
+              {
+                "nombre": "GEOGRAFIA, HISTORIA Y SOBERANIA NACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMIA SOCIOPRODUCTIVA Y TECNOLOGIA"
+              },
+              {
+                "horas": 10,
+                "nombre": "PROGRAMACION Y DISEÑO DE SOFTWARE Y REDES"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACION Y VINCULACION SOCIOLABORAL"
+              }
+            ],
+            "anio": 5,
+            "label": "5TO AÑO"
+          }
+        ]
+      },
+      "44001": {
+        "codigo": 44001,
+        "mencion": "TRANSPORTE TERRESTRE",
+        "especialidad": "TRANSPORTE MULTIMODAL",
+        "numAnios": 6,
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "MECÁNICA AUTOMOTRIZ DIESEL Y GASOIL",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "grados": [
+          {
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "MECÁNICA AUTOMOTRIZ DIESEL Y GASOIL"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "anio": 1
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "MECÁNICA AUTOMOTRIZ DIESEL Y GASOIL"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "label": "2DO AÑO",
+            "anio": 2
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "MECÁNICA AUTOMOTRIZ DIESEL Y GASOIL"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "anio": 3,
+            "label": "3ER AÑO"
+          },
+          {
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "MECÁNICA AUTOMOTRIZ DIESEL Y GASOIL",
+                "horas": 10
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "anio": 4
+          },
+          {
+            "anio": 5,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 10,
+                "nombre": "MECÁNICA AUTOMOTRIZ DIESEL Y GASOIL"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "label": "5TO AÑO"
+          },
+          {
+            "label": "6TO AÑO",
+            "anio": 6,
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ]
+          }
+        ]
+      },
+      "44004": {
+        "grados": [
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "SEGURIDAD Y ATENCIÓN AEROPORTUARIA"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "anio": 1,
+            "label": "1ER AÑO"
+          },
+          {
+            "anio": 2,
+            "label": "2DO AÑO",
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "SEGURIDAD Y ATENCIÓN AEROPORTUARIA"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "label": "3ER AÑO",
+            "anio": 3,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "SEGURIDAD Y ATENCIÓN AEROPORTUARIA"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 10,
+                "nombre": "SEGURIDAD Y ATENCIÓN AEROPORTUARIA"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 4
+          },
+          {
+            "label": "5TO AÑO",
+            "anio": 5,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "SEGURIDAD Y ATENCIÓN AEROPORTUARIA",
+                "horas": 10
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "anio": 6,
+            "label": "6TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "PRÁCTICA PROFESIONAL",
+                "horas": 1440
+              }
+            ]
+          }
+        ],
+        "numAnios": 6,
+        "mencion": "AERONÁUTICAS, OPCIÓN SERVICIOS AÉREOS",
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "SEGURIDAD Y ATENCIÓN AEROPORTUARIA",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "especialidad": "TRANSPORTE MULTIMODAL",
+        "codigo": 44004
+      },
+      "45041": {
+        "codigo": 45041,
+        "grados": [
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROMOCIÓN Y ATENCIÓN DE LA SALUD"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 1,
+            "label": "1ER AÑO"
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "PROMOCIÓN Y ATENCIÓN DE LA SALUD",
+                "horas": 8
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "label": "2DO AÑO",
+            "anio": 2
+          },
+          {
+            "label": "3ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "PROMOCIÓN Y ATENCIÓN DE LA SALUD",
+                "horas": 8
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "anio": 3
+          },
+          {
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 10,
+                "nombre": "PROMOCIÓN Y ATENCIÓN DE LA SALUD"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 4
+          },
+          {
+            "anio": 5,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 10,
+                "nombre": "PROMOCIÓN Y ATENCIÓN DE LA SALUD"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "label": "5TO AÑO"
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ],
+            "anio": 6,
+            "label": "6TO AÑO"
+          }
+        ],
+        "mencion": "ENFERMERÍA",
+        "especialidad": "SALUD",
+        "numAnios": 6,
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "PROMOCIÓN Y ATENCIÓN DE LA SALUD",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ]
+      },
+      "45043": {
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "PRINCIPIOS BÁSICOS DE LA BOTÁNICA Y FARMACOLOGÍA",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "codigo": 45043,
+        "especialidad": "SALUD",
+        "mencion": "FARMACIA",
+        "numAnios": 6,
+        "grados": [
+          {
+            "anio": 1,
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "PRINCIPIOS BÁSICOS DE LA BOTÁNICA Y FARMACOLOGÍA"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ]
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "PRINCIPIOS BÁSICOS DE LA BOTÁNICA Y FARMACOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "label": "2DO AÑO",
+            "anio": 2
+          },
+          {
+            "anio": 3,
+            "label": "3ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "PRINCIPIOS BÁSICOS DE LA BOTÁNICA Y FARMACOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 10,
+                "nombre": "PRINCIPIOS BÁSICOS DE LA BOTÁNICA Y FARMACOLOGÍA"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "anio": 4
+          },
+          {
+            "label": "5TO AÑO",
+            "anio": 5,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "PRINCIPIOS BÁSICOS DE LA BOTÁNICA Y FARMACOLOGÍA",
+                "horas": 10
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "label": "6TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "PRÁCTICA PROFESIONAL",
+                "horas": 1440
+              }
+            ],
+            "anio": 6
+          }
+        ]
+      },
+      "45045": {
+        "grados": [
+          {
+            "label": "1ER AÑO",
+            "anio": 1,
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "ADMINISTRACIÓN Y TÉCNICAS DE LABORATORIO",
+                "horas": 8
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ]
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "ADMINISTRACIÓN Y TÉCNICAS DE LABORATORIO"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "label": "2DO AÑO",
+            "anio": 2
+          },
+          {
+            "anio": 3,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "ADMINISTRACIÓN Y TÉCNICAS DE LABORATORIO"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "label": "3ER AÑO"
+          },
+          {
+            "anio": 4,
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 10,
+                "nombre": "ADMINISTRACIÓN Y TÉCNICAS DE LABORATORIO"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ]
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 10,
+                "nombre": "ADMINISTRACIÓN Y TÉCNICAS DE LABORATORIO"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "label": "5TO AÑO",
+            "anio": 5
+          },
+          {
+            "label": "6TO AÑO",
+            "anio": 6,
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ]
+          }
+        ],
+        "mencion": "LABORATORIO CLÍNICO",
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "ADMINISTRACIÓN Y TÉCNICAS DE LABORATORIO",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "especialidad": "SALUD",
+        "codigo": 45045,
+        "numAnios": 6
+      },
+      "45049": {
+        "numAnios": 6,
+        "grados": [
+          {
+            "anio": 1,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "ADMINISTRACIÓN, REGISTRO Y BIOESTADÍSTICA DE LA SALUD",
+                "horas": 8
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "label": "1ER AÑO"
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "ADMINISTRACIÓN, REGISTRO Y BIOESTADÍSTICA DE LA SALUD"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "label": "2DO AÑO",
+            "anio": 2
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "ADMINISTRACIÓN, REGISTRO Y BIOESTADÍSTICA DE LA SALUD"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "label": "3ER AÑO",
+            "anio": 3
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 10,
+                "nombre": "ADMINISTRACIÓN, REGISTRO Y BIOESTADÍSTICA DE LA SALUD"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 4,
+            "label": "4TO AÑO"
+          },
+          {
+            "anio": 5,
+            "label": "5TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "ADMINISTRACIÓN, REGISTRO Y BIOESTADÍSTICA DE LA SALUD",
+                "horas": 10
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "anio": 6,
+            "asignaturas": [
+              {
+                "nombre": "PRÁCTICA PROFESIONAL",
+                "horas": 1440
+              }
+            ],
+            "label": "6TO AÑO"
+          }
+        ],
+        "especialidad": "SALUD",
+        "codigo": 45049,
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "ADMINISTRACIÓN, REGISTRO Y BIOESTADÍSTICA DE LA SALUD",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "mencion": "REGISTRO Y ESTADÍSTICA DE SALUD"
+      },
+      "46067": {
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "DISEÑO, PLANIFICACIÓN Y ORGANIZACIÓN DE SISTEMAS ADMINISTRATIVOS",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "numAnios": 6,
+        "grados": [
+          {
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "DISEÑO, PLANIFICACIÓN Y ORGANIZACIÓN DE SISTEMAS ADMINISTRATIVOS"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "anio": 1
+          },
+          {
+            "label": "2DO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "DISEÑO, PLANIFICACIÓN Y ORGANIZACIÓN DE SISTEMAS ADMINISTRATIVOS",
+                "horas": 8
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "anio": 2
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "DISEÑO, PLANIFICACIÓN Y ORGANIZACIÓN DE SISTEMAS ADMINISTRATIVOS"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 3,
+            "label": "3ER AÑO"
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "DISEÑO, PLANIFICACIÓN Y ORGANIZACIÓN DE SISTEMAS ADMINISTRATIVOS",
+                "horas": 10
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "anio": 4,
+            "label": "4TO AÑO"
+          },
+          {
+            "label": "5TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "DISEÑO, PLANIFICACIÓN Y ORGANIZACIÓN DE SISTEMAS ADMINISTRATIVOS",
+                "horas": 10
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "anio": 5
+          },
+          {
+            "label": "6TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ],
+            "anio": 6
+          }
+        ],
+        "codigo": 46067,
+        "mencion": "ADMINISTRACIÓN",
+        "especialidad": "ECONOMÍA SOCIAL"
+      },
+      "46068": {
+        "especialidad": "ECONOMÍA SOCIAL",
+        "grados": [
+          {
+            "label": "1ER AÑO",
+            "anio": 1,
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE ADUANA"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ]
+          },
+          {
+            "label": "2DO AÑO",
+            "anio": 2,
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE ADUANA",
+                "horas": 8
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ]
+          },
+          {
+            "anio": 3,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE ADUANA"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "label": "3ER AÑO"
+          },
+          {
+            "label": "4TO AÑO",
+            "anio": 4,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 10,
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE ADUANA"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "anio": 5,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE ADUANA",
+                "horas": 10
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "label": "5TO AÑO"
+          },
+          {
+            "label": "6TO AÑO",
+            "anio": 6,
+            "asignaturas": [
+              {
+                "nombre": "PRÁCTICA PROFESIONAL",
+                "horas": 1440
+              }
+            ]
+          }
+        ],
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "FUNDAMENTOS Y TÉCNICAS DE ADUANA",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "mencion": "ADUANA",
+        "codigo": 46068,
+        "numAnios": 6
+      },
+      "46069": {
+        "codigo": 46069,
+        "grados": [
+          {
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "MACRO Y MICRO ECONOMÍA DIGITAL"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 1
+          },
+          {
+            "anio": 2,
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "MACRO Y MICRO ECONOMÍA DIGITAL"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "label": "2DO AÑO"
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "MACRO Y MICRO ECONOMÍA DIGITAL"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "anio": 3,
+            "label": "3ER AÑO"
+          },
+          {
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "MACRO Y MICRO ECONOMÍA DIGITAL",
+                "horas": 10
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 4
+          },
+          {
+            "anio": 5,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 10,
+                "nombre": "MACRO Y MICRO ECONOMÍA DIGITAL"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "label": "5TO AÑO"
+          },
+          {
+            "anio": 6,
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ],
+            "label": "6TO AÑO"
+          }
+        ],
+        "numAnios": 6,
+        "mencion": "ECONOMÍA DIGITAL",
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "MACRO Y MICRO ECONOMÍA DIGITAL",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "especialidad": "ECONOMÍA SOCIAL"
+      },
+      "46070": {
+        "mencion": "CONTABILIDAD",
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "FUNDAMENTOS Y TÉCNICAS DE LA CONTABILIDAD",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "grados": [
+          {
+            "anio": 1,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE LA CONTABILIDAD"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "label": "1ER AÑO"
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE LA CONTABILIDAD"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 2,
+            "label": "2DO AÑO"
+          },
+          {
+            "anio": 3,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE LA CONTABILIDAD",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "label": "3ER AÑO"
+          },
+          {
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 10,
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE LA CONTABILIDAD"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "anio": 4
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 10,
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE LA CONTABILIDAD"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "label": "5TO AÑO",
+            "anio": 5
+          },
+          {
+            "label": "6TO AÑO",
+            "anio": 6,
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ]
+          }
+        ],
+        "especialidad": "ECONOMÍA SOCIAL",
+        "codigo": 46070,
+        "numAnios": 6
+      },
+      "46071": {
+        "codigo": 46071,
+        "numAnios": 6,
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "GESTIÓN Y ADMINISTRACIÓN DE SERVICIOS TURÍSTICOS Y HOTELEROS",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "especialidad": "ECONOMÍA SOCIAL",
+        "grados": [
+          {
+            "anio": 1,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GESTIÓN Y ADMINISTRACIÓN DE SERVICIOS TURÍSTICOS Y HOTELEROS",
+                "horas": 8
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "label": "1ER AÑO"
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 8,
+                "nombre": "GESTIÓN Y ADMINISTRACIÓN DE SERVICIOS TURÍSTICOS Y HOTELEROS"
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "anio": 2,
+            "label": "2DO AÑO"
+          },
+          {
+            "label": "3ER AÑO",
+            "anio": 3,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GESTIÓN Y ADMINISTRACIÓN DE SERVICIOS TURÍSTICOS Y HOTELEROS",
+                "horas": 8
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ]
+          },
+          {
+            "anio": 4,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GESTIÓN Y ADMINISTRACIÓN DE SERVICIOS TURÍSTICOS Y HOTELEROS",
+                "horas": 10
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ],
+            "label": "4TO AÑO"
+          },
+          {
+            "anio": 5,
+            "label": "5TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GESTIÓN Y ADMINISTRACIÓN DE SERVICIOS TURÍSTICOS Y HOTELEROS",
+                "horas": 10
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ]
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ],
+            "anio": 6,
+            "label": "6TO AÑO"
+          }
+        ],
+        "mencion": "TURISMO"
+      },
+      "48069": {
+        "codigo": 48069,
+        "mencion": "ARTES AUDIOVISUALES",
+        "especialidad": "ARTE",
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "FUNDAMENTOS Y TÉCNICAS DE LA CREACIÓN DE AUDIOVISUALES",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "numAnios": 6,
+        "grados": [
+          {
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE LA CREACIÓN DE AUDIOVISUALES",
+                "horas": 8
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 1
+          },
+          {
+            "label": "2DO AÑO",
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 3
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE LA CREACIÓN DE AUDIOVISUALES",
+                "horas": 8
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 4
+              }
+            ],
+            "anio": 2
+          },
+          {
+            "label": "3ER AÑO",
+            "anio": 3,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE LA CREACIÓN DE AUDIOVISUALES",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE LA CREACIÓN DE AUDIOVISUALES",
+                "horas": 10
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 4,
+            "label": "4TO AÑO"
+          },
+          {
+            "label": "5TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 10,
+                "nombre": "FUNDAMENTOS Y TÉCNICAS DE LA CREACIÓN DE AUDIOVISUALES"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 5
+          },
+          {
+            "asignaturas": [
+              {
+                "nombre": "PRÁCTICA PROFESIONAL",
+                "horas": 1440
+              }
+            ],
+            "anio": 6,
+            "label": "6TO AÑO"
+          }
+        ]
+      },
+      "49000": {
+        "grados": [
+          {
+            "label": "1ER AÑO",
+            "anio": 1,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "horas": 2,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 8
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "label": "2DO AÑO",
+            "asignaturas": [
+              {
+                "horas": 3,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 8
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 2
+          },
+          {
+            "label": "3ER AÑO",
+            "anio": 3,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "anio": 4,
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 10,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "label": "5TO AÑO",
+            "anio": 5,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 10
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "anio": 6,
+            "label": "6TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ]
+          }
+        ],
+        "especialidad": "EDUCACIÓN FÍSICA",
+        "mencion": "PROMOCIÓN DEL ENTRENAMIENTO DEPORTIVO",
+        "numAnios": 6,
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "EDUCACIÓN FÍSICA",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "codigo": 49000
+      },
+      "49001": {
+        "mencion": "PROMOCIÓN DE LA ACTIVIDAD FÍSICA Y RECREACIÓN",
+        "asignaturas": [
+          "LENGUA Y LITERATURA",
+          "MATEMÁTICA",
+          "IDIOMAS",
+          "EDUCACIÓN FÍSICA",
+          "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+          "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+          "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+          "EDUCACIÓN FÍSICA",
+          "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+          "PRÁCTICA PROFESIONAL"
+        ],
+        "codigo": 49001,
+        "especialidad": "EDUCACIÓN FÍSICA",
+        "grados": [
+          {
+            "label": "1ER AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 4
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 1
+          },
+          {
+            "label": "2DO AÑO",
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 3
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 3,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 4,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 4,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "anio": 2
+          },
+          {
+            "anio": 3,
+            "asignaturas": [
+              {
+                "nombre": "LENGUA Y LITERATURA",
+                "horas": 4
+              },
+              {
+                "nombre": "MATEMÁTICA",
+                "horas": 4
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL",
+                "horas": 2
+              },
+              {
+                "horas": 8,
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA"
+              },
+              {
+                "horas": 8,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ],
+            "label": "3ER AÑO"
+          },
+          {
+            "anio": 4,
+            "label": "4TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "nombre": "IDIOMAS",
+                "horas": 4
+              },
+              {
+                "horas": 8,
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA"
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "nombre": "EDUCACIÓN FÍSICA",
+                "horas": 10
+              },
+              {
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL",
+                "horas": 2
+              }
+            ]
+          },
+          {
+            "label": "5TO AÑO",
+            "anio": 5,
+            "asignaturas": [
+              {
+                "horas": 4,
+                "nombre": "LENGUA Y LITERATURA"
+              },
+              {
+                "horas": 4,
+                "nombre": "MATEMÁTICA"
+              },
+              {
+                "horas": 4,
+                "nombre": "IDIOMAS"
+              },
+              {
+                "nombre": "BIOLOGÍA, AMBIENTE Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 2,
+                "nombre": "GEOGRAFÍA, HISTORIA Y SOBERANÍA NACACIONAL"
+              },
+              {
+                "nombre": "PROYECTO DE ECONOMÍA SOCIOPRODUCTIVA Y TECNOLOGÍA",
+                "horas": 8
+              },
+              {
+                "horas": 10,
+                "nombre": "EDUCACIÓN FÍSICA"
+              },
+              {
+                "horas": 2,
+                "nombre": "ORIENTACIÓN Y VINCULACIÓN SOCIOLABORAL"
+              }
+            ]
+          },
+          {
+            "label": "6TO AÑO",
+            "asignaturas": [
+              {
+                "horas": 1440,
+                "nombre": "PRÁCTICA PROFESIONAL"
+              }
+            ],
+            "anio": 6
+          }
+        ],
+        "numAnios": 6
+      }
+    },
+    "despliegue": {
+      "municipios_activos": [],
+      "planteles_activos": [
+        "OD17781401"
+      ]
+    },
+    "clasificacion_cargos": {
+      "PRIVADO": {},
+      "ESTADAL": {
+        "docente": {
+          "D/U": "DOCENTE UNICO"
+        },
+        "obrero": {},
+        "administrativo": {}
+      },
+      "NACIONAL": {
+        "obrero": {
+          "8985N": {
+            "rango": "OBRERO VIGILANTE I GRADO 5",
+            "cargos": [
+              "VIGILANTE I"
+            ]
+          },
+          "8031N": {
+            "cargos": [
+              "ASEADOR I"
+            ],
+            "rango": "OBRERO GENERAL I (NO CALIFICADO) GRADO 1"
+          },
+          "8034N": {
+            "rango": "OBRERO GENERAL IV (NO CALIFICADO) GRADO 4",
+            "cargos": [
+              "LATONERO PINTOR",
+              "PINTOR",
+              "DESPENSERO",
+              "RECEPTOR INFORMADOR"
+            ]
+          },
+          "8987N": {
+            "cargos": [
+              "VIGILANTE III"
+            ],
+            "rango": "OBRERO VIGILANTE III GRADO 7"
+          },
+          "8037N": {
+            "rango": "OBRERO CERTIFICADO III (CALIFICADO) GRADO 7",
+            "cargos": [
+              "OPERADOR DE PRENSA",
+              "ENCUADERNADOR"
+            ]
+          },
+          "8990N": {
+            "rango": "COCINERO I",
+            "cargos": [
+              "COCINERO"
+            ]
+          },
+          "8986N": {
+            "cargos": [
+              "VIGILANTE II"
+            ],
+            "rango": "OBRERO VIGILANTE II GRADO 6"
+          },
+          "8988N": {
+            "cargos": [
+              "SUPERVISOR DE ÁREA DE SEGURIDAD"
+            ],
+            "rango": "OBRERO SUPERVISOR DE AREA DE SEGURIDAD GRADO 9"
+          },
+          "8036N": {
+            "rango": "OBRERO CERTIFICADO II (CALIFICADO) GRADO 6",
+            "cargos": [
+              "ALBAÑIL",
+              "AUXILIAR DE LABORATORIO",
+              "CARPINTERO",
+              "HERRERO SOLDADOR",
+              "FOTOGRABADOR PLANCHISTA",
+              "MARINO AUXILIAR",
+              "OPERADOR DE MÁQUINA PESADA"
+            ]
+          },
+          "8991N": {
+            "rango": "COCINERO II",
+            "cargos": [
+              "COCINERO II"
+            ]
+          },
+          "8039N": {
+            "rango": "OBRERO SUPERVISOR I GRADO 9",
+            "cargos": [
+              "SUPERVISOR DE SERVICIOS INTERNOS",
+              "SUPERVISOR AUXILIAR DE MANTENIMIENTO",
+              "MADRE SENIFA"
+            ]
+          },
+          "8626N": {
+            "rango": "AYUDANTE AGROPECUARIO II",
+            "cargos": [
+              "AYUDANTE AGROPECUARIO II"
+            ]
+          },
+          "8032N": {
+            "rango": "OBRERO GENERAL II (NO CALIFICADO) GRADO 2",
+            "cargos": [
+              "AYUDANTE DE SERVICIOS DE COCINA",
+              "ASEADOR II",
+              "ASCENSORISTA",
+              "LAVANDERO",
+              "PLANCHADOR",
+              "MENSAJERO GRADO",
+              "PORTERO"
+            ]
+          },
+          "8033N": {
+            "cargos": [
+              "JARDINERO",
+              "ASEADOR III",
+              "AYUDANTE DE SERVICIOS",
+              "AYUDANTE DE ARTES",
+              "MENSAJERO MOTORIZADO",
+              "OPERADOR DE MAQUINA FOTOCOPIADORA",
+              "CONSERJE",
+              "FUMIGADOR",
+              "AYUDANTE DE CARGA"
+            ],
+            "rango": "OBRERO GENERAL III (NO CALIFICADO) GRADO 3"
+          },
+          "8035N": {
+            "cargos": [
+              "CHOFER DE TRANSPORTE",
+              "TIMONEL DE EMBARCACIÓN",
+              "AYUDANTE DE ALMACEN",
+              "PLOMERO",
+              "ELECTRICISTA",
+              "TAPICERO",
+              "COCINERO",
+              "OPERADOR DE MÁQUINA LIVIANA"
+            ],
+            "rango": "OBRERO CERTIFICADO I (CALIFICADO) GRADO 5"
+          },
+          "8989N": {
+            "rango": "OBRERO SUPERVISOR GENERAL DE SEGURIDAD GRADO 10",
+            "cargos": [
+              "SUPERVISOR GENERAL DE SEGURIDAD"
+            ]
+          },
+          "8625N": {
+            "rango": "AYUDANTE AGROPECUARIO I",
+            "cargos": [
+              "AYUDANTE AGROPECUARIO I"
+            ]
+          },
+          "8690N": {
+            "rango": "PORTERO",
+            "cargos": [
+              "PORTERO"
+            ]
+          },
+          "8040N": {
+            "rango": "OBRERO SUPERVISOR II GRADO 10",
+            "cargos": [
+              "SUPERVISOR DE MANTENIMIENTO",
+              "SUPERVISOR DE SERVICIOS ESPECIALES",
+              "SUPERVISOR DE SERVICIOS DE REPRODUCCIÓN",
+              "MADRE SENIFA"
+            ]
+          },
+          "8038N": {
+            "rango": "OBRERO CERTIFICADO IV (CALIFICADO) GRADO 8",
+            "cargos": [
+              "ELECTROMECÁNICO",
+              "MECANICO AUTOMOTRIZ"
+            ]
+          },
+          "8627N": {
+            "cargos": [
+              "AYUDANTE AGROPECUARIO III"
+            ],
+            "rango": "AYUDANTE AGROPECUARIO III"
+          },
+          "8992N": {
+            "cargos": [
+              "COCINERO III"
+            ],
+            "rango": "COCINERO III"
+          },
+          "8260C": {
+            "cargos": [
+              "CHOFER"
+            ],
+            "rango": "CHOFER CONTRATADO"
+          },
+          "8985C": {
+            "cargos": [
+              "VIGILANTE"
+            ],
+            "rango": "VIGILANTE CONTRATADO"
+          }
+        },
+        "administrativo": {
+          "100000": "BACHILLER I",
+          "110000": "BACHILLER II",
+          "110100": "BACHILLER III",
+          "200000": "TSU I",
+          "210000": "TSU II",
+          "210100": "TSU III",
+          "300000": "PROFESIONAL UNIV. I",
+          "310000": "PROFESIONAL UNIV. II",
+          "310100": "PROFESIONAL UNIV. III",
+          "340201": "PROFESIONAL UNIV. MEDICO I",
+          "340202": "PROFESIONAL UNIV. MEDICO II",
+          "340203": "PROFESIONAL UNIV. MEDICO III",
+          "340601": "PROFESIONAL UNIV. ODONTOLOGO I",
+          "340603": "PROFESIONAL UNIV. ODONTOLOGO III"
+        },
+        "docente": {
+          "1182NH": "DOC. II / AULA",
+          "1156DH": "DOC. VI / AULA",
+          "4120DB": "DOC. (NG) / AULA BOLIV.",
+          "6120DB": "TSU PROF. NO DOC. BOLIV.",
+          "1143NH": "DOC. III / AULA",
+          "1115DB": "DOC. V / AULA BOLIV.",
+          "1176DH": "DOC. VI / AULA",
+          "2117DB": "TSU EN EDUCACION BOLIV.",
+          "4190NH": "DOC. (NG) / AULA",
+          "3128DI": "MAESTRO NORMALISTA EN EDU",
+          "4170NH": "DOC. (NG) / AULA",
+          "2147DH": "TSU EN EDUCACION",
+          "1126DI": "DOC. VI / AULA",
+          "1151DH": "DOC. I / AULA",
+          "1124DI": "DOC. IV / AULA",
+          "3128DB": "MAESTRO NORMAL. EN EDU BO",
+          "1116DI": "DOC. VI / AULA",
+          "4110DB": "DOC. (NG) / AULA BOLIV.",
+          "1113DI": "DOC. III / AULA",
+          "2117DI": "TSU EN EDUCACION",
+          "1164DB": "DOC. IV / AULA BOLIV.",
+          "5120DI": "LIC. PROFESIONAL NO DOC.",
+          "5180NH": "LIC. PROFESIONAL NO DOC.",
+          "4110DI": "DOC. (NG) / AULA",
+          "210LNR": "JEFE DE DIVISION",
+          "1123DB": "DOC. III / AULA BOLIV.",
+          "1142DH": "DOC. II / AULA",
+          "1111DH": "DOC. I / AULA",
+          "2A57DH": "RESIDENTE / AGRO. TSU",
+          "1152DH": "DOC. II / AULA",
+          "1175NH": "DOC. V / AULA",
+          "1126DB": "DOC. VI / AULA BOLIV.",
+          "2167DB": "TSU EN EDUCACION BOLIV.",
+          "1131DH": "DOC. I / AULA",
+          "1195NH": "DOC. V / AULA",
+          "6180NH": "TSU PROF. NO DOC.",
+          "1184NH": "DOC. IV / AULA",
+          "6140DH": "TSU PROF. NO DOC.",
+          "1172DH": "DOC. II / AULA",
+          "1174DH": "DOC. IV / AULA",
+          "4130DH": "DOC. (NG) / AULA",
+          "1164DH": "DOC. IV / AULA",
+          "1126DH": "DOC. VI / AULA",
+          "1173DH": "DOC. III / AULA",
+          "1196DH": "DOC. VI / AULA",
+          "1193DH": "DOC. III / AULA",
+          "1124DH": "DOC. IV / AULA",
+          "2137DH": "TSU EN EDUCACION",
+          "2127DI": "TSU EN EDUCACION",
+          "1165DB": "DOC. V / AULA BOLIV.",
+          "1122DB": "DOC. II / AULA BOLIV.",
+          "5120DB": "LIC. PROFES. NO DOC. BOLI",
+          "1124DB": "DOC. IV / AULA BOLIV.",
+          "1162DB": "DOC. II / AULA BOLIV.",
+          "4160DI": "DOC. (NG) / AULA",
+          "1125DH": "DOC. V / AULA",
+          "1186NH": "DOC. VI / AULA",
+          "1141NH": "DOC. I / AULA",
+          "1146DH": "DOC. VI / AULA",
+          "2187NH": "TSU EN EDUCACION",
+          "1165DH": "DOC. V / AULA",
+          "1111DB": "DOC. I / AULA BOLIV.",
+          "1123DI": "DOC. III / AULA",
+          "3198NH": "MAESTRO NORMALISTA EN EDU",
+          "1114DB": "DOC. IV / AULA BOLIV.",
+          "1163DB": "DOC. III / AULA BOLIV.",
+          "4150DH": "DOC. (NG) / AULA",
+          "1125DB": "DOC. V / AULA BOLIV.",
+          "1133DH": "DOC. III / AULA",
+          "1195DH": "DOC. V / AULA",
+          "1116DB": "DOC. VI / AULA BOLIV.",
+          "1123DH": "DOC. III / AULA",
+          "2127DH": "TSU EN EDUCACION",
+          "3128DH": "MAESTRO NORMALISTA EN EDU",
+          "6150DH": "TSU PROF. NO DOC.",
+          "1173NH": "DOC. III / AULA",
+          "1153DH": "DOC. III / AULA",
+          "1184DH": "DOC. IV / AULA",
+          "4120DI": "DOC. (NG) / AULA",
+          "1143DH": "DOC. III / AULA",
+          "1161DB": "DOC. I / AULA BOLIV.",
+          "4160DB": "DOC. (NG) / AULA BOLIV.",
+          "1171NH": "DOC. I / AULA",
+          "4180DH": "DOC. (NG) / AULA",
+          "1112DB": "DOC. II / AULA BOLIV.",
+          "1161DI": "DOC. I / AULA",
+          "1A53DH": "RESIDENTE / AGRO. III",
+          "1181ZH": "DOC. I / AULA",
+          "4180NH": "DOC. (NG) / AULA",
+          "1114DI": "DOC. IV / AULA",
+          "1165DI": "DOC. V / AULA",
+          "1141DH": "DOC. I / AULA",
+          "7140DH": "TM / PERITO PROF. NO DOC.",
+          "1161DH": "DOC. I / AULA",
+          "1163DI": "DOC. III / AULA",
+          "1112DI": "DOC. II / AULA",
+          "1132DH": "DOC. II / AULA",
+          "3198DH": "MAESTRO NORMALISTA EN EDU",
+          "1135DH": "DOC. V / AULA",
+          "1122DI": "DOC. II / AULA",
+          "1134DH": "DOC. IV / AULA",
+          "1196NH": "DOC. VI / AULA",
+          "1136DH": "DOC. VI / AULA",
+          "4160DH": "DOC. (NG) / AULA",
+          "1145DH": "DOC. V / AULA",
+          "1121DI": "DOC. I / AULA",
+          "5140DH": "LIC. PROFESIONAL NO DOC.",
+          "1121DB": "DOC. I / AULA BOLIV.",
+          "1122DH": "DOC. II / AULA",
+          "1185NH": "DOC. V / AULA",
+          "1115DI": "DOC. V / AULA",
+          "1162DI": "DOC. II / AULA",
+          "1192NH": "DOC. II / AULA",
+          "1181NH": "DOC. I / AULA",
+          "1183DH": "DOC. III / AULA",
+          "6120DI": "TSU PROF. NO DOC.",
+          "4120DH": "DOC. (NG) / AULA",
+          "1154DH": "DOC. IV / AULA",
+          "1191NH": "DOC. I / AULA",
+          "1194DH": "DOC. IV / AULA",
+          "1174NH": "DOC. IV / AULA",
+          "1A55DH": "RESIDENTE / AGRO. V",
+          "1111DI": "DOC. I / AULA",
+          "1182DH": "DOC. II / AULA",
+          "1166DI": "DOC. VI / AULA",
+          "1172NH": "DOC. II / AULA",
+          "6130DH": "TSU PROF. NO DOC.",
+          "2157DH": "TSU EN EDUCACION",
+          "1144DH": "DOC. IV / AULA",
+          "1166DH": "DOC. VI / AULA",
+          "2167DI": "TSU EN EDUCACION",
+          "5130DH": "LIC. PROFESIONAL NO DOC.",
+          "1194NH": "DOC. IV / AULA",
+          "2127DB": "TSU EN EDUCACION BOLIV.",
+          "1A54DH": "RESIDENTE / AGRO. IV",
+          "1164DI": "DOC. IV / AULA",
+          "4A50WH": "RESIDENTE / AGRO. (NG)",
+          "4190DH": "DOC. (NG) / AULA",
+          "1176NH": "DOC. VI / AULA",
+          "1113DB": "DOC. III / AULA BOLIV.",
+          "1166DB": "DOC. VI / AULA BOLIV.",
+          "1183NH": "DOC. III / AULA",
+          "1125DI": "DOC. V / AULA",
+          "4140DH": "DOC. (NG) / AULA",
+          "4170DH": "DOC. (NG) / AULA",
+          "1155DH": "DOC. V / AULA",
+          "1121DH": "DOC. I / AULA"
+        }
+      },
+      "MUNICIPAL": {},
+      "AUTONOMA": {},
+      "SUBVENCIONADA": {}
+    },
+    "ultima_actualizacion": "2026-08-12T22:26:09.884Z",
+    "actualizado_por": "script_migracion",
+    "situacion_laboral": {
+      "PERMISO POR CUIDO": "SEGÚN CLAUSULAS DE LA CONTRATACION COLECTIVA",
+      "APOYO INSTITUCIONAL": "CORRESPONDE AL PERSONAL QUE TRABAJA EN LA ESTRUCTURA DE LOS CDCE, EN OTRO ENTE PUBLICO QUE NO ES EL MPPE, ESO INCLUYE AL PERSONAL QUE TRABAJA EN PLANTELES ESTADALES, PRIVADOS, SUBVENCIONADAS Y MUNICIPALES, AL IGUAL QUE ESTÁN COMO ENLACES Y EQUIPOS DE APOYOS EN OTROS ENTES PÚBLICOS",
+      "EN PROCESO DE INCAPACIDAD": "SEGÚN PLANILLA 14-08 RECIBIDA POR ZONA EDUCATIVA Y PLANTEL, EN ESPERA DE EVALUACION MEDICA DE NIVEL CENTRAL",
+      "TRASLADO INTERZONAL": "PERSONAL QUE SE TRASLADO A OTRO ESTADO DEL PAIS PERO AUN SIGUE EN NOMINA DEL PLANTEL",
+      "ACTIVO": "PERSONAL QUE CUMPLE FUNCIONES EN EL PLANTEL",
+      "INCAPACIDAD TEMPORAL": "CORRESPONDE A LOS PERMISOS MEDICOS OTORGADOS POR SEGURO SOCIAL DONDE DAN UNA INCAPACIDAD TEMPORAL QUE VA DESDE LOS SEIS MESES, NO CORRESPONDE A INCAPACIDADES TOTALES O PROCESOS DE INCAPACIDAD",
+      "INCAPACIDAD TOTAL POR IPASME": "SEGÚN INFORME O RESOLUCIÓN OTORGADA POR LA JUNTA MÉDICA DEL IPASME QUE OTORGA LA INCAPACIDAD TOTAL",
+      "VACACIONES": "PERSONAL DE VACACIONES AUTORIZADAS POR ZONA EDUCATIVA",
+      "INCUMPLIMIENTO DE FUNCIONES": "PERSONAL QUE NO CUMPLE A CABALIDAD LAS FUNCIONES ASIGNADAS (CORRESPONDE AL PERSONAL QUE NO ASISTE A SUS FUNCIONES REGULARES DENTRO DEL PLANTEL, INCLUYENDO A LOS QUE NO ASISTEN LOS CINCO DÍAS)",
+      "REPOSO MEDICO": "SEGÚN JUSTIFICATIVO RECIBIDO POR EL PLANTEL (NO CORRESPONDE A LOS PROCESOS DE INCAPACIDAD CON 1408)",
+      "SINCERACIÓN DE NÓMINA": "PERSONAL CON TRALADO INTERNO PERO AUN NO SE HA SINCERADO",
+      "ADECUACIÓN LABORAL": "SEGÚN PLANILLA OTORGADA POR INPSASEL",
+      "PRIVADO DE LIBERTAD": "APLICA SOLO PARA EL PERSONAL QUE ESTÁ EN ESPERA DE SENTENCIA O CON UNA SENTENCIA JUDICIAL",
+      "ABANDONO DE CARGO": "PERSONAL QUE SEGÚN LEY NO SE PRESENTA A SU PUESTO DE TRABAJO Y NO HA JUSTIFICADO INASISTENCIA, INCLUYE TAMBIEN QUIENES TIENE PROCEDIMIENTO ADMINISTRATIVO ABIERTO POR ZONA EDUCATIVA",
+      "INCAPACIDAD TOTAL Y DEFINITIVA POR IVSS": "SEGÚN PLANILLA 14-08 CON PORCENTAJE 67% (CORRESPONDE AL PERSONAL INCAPACITADO CON EL 67% Y QUE AUN APARECE ACTIVO EN NÓMINA)",
+      "COMISION DE SERVICIO": "APROBADA MEDIANTE PROVIDENCIA ADMINISTRATIVA FIRMADA POR EL MINISTRO DEL MPPE, ESTA PUEDE SER REMUNERADA O NO",
+      "LICENCIA SINDICAL": "APROBADA POR LA DIRECCION GENERAL DE GESTION HUMANA DEL MPPE, NO POR EL PRESIDENTE DEL SINDICATO",
+      "DEFUNCIONES": "SEGÚN ACTA",
+      "EN PROCESO DE JUBILACIÓN": "SEGÚN PLANILLA RECIBIDA POR ZONA EDUCATIVA, NO INCLUYE AL PERSONAL QUE CUMPLIO AÑOS DE SERVICIO Y NO A SOLICITADO JUBILACION POR ZONA EDUCATIVA",
+      "PERMISO PRE Y POST NATAL": "SEGÚN CLAUSULAS DE LA CONTRATACION COLECTIVA",
+      "RENUNCIA": "SEGÚN OFICIO RECIBIDO POR ZONA EDUCATIVA",
+      "PERMISO POR FALLECIMIENTO": "SEGÚN CLAUSULAS DE LA CONTRATACION COLECTIVA"
+    },
+    "listas_desplegables": {
+      "modalidades": [
+        "ADULTO",
+        "ESPECIAL"
+      ],
+      "tipo_vivienda": [
+        "CASA",
+        "APARTAMENTO",
+        "QUINTA",
+        "RANCHO",
+        "HABITACION"
+      ],
+      "niveles_educativos": [
+        "INICIAL",
+        "INICIAL - PRIMARIA",
+        "INICIAL-PRIMARIA-MEDIA GENERAL",
+        "INICIAL-PRIMARIA-MEDIA TECNICA",
+        "PRIMARIA",
+        "PRIMARIA - MEDIA GENERAL",
+        "PRIMARIA - MEDIA TECNICA",
+        "MEDIA GENERAL",
+        "MEDIA GENERAL - MEDIA TECNICA",
+        "MEDIA TECNICA"
+      ],
+      "instruccion": [
+        "BASICA",
+        "PRIMARIA",
+        "SUPERIOR"
+      ],
+      "estado_civil": [
+        "SOLTERO(A)",
+        "CASADO(A)",
+        "DIVORCIADO(A)",
+        "VIUDO(A)",
+        "OTRO"
+      ],
+      "condicion_vivienda": [
+        "PROPIA",
+        "ALQUILADA",
+        "DE UN FAMILIAR",
+        "OTRO"
+      ],
+      "municipios": [
+        "ALBERTO ADRIANI",
+        "ANDRÉS BELLO",
+        "ANTONIO PINTO SALINAS",
+        "ARICAGUA",
+        "ARZOBISPO CHACÓN",
+        "CAMPO ELÍAS",
+        "CARACCIOLO PARRA OLMEDO",
+        "CARDENAL QUINTERO",
+        "GUARAQUE",
+        "JULIO CÉSAR SALAS",
+        "JUSTO BRICEÑO",
+        "LIBERTADOR",
+        "MIRANDA",
+        "OBISPO RAMOS DE LORA",
+        "PADRE NOGUERA",
+        "PUEBLO LLANO",
+        "RANGEL",
+        "RIVAS DÁVILA",
+        "SANTOS MARQUINA",
+        "SUCRE",
+        "TOVAR",
+        "TULIO FEBRES CORDERO",
+        "ZEA"
+      ],
+      "dependencia": [
+        "NACIONAL",
+        "ESTADAL",
+        "MUNICIPAL",
+        "SUBVENCIONADA",
+        "PRIVADO",
+        "AUTONOMA"
+      ]
+    }
+  }
+}

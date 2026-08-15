@@ -1,3 +1,5 @@
+import { showAlert } from './uiUtils.js';
+import { safeSetDoc, safeUpdateDoc, safeAddDoc } from './dbUtils.js';
 import { getAuth, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 
@@ -33,7 +35,7 @@ export function initSeed(db) {
         try {
           const cred = await createUserWithEmailAndPassword(auth, u.email, u.pass);
           // Escribir perfil en Firestore
-          await setDoc(doc(db, 'usuarios', cred.user.uid), u.data);
+          await safeSetDoc(doc(db, 'usuarios', cred.user.uid), u.data);
           console.log(`Usuario creado: ${u.email}`);
         } catch(e) {
           if (e.code === 'auth/email-already-in-use') {
@@ -50,7 +52,7 @@ export function initSeed(db) {
       btn.textContent = '✅ Usuarios creados!';
       btn.style.background = '#059669';
       setTimeout(() => { btn.style.display = 'none'; }, 3000);
-      alert('¡Listo! Puedes iniciar sesión con:\\n\\n1. admin@sgh.com / 123456\\n2. munic@sgh.com / 123456\\n3. od01771401@sgh.com / 123456');
+      await showAlert('¡Seed Completado!', 'Usuarios creados:<br><br><code>admin@sgh.com / 123456</code><br><code>munic@sgh.com / 123456</code><br><code>od01771401@sgh.com / 123456</code>', 'success');
     } catch(error) {
       console.error(error);
       btn.textContent = '❌ Error';

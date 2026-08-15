@@ -1,0 +1,57 @@
+                <div class="nivel-card" id="card-inicial" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid var(--glass-border); display: none;">
+                  <h4 style="color: #34d399; margin-bottom: 10px;">👶 Educación Inicial</h4>
+                  
+                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px;">
+                    <div class="input-group"><label style="font-size:11px;">Maternal Fem</label><input type="number" id="matFem" min="0" /></div>
+                    <div class="input-group"><label style="font-size:11px;">Maternal Mas</label><input type="number" id="matMas" min="0" /></div>
+                  </div>
+                  
+                  <div style="margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-bottom: 15px;">
+                    <h5 style="color: #cbd5e1; font-size: 11px; margin-bottom: 8px; font-weight: normal;">Secciones Maternal</h5>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px;">
+                      <div class="input-group"><label style="font-size:10px;">G1</label><input type="number" class="sec-mat-input" data-nivel="1" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                      <div class="input-group"><label style="font-size:10px;">G2</label><input type="number" class="sec-mat-input" data-nivel="2" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                      <div class="input-group"><label style="font-size:10px;">G3</label><input type="number" class="sec-mat-input" data-nivel="3" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                      <div class="input-group"><label style="font-size:10px;">G4</label><input type="number" class="sec-mat-input" data-nivel="4" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                    </div>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                    <div class="input-group"><label style="font-size:11px;">Preescolar Fem</label><input type="number" id="preFem" min="0" /></div>
+                    <div class="input-group"><label style="font-size:11px;">Preescolar Mas</label><input type="number" id="preMas" min="0" /></div>
+                  </div>
+
+                  <div style="margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
+                    <h5 style="color: #cbd5e1; font-size: 11px; margin-bottom: 8px; font-weight: normal;">Secciones Preescolar</h5>
+                    <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px;">
+                      <div class="input-group"><label style="font-size:10px;">G1</label><input type="number" class="sec-pre-input" data-nivel="1" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                      <div class="input-group"><label style="font-size:10px;">G2</label><input type="number" class="sec-pre-input" data-nivel="2" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                      <div class="input-group"><label style="font-size:10px;">G3</label><input type="number" class="sec-pre-input" data-nivel="3" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                      <div class="input-group"><label style="font-size:10px;">G4</label><input type="number" class="sec-pre-input" data-nivel="4" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                      <div class="input-group"><label style="font-size:10px;">G5</label><input type="number" class="sec-pre-input" data-nivel="5" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                      <div class="input-group"><label style="font-size:10px;">G6</label><input type="number" class="sec-pre-input" data-nivel="6" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                    </div>
+                  </div>
+
+                  <div style="margin-top: 10px; text-align: right; color: #94a3b8; font-size: 12px;">Total Inicial: <strong id="totInicial" style="color: white; font-size: 14px;">0</strong></div>
+                <div class="nivel-card" id="card-primaria" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid var(--glass-border); display: none;">
+                  <h4 style="color: #fbbf24; margin-bottom: 10px;">🎒 Educación Primaria</h4>
+                  
+                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                    <div class="input-group"><label style="font-size:11px;">Femenino</label><input type="number" id="priFem" min="0" /></div>
+                    <div class="input-group"><label style="font-size:11px;">Masculino</label><input type="number" id="priMas" min="0" /></div>
+                  </div>
+
+                  <div style="margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
+                    <h5 style="color: #cbd5e1; font-size: 11px; margin-bottom: 8px; font-weight: normal;">Secciones por Grado</h5>
+                    <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px;">
+                      <div class="input-group"><label style="font-size:10px;">1ro</label><input type="number" class="sec-pri-input" data-nivel="1" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                      <div class="input-group"><label style="font-size:10px;">2do</label><input type="number" class="sec-pri-input" data-nivel="2" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                      <div class="input-group"><label style="font-size:10px;">3ro</label><input type="number" class="sec-pri-input" data-nivel="3" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                      <div class="input-group"><label style="font-size:10px;">4to</label><input type="number" class="sec-pri-input" data-nivel="4" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                      <div class="input-group"><label style="font-size:10px;">5to</label><input type="number" class="sec-pri-input" data-nivel="5" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                      <div class="input-group"><label style="font-size:10px;">6to</label><input type="number" class="sec-pri-input" data-nivel="6" min="0" style="padding: 0.2rem; text-align: center;" /></div>
+                    </div>
+                  </div>
+
+                  <div style="margin-top: 10px; text-align: right; color: #94a3b8; font-size: 12px;">Total Primaria: <strong id="totPrimaria" style="color: white; font-size: 14px;">0</strong></div>

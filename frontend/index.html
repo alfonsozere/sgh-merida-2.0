@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SGH v2.0.0 - Sistema de Gestión Humana</title>
+    <title>SGH - v2.1.0</title>
   </head>
   <body>
     <div id="app">
@@ -741,5 +741,11 @@
       </div>
     </section>
     <script type="module" src="/src/main.js"></script>
-  </body>
+  
+    <!-- Global Loading Modal -->
+    <div id="global-loading-modal" class="lock-screen" aria-hidden="true" style="display: none; z-index: 99999; flex-direction: column; align-items: center; justify-content: center; background: rgba(255,255,255,0.8); backdrop-filter: blur(5px);">
+      <div class="spinner" style="width: 40px; height: 40px; border-width: 4px; border-top-color: var(--primary-color); border-right-color: var(--primary-color); border-bottom-color: var(--primary-color); border-left-color: transparent;"></div>
+      <h3 id="global-loading-text" style="margin-top: 15px; color: var(--text-dark);">Cargando...</h3>
+    </div>
+</body>
 </html>

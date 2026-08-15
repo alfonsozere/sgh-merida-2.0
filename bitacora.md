@@ -3,7 +3,7 @@
 **Nombre del Proyecto:** Sistema de Gestión Humana (SGH)  
 **Administrador Responsable:** Luis Alfonso Pérez  
 **Estado del Proyecto:** En Desarrollo Inicial  
-**Versión Actual:** `v2.0.0`  
+**Versión Actual:** `v2.1.0`  
 **Entorno de Desarrollo:** Editor AntiGravity  
 
 ---
@@ -54,6 +54,30 @@ Asegura que cada desarrollo mantenga la aplicación 100% gratuita, con respaldos
 
 ---
 
+
+### 🔹 Hito 002: Refactorización y Blindaje de Autenticación (Login/Registro)
+* **Fecha:** 15 de Agosto de 2026
+* **Versión Alcanzada:** `v2.1.0`
+* **Aprobado por Administración:** SÍ
+
+#### 🎯 Resumen Ejecutivo
+Se pulió y blindó por completo el sistema de acceso (Login) y Registro. Se implementó un "Doble Candado" que impide el acceso a usuarios sin su correo verificado (exceptuando al SuperAdmin). Adicionalmente, se construyó una experiencia visual Premium con inhabilitación de formularios en tiempo real, protección anti-doble clic y un Modal Global de Carga que domina la pantalla para darle al usuario una sensación de seguridad de que el sistema está trabajando.
+
+#### 📁 Archivos Creados / Modificados
+* `frontend/src/main.js` — Lógica de inhabilitación de formularios, Modal Global y retrasos visuales.
+* `frontend/src/auth.js` — Regla del "Doble Candado" de validación de correo y excepción para superadmin.
+* `frontend/src/firebase.js` — Forzado de idioma a Español para los correos de validación.
+* `frontend/index.html` — Inyección de código para el Modal Global.
+* `frontend/src/style.css` — Corrección de sintaxis y clases de animaciones de carga (spinners).
+
+#### 💡 Beneficio Administrativo
+Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia visual idéntica a las de grandes corporativos (el usuario no siente que la página se congela ni da clics por error mientras procesa).
+
+#### 🚀 Respaldo en GitHub
+* **Commit:** `feat(auth): v2.1.0 - blindaje doble candado, modal de carga global y spinners`
+* **Estado:** Completado
+
+---
 ## 📋 Plantilla para Próximos Avances (Copiar para cada nuevo hito)
 
 ```markdown

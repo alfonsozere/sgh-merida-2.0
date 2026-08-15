@@ -1,3 +1,5 @@
+import { showToast } from './uiUtils.js';
+import { safeSetDoc, safeUpdateDoc, safeAddDoc } from './dbUtils.js';
 import { db } from './firebase.js';
 import { doc, getDoc, setDoc, onSnapshot, collection, query, where, getDocs, limit, documentId } from "firebase/firestore";
 
@@ -159,7 +161,7 @@ window.openModalPlantel = async function(dea) {
     // 1. Buscamos las referencias de municipio y parroquia en el índice plano
     const authSnap = await getDoc(doc(db, 'planteles_auth', dea));
     if (!authSnap.exists()) {
-      if(window.showToast) window.showToast("No se encontró el plantel en el índice", 'error');
+      showToast("No se encontró el plantel en el índice", 'error');
       return;
     }
     const authData = authSnap.data();
@@ -196,12 +198,12 @@ window.openModalPlantel = async function(dea) {
         const planesGuardados = plantelMaster.planes_estudio ? Object.keys(plantelMaster.planes_estudio) : [];
         await renderPlanesCheckboxes(planesGuardados);
       } else {
-        if(window.showToast) window.showToast("El plantel no existe en el catálogo maestro del municipio", 'error');
+        showToast("El plantel no existe en el catálogo maestro del municipio", 'error');
       }
     }
   } catch(err) {
     console.error(err);
-    if(window.showToast) window.showToast("Error al cargar datos del plantel maestro", 'error');
+    showToast("Error al cargar datos del plantel maestro", 'error');
   }
 };
 
@@ -298,7 +300,7 @@ async function savePlantelConfig() {
   });
   
   if (!municipio || !parroquia) {
-    if(window.showToast) window.showToast('Error: No se encontró la referencia del municipio o parroquia', 'error');
+    showToast('Error: No se encontró la referencia del municipio o parroquia', 'error');
     return;
   }
 
@@ -329,20 +331,20 @@ async function savePlantelConfig() {
       [`${basePath}.planes_estudio`]: planesObj
     };
     
-    await setDoc(doc(db, 'municipios', municipio), updatePayload, { merge: true });
+    await safeSetDoc(doc(db, 'municipios', municipio), updatePayload, { merge: true });
     
     // Opcional: También guardamos en auth si se quiere mantener en el índice
-    await setDoc(doc(db, 'planteles_auth', dea), {
+    await safeSetDoc(doc(db, 'planteles_auth', dea), {
       dependencia: dependencia,
       nombre_plantel: nombre
     }, { merge: true });
     
-    if(window.showToast) window.showToast('Catálogo maestro actualizado con éxito', 'success');
+    showToast('Catálogo maestro actualizado con éxito', 'success');
     document.getElementById('modal-admin-plantel').style.display = 'none';
     
   } catch(err) {
     console.error(err);
-    if(window.showToast) window.showToast('Error al guardar en BD maestra: ' + err.message, 'error');
+    showToast('Error al guardar en BD maestra: ' + err.message, 'error');
   }
   
   btn.innerHTML = 'Guardar Cambios ✔';
@@ -391,15 +393,15 @@ async function addExcepcionPlantel() {
     if (!planteles.includes(dea)) {
       planteles.push(dea);
       despliegue.planteles_activos = planteles;
-      await setDoc(docRef, { despliegue: despliegue }, { merge: true });
-      if (window.showToast) window.showToast(`Plantel ${dea} añadido a excepciones`, 'success');
+      await safeSetDoc(docRef, { despliegue: despliegue }, { merge: true });
+      showToast(`Plantel ${dea} añadido a excepciones`, 'success');
       input.value = '';
     } else {
-      if (window.showToast) window.showToast(`El plantel ${dea} ya estaba en la lista`, 'warning');
+      showToast(`El plantel ${dea} ya estaba en la lista`, 'warning');
     }
   } catch (err) {
     console.error("Error añadiendo excepción:", err);
-    if (window.showToast) window.showToast(`Error: ${err.message}`, 'error');
+    showToast(`Error: ${err.message}`, 'error');
   }
 }
 
@@ -412,12 +414,12 @@ window.removeExcepcionPlantel = async function(dea) {
       let planteles = despliegue.planteles_activos || [];
       planteles = planteles.filter(p => p !== dea);
       despliegue.planteles_activos = planteles;
-      await setDoc(docRef, { despliegue: despliegue }, { merge: true });
-      if (window.showToast) window.showToast(`Plantel ${dea} eliminado de excepciones`, 'success');
+      await safeSetDoc(docRef, { despliegue: despliegue }, { merge: true });
+      showToast(`Plantel ${dea} eliminado de excepciones`, 'success');
     }
   } catch (err) {
     console.error("Error eliminando excepción:", err);
-    if (window.showToast) window.showToast(`Error: ${err.message}`, 'error');
+    showToast(`Error: ${err.message}`, 'error');
   }
 }
 
@@ -497,15 +499,14 @@ function renderDespliegue(activos) {
         
         despliegue.municipios_activos = actuales;
         // Usamos setDoc con merge para crear el documento si no existe
-        await setDoc(docRef, { despliegue: despliegue }, { merge: true });
+        await safeSetDoc(docRef, { despliegue: despliegue }, { merge: true });
         
-        if (window.showToast) {
-          window.showToast(`Despliegue ${isChecked ? 'activado' : 'desactivado'} en ${municipio}`, 'success');
+        showToast(`Despliegue ${isChecked ? 'activado' : 'desactivado'} en ${municipio}`, 'success');
         }
         
       } catch (err) {
         console.error("Error actualizando despliegue:", err);
-        if (window.showToast) window.showToast(`Error al guardar: ${err.message}`, 'error');
+        showToast(`Error al guardar: ${err.message}`, 'error');
         // Revertir cambio en caso de error
         e.target.checked = !isChecked;
         if (!isChecked) card.classList.add('active'); 

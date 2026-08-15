@@ -1,3 +1,4 @@
+import { safeSetDoc, safeUpdateDoc, safeAddDoc } from './dbUtils.js';
 import { doc, getDoc, setDoc, updateDoc, collection, query, where, getCountFromServer, getDocs, deleteDoc } from 'firebase/firestore';
 
 export function initAdminDashboard(db, userData) {
@@ -259,7 +260,7 @@ export function initAdminDashboard(db, userData) {
           e.target.disabled = true;
           e.target.textContent = '...';
           try {
-            await updateDoc(doc(db, 'usuarios', uid), { estado_aprobacion: 'APROBADO' });
+            await safeUpdateDoc(doc(db, 'usuarios', uid), { estado_aprobacion: 'APROBADO' });
             await loadUsuariosList();
             loadEstadisticas(); // Actualiza contadores
           } catch(err) {
@@ -335,7 +336,7 @@ export function initAdminDashboard(db, userData) {
       if (snap.exists()) {
         configActual = snap.data();
       } else {
-        await setDoc(docRef, configActual);
+        await safeSetDoc(docRef, configActual);
       }
       if (!configActual.municipios_activos) configActual.municipios_activos = [];
       if (!configActual.excepciones) configActual.excepciones = [];
@@ -409,7 +410,7 @@ export function initAdminDashboard(db, userData) {
     try {
       btnSave.textContent = 'Guardando...';
       btnSave.disabled = true;
-      await updateDoc(docRef, {
+      await safeUpdateDoc(docRef, {
         municipios_activos: configActual.municipios_activos,
         excepciones: configActual.excepciones
       });
@@ -669,7 +670,7 @@ export function initAdminDashboard(db, userData) {
               }
            }
 
-           await updateDoc(doc(db, "sistema", "catalogos_maestros"), updates);
+           await safeUpdateDoc(doc(db, "sistema", "catalogos_maestros"), updates);
            
            // Reload
            await loadCatalogos();
@@ -869,17 +870,17 @@ export function initAdminDashboard(db, userData) {
                    newData['secciones-planes'] = oldData['secciones-planes'] || {};
                    newData['planes-estudio'] = oldData['planes-estudio'] || {};
                    
-                   await setDoc(doc(db, "planteles", codP), newData);
+                   await safeSetDoc(doc(db, "planteles", codP), newData);
                    await deleteDoc(doc(db, "planteles", id));
                }
             } else {
-               await updateDoc(doc(db, "planteles", id), newData);
+               await safeUpdateDoc(doc(db, "planteles", id), newData);
             }
          } else {
             newData['matricula'] = {};
             newData['secciones-planes'] = {};
             newData['planes-estudio'] = {};
-            await setDoc(doc(db, "planteles", codP), newData);
+            await safeSetDoc(doc(db, "planteles", codP), newData);
          }
          
          modalPlantel.style.display = 'none';
@@ -1138,7 +1139,7 @@ export function initAdminDashboard(db, userData) {
           btnGuardarListas.disabled = true;
           try {
               catalogosGlobal.ultima_actualizacion = new Date().toISOString();
-              await setDoc(doc(db, "sistema", "catalogos_maestros"), catalogosGlobal);
+              await safeSetDoc(doc(db, "sistema", "catalogos_maestros"), catalogosGlobal);
               btnGuardarListas.innerText = '✅ Guardado Exitoso';
               btnGuardarListas.style.background = '#10b981';
               setTimeout(() => {

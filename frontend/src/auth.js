@@ -1,3 +1,4 @@
+import { safeSetDoc, safeUpdateDoc, safeAddDoc } from './dbUtils.js';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 
@@ -62,6 +63,12 @@ export function initAuth(auth, db, callbacks) {
          }
       }
 
+      // Doble Candado: Verificación de correo
+      if (!user.emailVerified && userData.rol !== 'superadmin') {
+          onWait("Tu cuenta requiere verificación. Por favor, haz clic en el enlace que te enviamos al correo (revisa tu carpeta de Spam si no lo encuentras).");
+          return;
+      }
+
       // 2. Revisión de estado de aprobación general
       if (userData.estado_aprobacion === 'PENDIENTE') {
           onWait("Cuenta en revisión. Esperando validación de tu superior.");
@@ -90,6 +97,19 @@ export function initAuth(auth, db, callbacks) {
       }
 
       if (userData.rol === 'plant' || userData.rol === 'plaadmin') {
+         // --- GATE: DESPLIEGUE ---
+         const despliegue = await getDespliegueConfig();
+         const cod = userData.jerarquia?.plantel_codigo;
+         const mun = userData.jerarquia?.municipio;
+         
+         const isExp = despliegue.excepciones?.includes(cod);
+         const isMun = despliegue.municipios_activos?.includes(mun);
+         
+         if (!isExp && !isMun) {
+            onWait(`El Sistema SGH aún no está habilitado para ${mun ? 'el municipio ' + mun : 'su plantel'}. Por favor, manténgase atento a los canales oficiales.`);
+            return;
+         }
+
          // Acceso Total Concedido al Plantel
          onLogin(userData);
       }

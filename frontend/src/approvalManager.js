@@ -1,3 +1,4 @@
+import { safeSetDoc, safeUpdateDoc, safeAddDoc } from './dbUtils.js';
 import { collection, query, where, getDocs, updateDoc, doc, setDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
 
@@ -84,11 +85,11 @@ window.aprobarUsuario = async (uid, rol, dea) => {
   if(!confirmed) return;
   try {
     // 1. Aprobar usuario
-    await updateDoc(doc(db, 'usuarios', uid), { estado_aprobacion: 'APROBADO' });
+    await safeUpdateDoc(doc(db, 'usuarios', uid), { estado_aprobacion: 'APROBADO' });
     
     // 2. Si es director de plantel, registrar en la tabla de auth que el plantel ya tiene director
     if (rol === 'plaadmin' && dea) {
-      await setDoc(doc(db, 'planteles_auth', dea), {
+      await safeSetDoc(doc(db, 'planteles_auth', dea), {
         admin_uid: uid,
         registrado: true
       }, { merge: true });
@@ -106,7 +107,7 @@ window.rechazarUsuario = async (uid) => {
   const confirmed = await window.showCustomConfirm("¿Seguro que deseas RECHAZAR permanentemente a este usuario?");
   if(!confirmed) return;
   try {
-    await updateDoc(doc(db, 'usuarios', uid), { estado_aprobacion: 'RECHAZADO' });
+    await safeUpdateDoc(doc(db, 'usuarios', uid), { estado_aprobacion: 'RECHAZADO' });
     if(window.showToast) window.showToast('🚫 Usuario rechazado.', 'success');
     document.getElementById('menu-item-aprobaciones').click(); // Recargar vista
   } catch (err) {
