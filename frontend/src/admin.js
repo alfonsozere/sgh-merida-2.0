@@ -1,5 +1,5 @@
 import { safeSetDoc, safeUpdateDoc, safeAddDoc } from './dbUtils.js';
-import { doc, getDoc, setDoc, updateDoc, collection, query, where, getCountFromServer, getDocs, deleteDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, collection, query, where, getCountFromServer, getDocs, onSnapshot, deleteDoc } from 'firebase/firestore';
 
 export function initAdminDashboard(db, userData) {
   // Lógica de Pestañas (Sidebar)
@@ -51,13 +51,26 @@ export function initAdminDashboard(db, userData) {
   async function loadEstadisticas() {
     try {
       // Plan Cero Costo: getCountFromServer (1 read por 1000 documentos)
-      const snapPersonal = await getCountFromServer(collection(db, 'cargos_personal'));
+      let qPersonal = collection(db, 'cargos_personal');
+      let qUsuarios = collection(db, 'usuarios');
+      let qPlanteles = query(collection(db, 'usuarios'), where('rol', '==', 'plaadmin'));
+
+      if (userData.rol === 'munadmin') {
+          const mun = userData.jerarquia?.municipio;
+          if (mun) {
+              qPersonal = query(qPersonal, where('municipio', '==', mun));
+              // Un munadmin solo gestiona plaadmin, así que su contador de usuarios debe reflejar solo esos.
+              qUsuarios = query(collection(db, 'usuarios'), where('rol', '==', 'plaadmin'), where('jerarquia.municipio', '==', mun));
+              qPlanteles = query(collection(db, 'usuarios'), where('rol', '==', 'plaadmin'), where('jerarquia.municipio', '==', mun));
+          }
+      }
+
+      const snapPersonal = await getCountFromServer(qPersonal);
       const totalPersonal = snapPersonal.data().count;
       
-      const snapUsuarios = await getCountFromServer(collection(db, 'usuarios'));
+      const snapUsuarios = await getCountFromServer(qUsuarios);
       const totalUsuarios = snapUsuarios.data().count;
 
-      const qPlanteles = query(collection(db, 'usuarios'), where('rol', '==', 'plaadmin'));
       const snapPlanteles = await getCountFromServer(qPlanteles);
       const totalPlanteles = snapPlanteles.data().count;
 
@@ -81,17 +94,27 @@ export function initAdminDashboard(db, userData) {
   const filterEstado = document.getElementById('filter-estado');
   let usuariosLocales = []; // Cache local para filtrar
 
-  async function loadUsuariosList() {
-    try {
-      if(tbodyUsuarios) tbodyUsuarios.innerHTML = '<tr><td colspan="4" style="padding: 30px; text-align: center; color: var(--text-muted);">Cargando usuarios...</td></tr>';
-      
-      const q = query(collection(db, 'usuarios')); // Traemos todos para filtrar en cliente rápido
-      const snap = await getDocs(q);
-      
+  let unsubscribeUsuarios = null;
+  function loadUsuariosList() {
+    if(tbodyUsuarios) tbodyUsuarios.innerHTML = '<tr><td colspan="4" style="padding: 30px; text-align: center; color: var(--text-muted);">Cargando usuarios...</td></tr>';
+    
+    if (unsubscribeUsuarios) {
+       unsubscribeUsuarios();
+    }
+
+    const q = query(collection(db, 'usuarios')); // Traemos todos para filtrar en cliente rápido
+    unsubscribeUsuarios = onSnapshot(q, (snap) => {
       usuariosLocales = [];
       snap.forEach(doc => {
         const u = doc.data();
         u.uid = doc.id;
+        
+        // --- RBAC FILTER ---
+        if (userData.rol === 'munadmin') {
+            // munadmin solo ve directores (plaadmin) de su municipio
+            if (u.rol !== 'plaadmin' || u.jerarquia?.municipio !== userData.jerarquia?.municipio) return;
+        }
+
         // Evitar que un superadmin se borre a sí mismo accidentalmente o a otros admins
         if (u.rol !== 'admin' && u.rol !== 'superadmin') {
           usuariosLocales.push(u);
@@ -99,10 +122,10 @@ export function initAdminDashboard(db, userData) {
       });
       
       renderUsuariosList();
-    } catch(err) {
+    }, (err) => {
       console.error("Error cargando lista de usuarios", err);
       if(tbodyUsuarios) tbodyUsuarios.innerHTML = '<tr><td colspan="4" style="padding: 30px; text-align: center; color: var(--danger);">Error cargando usuarios</td></tr>';
-    }
+    });
   }
 
   

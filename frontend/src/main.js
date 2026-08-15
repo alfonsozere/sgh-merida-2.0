@@ -16,6 +16,9 @@ import { showToast, showAlert } from './uiUtils.js';
 // --- CAPA VISUAL: FORZAR MAYÚSCULAS GLOBALES ---
 document.addEventListener('input', (e) => {
     if (e.target.tagName === 'INPUT' && (e.target.type === 'text' || e.target.type === 'search' || !e.target.type)) {
+        // Ignorar campos de contraseña (incluso si están en texto visible)
+        if (e.target.id.includes('password') || e.target.id.includes('pwd')) return;
+        
         const start = e.target.selectionStart;
         const end = e.target.selectionEnd;
         e.target.value = e.target.value.toUpperCase();
@@ -145,11 +148,7 @@ initAuth(auth, db, {
         showView('dashboard-view');
     }
   },
-  onMunic: (userData) => {
-    document.getElementById('munic-user-name').textContent = `MUNICIPAL: ${userData.jerarquia.municipio}`;
-    showView('munic-view');
-    import('./munic.js').then(m => m.initMunicDashboard(db, userData));
-  },
+
   onAdmin: async (userData) => {
     showView('admin-view');
     import('./admin.js').then(m => m.initAdminDashboard(db, userData));

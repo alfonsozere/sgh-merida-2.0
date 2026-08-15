@@ -27,7 +27,7 @@ function sanitizeData(data) {
         for (const [key, value] of Object.entries(data)) {
             const lowerKey = key.toLowerCase();
             // Excepciones: si la clave incluye email, correo, password, token, uid
-            if (lowerKey.includes('email') || lowerKey.includes('correo')) {
+            if (lowerKey.includes('email') || lowerKey.includes('correo') || lowerKey === 'rol') {
                 sanitized[key] = typeof value === 'string' ? value.toLowerCase() : value;
             } else if (lowerKey.includes('password') || lowerKey.includes('token') || lowerKey.includes('uid')) {
                 sanitized[key] = value;

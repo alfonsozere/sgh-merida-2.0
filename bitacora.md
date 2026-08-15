@@ -3,7 +3,7 @@
 **Nombre del Proyecto:** Sistema de Gestión Humana (SGH)  
 **Administrador Responsable:** Luis Alfonso Pérez  
 **Estado del Proyecto:** En Desarrollo Inicial  
-**Versión Actual:** `v2.1.0`  
+**Versión Actual:** `v2.2.0`  
 **Entorno de Desarrollo:** Editor AntiGravity  
 
 ---
@@ -81,6 +81,18 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 ## 📋 Plantilla para Próximos Avances (Copiar para cada nuevo hito)
 
 ```markdown
+### 🔹 Hito 003: Unificación de Dashboards y RBAC Estricto
+- **Fecha:** 15 de Agosto 2026
+- **Versión de Entrega:** `v2.2.0`
+- **Descripción:** 
+  - Fusión exitosa de la sección `munic-view` dentro del flujo central (`admin-view`), creando un Salón Único de Gerencia.
+  - Implementación de **RBAC (Control de Acceso Basado en Roles)** directamente en el Dashboard. Administradores Municipales (`munadmin`) y Zonales acceden a `admin.js` pero el sistema oculta dinámicamente los botones de "Gestor de BD" y "Despliegue".
+  - Bloqueo exclusivo del botón "Nuevo Plantel", visible únicamente para el `superadmin`.
+  - Corrección de la regla global de "Todo Mayúscula" que afectaba accidentalmente las contraseñas al mostrarlas. Las contraseñas ahora respetan mayúsculas y minúsculas (Libre Albedrío).
+  - Parametrización estricta de filtros: Las consultas y contadores ahora le aplican un embudo ("lente") a los usuarios `munadmin` para que **sólo** puedan visualizar y contar al personal y directores (`plaadmin`) de su respectivo municipio.
+  - Cambio en la tabla de "Validación de Usuarios" de un Snapshot único (`getDocs`) a una "Tubería en Tiempo Real" (`onSnapshot`), permitiendo actualizaciones visuales mágicas a Costo Cero ($0) gracias a la rigurosidad del filtro regional.
+- **Archivos Modificados:** `index.html`, `auth.js`, `main.js`, `admin.js`.
+
 ### 🔹 Hito [Número]: [Nombre del Avance / Módulo]
 * **Fecha:** AAAA-MM-DD
 * **Versión Alcanzada:** `vX.X.X`

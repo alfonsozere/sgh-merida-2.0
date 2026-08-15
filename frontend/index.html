@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SGH - v2.1.0</title>
+    <title>SGH - v2.2.0</title>
   </head>
   <body>
     <div id="app">
@@ -442,24 +442,7 @@
     </div>
 
     <!-- VISTA DEL COORDINADOR MUNICIPAL -->
-    <section id="munic-view" class="view">
-      <nav class="navbar">
-        <div class="nav-brand">
-          <span style="color: var(--primary-color);">SGH</span> MUNICIPAL
-        </div>
-        <div class="nav-user">
-          <span id="munic-user-name" style="font-weight: 500;">Cargando...</span>
-          <button id="btn-logout-munic" class="btn-icon">Cerrar Sesión</button>
-        </div>
-      </nav>
-      <main class="dashboard-content">
-        <div class="glass-panel" style="padding: 24px; max-width: 900px; margin: 0 auto;">
-          <h2>Validación de Directores (Plantel)</h2>
-          <p>Directores registrados en tu municipio.</p>
-          <div id="munic-users-list" style="margin-top: 20px;"></div>
-        </div>
-      </main>
-    </section>
+    
 
     <!-- VISTA DEL SÚPER ADMIN -->
     <section id="admin-view" class="view" style="flex-direction: column; min-height: 100vh;">
@@ -494,7 +477,7 @@
             <button class="sidebar-btn" data-target="admin-tab-validacion">👥 Validación de Usuarios</button>
             
             <!-- ACORDEON: GESTOR DE BD -->
-            <button class="sidebar-btn accordion-btn" style="display: flex; justify-content: space-between; align-items: center;">
+            <button id="btn-sidebar-bd" class="sidebar-btn accordion-btn" style="display: flex; justify-content: space-between; align-items: center;">
               <span>🗄️ Gestor de BD</span> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="arrow" style="width: 14px; height: 14px; transition: transform 0.3s ease; color: var(--text-muted);"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
             </button>
             <div class="accordion-content custom-scrollbar" style="display: none; flex-direction: column; padding-left: 15px; border-left: 2px solid var(--glass-border); margin-left: 15px; gap: 5px; overflow-y: auto; max-height: 300px; padding-right: 5px;">
@@ -513,7 +496,7 @@
 
             </div>
 
-            <button class="sidebar-btn" data-target="admin-tab-despliegue">🚀 Despliegue</button>
+            <button id="btn-sidebar-despliegue" class="sidebar-btn" data-target="admin-tab-despliegue">🚀 Despliegue</button>
           </nav>
         </aside>
 

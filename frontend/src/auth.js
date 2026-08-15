@@ -3,7 +3,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 
 export function initAuth(auth, db, callbacks) {
-  const { onLogin, onLogout, onWait, onMunic, onAdmin } = callbacks;
+  const { onLogin, onLogout, onWait, onAdmin } = callbacks;
 
   // Cache config in session storage to save reads (Zero-Cost strategy)
   let despliegueConfig = null;
@@ -86,15 +86,12 @@ export function initAuth(auth, db, callbacks) {
       }
 
       // 3. Lógica de Ruteo y Bloqueo según ROL (ya está APROBADO o es un rol viejo)
-      if (userData.rol === 'admin' || userData.rol === 'superadmin') {
+      if (['superadmin', 'admin', 'zonadmin', 'munadmin'].includes(userData.rol)) {
          onAdmin(userData);
          return;
       }
 
-      if (userData.rol === 'munic' || userData.rol === 'munadmin' || userData.rol === 'zonadmin') {
-         onMunic(userData);
-         return;
-      }
+
 
       if (userData.rol === 'plant' || userData.rol === 'plaadmin') {
          // --- GATE: DESPLIEGUE ---
