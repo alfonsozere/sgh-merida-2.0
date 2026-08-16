@@ -74,9 +74,26 @@ const plantelForm = document.getElementById('plantel-form');
 
 // --- Navegación ---
 function showView(viewId) {
-    if (window.hideLoading) window.hideLoading();
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  document.getElementById(viewId).classList.add('active');
+    const loader = document.getElementById('app-loader');
+    if (loader && loader.style.display !== 'none') {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 400);
+    }
+    
+    // Al usar !important en .view, necesitamos sobreescribir el estilo inline temporalmente
+    document.querySelectorAll('.view').forEach(v => {
+        v.classList.remove('active');
+        v.style.setProperty('display', 'none', 'important');
+    });
+    
+    const target = document.getElementById(viewId);
+    if(target) {
+        target.classList.add('active');
+        target.style.setProperty('display', 'flex', 'important');
+    }
 }
 
 // Función para buscar un plantel directamente en Firestore
@@ -130,6 +147,32 @@ initAuth(auth, db, {
     localStorage.removeItem('sgh_catalogos');
     sessionStorage.removeItem('sgh_despliegue_config');
     document.getElementById('login-form')?.reset();
+    
+    // Resetear UI del Dashboard para no dejar la "última pantalla" abierta
+    if (typeof window.closeSidebar === 'function') {
+        window.closeSidebar();
+    }
+    document.querySelectorAll('.sidebar-btn').forEach(b => {
+        if(!b.classList.contains('accordion-btn')) b.classList.remove('active');
+    });
+    document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+    
+    // Forzar Estadísticas como pestaña por defecto
+    const btnDash = document.querySelector('[data-target="admin-tab-estadisticas"]');
+    if(btnDash) btnDash.classList.add('active');
+    const tabDash = document.getElementById('admin-tab-estadisticas');
+    if(tabDash) tabDash.classList.add('active');
+    
+    // Cerrar acordeones
+    document.querySelectorAll('.accordion-btn').forEach(b => {
+        b.classList.remove('open');
+        const arrow = b.querySelector('.arrow');
+        if (arrow) arrow.style.transform = 'rotate(0deg)';
+    });
+    document.querySelectorAll('.accordion-content').forEach(c => {
+        c.style.display = 'none';
+    });
+
     showView('login-view');
   },
   onWait: (mensaje) => {
@@ -780,3 +823,44 @@ document.getElementById('btn-logout-munic')?.addEventListener('click', async () 
 document.getElementById('btn-logout-admin')?.addEventListener('click', async () => {
     await signOut(auth);
 });
+
+// --- HAMBURGER MENU LOGIC (GLOBAL) ---
+const btnHamburger = document.getElementById('btn-hamburger');
+const sidebar = document.getElementById('admin-sidebar');
+const overlay = document.getElementById('admin-sidebar-overlay');
+const mainContent = document.getElementById('admin-main');
+
+window.closeSidebar = function() {
+   if(!sidebar) return;
+   sidebar.style.transform = 'translateX(-100%)';
+   if(overlay) {
+      overlay.style.opacity = '0';
+      setTimeout(() => overlay.style.display = 'none', 300);
+   }
+   if(mainContent) {
+      mainContent.style.opacity = '1';
+      mainContent.style.pointerEvents = 'auto';
+   }
+};
+
+if (btnHamburger) {
+   btnHamburger.addEventListener('click', () => {
+      if(!sidebar) return;
+      const isClosed = sidebar.style.transform === 'translateX(-100%)' || sidebar.style.transform === '';
+      if (isClosed) {
+         sidebar.style.transform = 'translateX(0)';
+         if(overlay) {
+            overlay.style.display = 'block';
+            setTimeout(() => overlay.style.opacity = '1', 10);
+         }
+         if(mainContent) {
+            mainContent.style.opacity = '0.5';
+            mainContent.style.pointerEvents = 'none';
+         }
+      } else {
+         window.closeSidebar();
+      }
+   });
+}
+
+if (overlay) overlay.addEventListener('click', window.closeSidebar);

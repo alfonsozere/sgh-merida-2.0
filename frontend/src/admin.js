@@ -1,7 +1,20 @@
 import { safeSetDoc, safeUpdateDoc, safeAddDoc } from './dbUtils.js';
 import { doc, getDoc, setDoc, updateDoc, collection, query, where, getCountFromServer, getDocs, onSnapshot, deleteDoc } from 'firebase/firestore';
 
-export function initAdminDashboard(db, userData) {
+let isInitialized = false;
+let db = null;
+let userData = null;
+
+export function initAdminDashboard(dbInstance, user) {
+  db = dbInstance;
+  userData = user;
+
+  if (isInitialized) {
+     // Si ya se inicializó el DOM, solo recargamos los datos para el nuevo usuario
+     loadEstadisticas();
+     return;
+  }
+  isInitialized = true;
   // Lógica de Pestañas (Sidebar)
   document.querySelectorAll('.sidebar-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -920,44 +933,6 @@ export function initAdminDashboard(db, userData) {
   }
 
 
-  // --- HAMBURGER MENU LOGIC ---
-  const btnHamburger = document.getElementById('btn-hamburger');
-  const sidebar = document.getElementById('admin-sidebar');
-  const overlay = document.getElementById('admin-sidebar-overlay');
-  const mainContent = document.getElementById('admin-main');
-
-  window.closeSidebar = function() {
-     if(!sidebar) return;
-     sidebar.style.transform = 'translateX(-100%)';
-     if(overlay) {
-        overlay.style.opacity = '0';
-        setTimeout(() => overlay.style.display = 'none', 300);
-     }
-     if(mainContent) {
-        mainContent.style.opacity = '1';
-        mainContent.style.pointerEvents = 'auto';
-     }
-  };
-
-  if (btnHamburger) {
-     btnHamburger.addEventListener('click', () => {
-        if(!sidebar) return;
-        const isClosed = sidebar.style.transform === 'translateX(-100%)' || sidebar.style.transform === '';
-        if (isClosed) {
-           sidebar.style.transform = 'translateX(0)';
-           if(overlay) {
-              overlay.style.display = 'block';
-              setTimeout(() => overlay.style.opacity = '1', 10);
-           }
-           if(mainContent) {
-              mainContent.style.opacity = '0.5';
-              mainContent.style.pointerEvents = 'none';
-           }
-        } else {
-           window.closeSidebar();
-        }
-     });
-  }
 
   
   // --- MODULO: LISTAS MAESTRAS ---
@@ -1181,7 +1156,6 @@ export function initAdminDashboard(db, userData) {
   }
 
 
-  if (overlay) overlay.addEventListener('click', window.closeSidebar);
 
 }
 
