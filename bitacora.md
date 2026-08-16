@@ -134,3 +134,7 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 ### v2.2.7 - 2026-08-16
 * **Corrección Crítica (Hotfix):** Se solucionó un error de sintaxis en la primera línea de `style.css` que fue introducido accidentalmente durante la limpieza de fuentes externas. Este error causaba que el navegador ignorara por completo la hoja de estilos, rompiendo todas las variables de color (bordes invisibles, botones blancos sobre fondo blanco) y revirtiendo la tipografía a la fuente por defecto del navegador (descartando `system-ui`).
 * **Archivos Modificados:** `style.css`, `package.json`, `index.html`.
+
+### v2.2.8 - 2026-08-16
+* **Mejora UI - Fuente Global Definitiva:** Se aplicó `system-ui, sans-serif` como tipografía oficial de todo el proyecto de forma arquitectónicamente correcta. Se declaró la variable `--font-main` en `:root`, se configuró `font-family: inherit` en el selector universal `*`, y se eliminaron todas las declaraciones de fuente redundantes en `h1/h2/h3`, `input`, `button` y `.nav-brand`. Ahora 100% del texto visible hereda la misma fuente nativa premium del sistema operativo.
+* **Archivos Modificados:** `src/style.css`, `index.html`, `package.json`.
