@@ -2,7 +2,7 @@
 window.showLoading = (msg) => {
     const modal = document.getElementById('global-loading-modal');
     if(modal) {
-        document.getElementById('global-loading-text').textContent = msg || 'Cargando...';
+        document.getElementById('global-loading-text').textContent = (msg || 'CARGANDO...').toUpperCase();
         modal.style.display = 'flex';
         modal.style.opacity = '1';
     }

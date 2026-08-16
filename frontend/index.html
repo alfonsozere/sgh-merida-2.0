@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SGH - v2.2.4</title>
+    <title>SGH - v2.2.5</title>
 
     <style>
       /* ANTI-FOUC (Flash of Unstyled Content) & PREMIUM LOADER */
@@ -749,11 +749,9 @@
     <script type="module" src="/src/main.js"></script>
   
     <!-- Global Loading Modal -->
-    <div id="global-loading-modal" style="display: none;">
+    <div id="global-loading-modal" style="display: none; z-index: 999999; position: fixed; inset: 0; background-color: #0f172a; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.4s ease;">
       <div class="spinner"></div>
-      <div id="global-loading-text">Cargando...</div>
-    </div>
-      <h3 id="global-loading-text" style="margin-top: 15px; color: var(--text-dark);">Cargando...</h3>
+      <div id="global-loading-text" class="text">Cargando...</div>
     </div>
 </body>
 </html>

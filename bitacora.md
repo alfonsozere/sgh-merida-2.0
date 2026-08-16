@@ -122,3 +122,7 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 ### v2.2.4 - 2026-08-16
 * **UI/UX Enhancement:** Se unificó el estilo visual de todas las pantallas de carga. Ahora el modal intermedio de "Cargando/Autenticando" utiliza exactamente el mismo estilo Premium (modo oscuro, ruleta azul fluida) que el Preloader inicial. Además, el texto del Preloader se ajustó a "ACTUALIZANDO ENTORNO SEGURO...".
 * **Archivos Modificados:** `index.html`, `src/main.js`, `package.json`.
+
+### v2.2.5 - 2026-08-16
+* **UI/UX Enhancement:** Se eliminó la importación de fuentes externas (Google Fonts: Inter, Outfit) y se migró todo el proyecto para utilizar la fuente nativa del sistema operativo (`system-ui`), homologando la tipografía de toda la aplicación web con la estética impecable del Loader Premium y mejorando el rendimiento de carga.
+* **Archivos Modificados:** `src/style.css`, `index.html`, `package.json`.
