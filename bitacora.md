@@ -154,3 +154,7 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 ### v2.3.2 - 2026-08-16
 * **UI Responsive Grid & Fixes:** Se inyectaron clases CSS (`.form-grid-row`) y Media Queries en `style.css` para evitar el desbordamiento de columnas en dispositivos móviles (pantallas < 768px). Se renombró la etiqueta "Cód. DEA" a "CÓDIGO PLANTEL" y se unificó el campo de Ubicación Geográfica como un `input` estándar (antes `textarea`).
 * **Archivos Modificados:** `index.html`, `src/style.css`, `package.json`.
+
+### v2.3.3 - 2026-08-16
+* **Ajuste UI de Matrícula Total:** Se reposicionó el campo "Matrícula Total" para que quede justo debajo de "Ubicación Geográfica" conforme al requerimiento visual.
+* **Archivos Modificados:** `index.html`, `src/style.css`, `package.json`.
