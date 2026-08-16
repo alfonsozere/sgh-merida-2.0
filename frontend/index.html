@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SGH - v2.2.5</title>
+    <title>SGH - v2.2.6</title>
 
     <style>
       /* ANTI-FOUC (Flash of Unstyled Content) & PREMIUM LOADER */
-      body { margin: 0; background-color: #0f172a; overflow: hidden; }
+      body { margin: 0; background-color: #0f172a; }
       #app-loader, #global-loading-modal {
         position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
         background-color: #0f172a; z-index: 999999; transition: opacity 0.4s ease;
@@ -23,7 +23,7 @@
       .view { display: none !important; }
     </style>
   </head>
-  <body>
+  <body style="overflow: hidden;">
     <!-- Premium Loader injected to hide FOUC -->
     <div id="app-loader">
       <div class="spinner"></div>
