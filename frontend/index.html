@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SGH - v2.3.1</title>
+    <title>SGH - v2.3.2</title>
 
     <style>
       /* ANTI-FOUC (Flash of Unstyled Content) & PREMIUM LOADER */
@@ -182,7 +182,7 @@
           <div style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
             
             <!-- Fila 1 -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div class="form-grid-row grid-3-col">
               <div>
                 <label style="font-size: 0.7rem; color: #64748b; font-weight: bold; text-transform: uppercase;">Estado</label>
                 <input type="text" id="inp-estado" readonly disabled style="margin-bottom: 0; background: #f1f5f9; color: #334155; border: 1px dashed #cbd5e1; font-weight: bold;" value="MÉRIDA">
@@ -198,13 +198,13 @@
             </div>
 
             <!-- Fila 2 -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 15px; margin-bottom: 15px;">
+            <div class="form-grid-row grid-1-1-2">
               <div>
                 <label style="font-size: 0.7rem; color: #64748b; font-weight: bold; text-transform: uppercase;">Dependencia</label>
                 <input type="text" id="inp-dependencia-plantel" readonly disabled style="margin-bottom: 0; background: #f1f5f9; color: #334155; border: 1px dashed #cbd5e1; font-weight: bold;">
               </div>
               <div>
-                <label style="font-size: 0.7rem; color: #64748b; font-weight: bold; text-transform: uppercase;">Cód. DEA</label>
+                <label style="font-size: 0.7rem; color: #64748b; font-weight: bold; text-transform: uppercase;">CÓDIGO PLANTEL</label>
                 <input type="text" id="inp-codigo-plantel" readonly disabled style="margin-bottom: 0; background: #f1f5f9; color: #334155; border: 1px dashed #cbd5e1; font-weight: bold;">
               </div>
               <div>
@@ -214,7 +214,7 @@
             </div>
 
             <!-- Fila 3 -->
-            <div style="display: grid; grid-template-columns: 1fr 3fr; gap: 15px; margin-bottom: 15px;">
+            <div class="form-grid-row grid-1-3">
               <div>
                 <label style="font-size: 0.7rem; color: #64748b; font-weight: bold; text-transform: uppercase;">Cód. Dependencia</label>
                 <input type="text" id="inp-cod-dependencia" readonly disabled style="margin-bottom: 0; background: #f1f5f9; color: #334155; border: 1px dashed #cbd5e1; font-weight: bold;">
@@ -226,7 +226,7 @@
             </div>
 
             <!-- Fila 4 -->
-            <div style="display: grid; grid-template-columns: 1fr 3fr; gap: 15px; margin-bottom: 15px;">
+            <div class="form-grid-row grid-1-3">
               <div>
                 <label style="font-size: 0.7rem; color: #64748b; font-weight: bold; text-transform: uppercase;">Denominación</label>
                 <input type="text" id="inp-denominacion" readonly disabled style="margin-bottom: 0; background: #f1f5f9; color: #334155; border: 1px dashed #cbd5e1; font-weight: bold;">
@@ -238,7 +238,7 @@
             </div>
 
             <!-- Fila 5 -->
-            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div class="form-grid-row grid-2-1-1">
               <div>
                 <label style="font-size: 0.7rem; color: #64748b; font-weight: bold; text-transform: uppercase;">Niveles-Modalidades</label>
                 <input type="text" id="inp-niveles-modalidades" readonly disabled style="margin-bottom: 0; background: #f1f5f9; color: #334155; border: 1px dashed #cbd5e1; font-weight: bold;">
@@ -256,7 +256,7 @@
             <!-- Fila 6 -->
             <div>
               <label style="font-size: 0.7rem; color: #64748b; font-weight: bold; text-transform: uppercase;">Ubicación Geográfica</label>
-              <textarea id="inp-ubicacion" readonly disabled style="margin-bottom: 0; background: #f1f5f9; color: #334155; border: 1px dashed #cbd5e1; font-weight: bold; width: 100%; resize: vertical; min-height: 40px;"></textarea>
+              <input type="text" id="inp-ubicacion" readonly disabled style="margin-bottom: 0; background: #f1f5f9; color: #334155; border: 1px dashed #cbd5e1; font-weight: bold; width: 100%;">
             </div>
           </div>
           

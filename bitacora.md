@@ -150,3 +150,7 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 ### v2.3.1 - 2026-08-16
 * **Refactorización UI Director (Tarjeta Plantel):** Se reconstruyó el formulario de visualización de datos usando CSS Grid avanzado para alojar y mapear con precisión los 13 campos clave de la base de datos `planteles` (Municipio, Parroquia, Dependencia, Código DEA, Cód Estadístico, Cód Dependencia, Denominación, Nombre Nominal, Nuevo Epónimo, Niveles-Modalidades, Turnos, Ubicación y Matrícula).
 * **Archivos Modificados:** `index.html`, `src/main.js`, `package.json`.
+
+### v2.3.2 - 2026-08-16
+* **UI Responsive Grid & Fixes:** Se inyectaron clases CSS (`.form-grid-row`) y Media Queries en `style.css` para evitar el desbordamiento de columnas en dispositivos móviles (pantallas < 768px). Se renombró la etiqueta "Cód. DEA" a "CÓDIGO PLANTEL" y se unificó el campo de Ubicación Geográfica como un `input` estándar (antes `textarea`).
+* **Archivos Modificados:** `index.html`, `src/style.css`, `package.json`.
