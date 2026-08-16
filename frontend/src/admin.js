@@ -516,7 +516,7 @@ export function initAdminDashboard(dbInstance, user) {
        card.innerHTML = `
          <div>
            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
-             <span style="background: rgba(37,99,235,0.1); color: var(--primary-color); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-family: monospace; font-weight: bold;">${cod}</span>
+             <span style="background: rgba(37,99,235,0.1); color: var(--primary-color); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">${cod}</span>
              <span style="font-size: 0.8rem; color: var(--text-muted);">${plan.numAnios || '?'} Años</span>
            </div>
            <h4 style="margin: 0 0 5px; color: var(--text-main); font-size: 1.1rem;">${plan.especialidad || 'Sin Especialidad'}</h4>
@@ -783,7 +783,7 @@ export function initAdminDashboard(dbInstance, user) {
        tr.style.borderBottom = '1px solid var(--glass-border)';
        tr.innerHTML = `
          <td style="padding: 15px 20px;">
-           <span style="background: rgba(37,99,235,0.1); color: var(--primary-color); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-family: monospace;">${p.codigos?.plantel || 'N/A'}</span>
+           <span style="background: rgba(37,99,235,0.1); color: var(--primary-color); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">${p.codigos?.plantel || 'N/A'}</span>
          </td>
          <td style="padding: 15px 20px; font-weight: 500; color: var(--text-main);">${p['nombre-plantel']?.nominal || 'SIN NOMBRE'}</td>
          <td style="padding: 15px 20px; color: var(--text-muted); font-size: 0.9rem;">${p.municipio || 'N/A'}</td>
@@ -1065,7 +1065,7 @@ export function initAdminDashboard(dbInstance, user) {
               headerDiv.style.marginBottom = '10px';
               
               const badge = document.createElement('span');
-              badge.style.cssText = 'background: rgba(37,99,235,0.1); color: var(--primary-color); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-family: monospace; font-weight: bold;';
+              badge.style.cssText = 'background: rgba(37,99,235,0.1); color: var(--primary-color); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;';
               badge.innerText = key;
               headerDiv.appendChild(badge);
               

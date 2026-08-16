@@ -138,3 +138,7 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 ### v2.2.8 - 2026-08-16
 * **Mejora UI - Fuente Global Definitiva:** Se aplicó `system-ui, sans-serif` como tipografía oficial de todo el proyecto de forma arquitectónicamente correcta. Se declaró la variable `--font-main` en `:root`, se configuró `font-family: inherit` en el selector universal `*`, y se eliminaron todas las declaraciones de fuente redundantes en `h1/h2/h3`, `input`, `button` y `.nav-brand`. Ahora 100% del texto visible hereda la misma fuente nativa premium del sistema operativo.
 * **Archivos Modificados:** `src/style.css`, `index.html`, `package.json`.
+
+### v2.2.9 - 2026-08-16
+* **Corrección Fuente Global Completa:** Se eliminaron 4 declaraciones de `font-family: monospace` encontradas en estilos en línea dentro de `admin.js` (líneas 519, 786, 1068) y `adminManager.js` (líneas 129, 439). Estas etiquetas JS de tipo "badge/código" tenían fuente propia que ignoraba la herencia global CSS. Ahora 100% del proyecto usa `system-ui`.
+* **Archivos Modificados:** `src/admin.js`, `src/adminManager.js`, `index.html`, `package.json`.

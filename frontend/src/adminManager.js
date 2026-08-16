@@ -126,7 +126,7 @@ async function searchPlanteles() {
         const codigo_plantel = p.id;
         html += `
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
-            <td style="padding: 12px 15px; font-family: monospace; font-size: 1.1rem; color: var(--accent-color);">${codigo_plantel}</td>
+            <td style="padding: 12px 15px; font-size: 1.1rem; color: var(--accent-color);">${codigo_plantel}</td>
             <td style="padding: 12px 15px; font-weight: 500;">${p.nombre_plantel || 'SIN NOMBRE'}</td>
             <td style="padding: 12px 15px;">${p.ref_municipio || 'N/D'}</td>
             <td style="padding: 12px 15px;"><span style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">${p.dependencia || 'ESTADAL'}</span></td>
@@ -436,7 +436,7 @@ function renderExcepcionesPlanteles(planteles) {
   planteles.forEach(dea => {
     html += `
       <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 10px 15px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-        <span style="font-weight: 600; font-family: monospace; font-size: 1.1rem;">${dea}</span>
+        <span style="font-weight: 600; font-size: 1.1rem;">${dea}</span>
         <button onclick="window.removeExcepcionPlantel('${dea}')" class="btn danger-btn" style="padding: 6px 12px; font-size: 0.8rem;"><i class="fa-solid fa-trash"></i> Quitar</button>
       </div>
     `;
