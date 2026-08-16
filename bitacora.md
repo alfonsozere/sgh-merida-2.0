@@ -110,3 +110,7 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 #### 🚀 Respaldo en GitHub
 * **Commit:** `tipo(modulo): vX.X.X - descripcion breve`
 * **Estado:** Completado / Pendiente\n\n### v2.2.1 - 2026-08-16\n* **Corrección UI (Anti-FOUC):** Se inyectó un pp-loader Premium en index.html para ocultar la pantalla mientras Firebase resuelve la sesión, eliminando el parpadeo amateur (Flash of Unstyled Content) de la vista de espera.\n* **Archivos Modificados:** index.html, src/main.js, package.json.
+
+### v2.2.2 - 2026-08-16
+* **Corrección (Hotfix):** Se restauró la función `window.hideLoading()` dentro de `showView()` en `main.js`, la cual fue eliminada accidentalmente durante la implementación del Loader Premium, causando que la pantalla de "Autenticando" se quedara congelada tras un inicio de sesión exitoso.
+* **Archivos Modificados:** `src/main.js`, `index.html`, `package.json`.
