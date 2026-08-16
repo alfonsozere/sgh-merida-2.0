@@ -694,15 +694,35 @@ async function mostrarCandado(codigoDEA, dataParcial) {
     // Poblar Datos de Solo Lectura desde el Diccionario
     const dp = await findPlantel(codigoDEA);
     if (dp) {
-        document.getElementById('inp-codigo-plantel').value = codigoDEA;
-        document.getElementById('inp-nombre-plantel').value = dp.nombre_plantel || '';
-        document.getElementById('inp-estado').value = "MERIDA";
-        document.getElementById('inp-municipio').value = dp.municipio || dp.municipio_nombre || '';
+        document.getElementById('inp-estado').value = "MÉRIDA";
+        document.getElementById('inp-municipio').value = dp.municipio || '';
+        document.getElementById('inp-parroquia').value = dp.parroquia || '';
         document.getElementById('inp-dependencia-plantel').value = dp.dependencia || '';
-        document.getElementById('inp-turnos-plantel').value = dp.turno || '';
+        document.getElementById('inp-codigo-plantel').value = dp.codigos?.plantel || codigoDEA;
+        document.getElementById('inp-cod-estadistico').value = dp.codigos?.estadistico || '';
+        
+        let codDep = dp.codigos?.dependencia;
+        if (Array.isArray(codDep)) codDep = codDep.join(', ');
+        document.getElementById('inp-cod-dependencia').value = codDep || '';
+
+        document.getElementById('inp-denominacion').value = dp.denominacion || '';
+        document.getElementById('inp-nombre-nominal').value = dp['nombre-plantel']?.nominal || '';
+        document.getElementById('inp-nuevo-eponimo').value = dp['nombre-plantel']?.['nuevo-eponimo'] || '';
+
+        document.getElementById('inp-niveles-modalidades').value = dp.nivel || '';
+        
+        document.getElementById('inp-ubicacion').value = dp['ubicacion-geografica'] || '';
+        document.getElementById('inp-turnos-plantel').value = dp['turno-plantel'] || '';
+        document.getElementById('inp-matricula-total').value = dp.matricula?.total || '';
+        
+        // Mantener el oculto para no romper compatibilidad en otras funciones
+        const hiddenInp = document.getElementById('inp-nombre-plantel');
+        if (hiddenInp) hiddenInp.value = dp['nombre-plantel']?.nominal || '';
     } else {
         document.getElementById('inp-codigo-plantel').value = codigoDEA;
-        document.getElementById('inp-nombre-plantel').value = "Plantel no encontrado";
+        const hiddenInp = document.getElementById('inp-nombre-plantel');
+        if (hiddenInp) hiddenInp.value = "Plantel no encontrado";
+        document.getElementById('inp-nombre-nominal').value = "Plantel no encontrado";
     }
 
     // Lógica dinámica de visibilidad basada en planes_estudio

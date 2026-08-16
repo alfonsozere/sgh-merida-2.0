@@ -146,3 +146,7 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 ### v2.3.0 - 2026-08-16
 * **Refactorización UI Director:** Se eliminaron elementos visuales innecesarios en la pantalla de carga de matrícula (vista del director): "Paso 1 de 2" en el header, y el encabezado "Paso 1: Información del Plantel - Verifique y complete la matrícula institucional" junto con el logo (`vite.svg`).
 * **Archivos Modificados:** `index.html`, `package.json`.
+
+### v2.3.1 - 2026-08-16
+* **Refactorización UI Director (Tarjeta Plantel):** Se reconstruyó el formulario de visualización de datos usando CSS Grid avanzado para alojar y mapear con precisión los 13 campos clave de la base de datos `planteles` (Municipio, Parroquia, Dependencia, Código DEA, Cód Estadístico, Cód Dependencia, Denominación, Nombre Nominal, Nuevo Epónimo, Niveles-Modalidades, Turnos, Ubicación y Matrícula).
+* **Archivos Modificados:** `index.html`, `src/main.js`, `package.json`.
