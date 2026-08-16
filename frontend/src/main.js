@@ -73,7 +73,8 @@ const btnLogout = document.getElementById('btn-logout');
 const plantelForm = document.getElementById('plantel-form');
 
 // --- Navegación ---
-function showView(viewId) {\n    if (window.hideLoading) window.hideLoading();
+function showView(viewId) {
+    if (window.hideLoading) window.hideLoading();
     const loader = document.getElementById('app-loader');
     if (loader && loader.style.display !== 'none') {
         loader.style.opacity = '0';

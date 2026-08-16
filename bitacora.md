@@ -114,3 +114,7 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 ### v2.2.2 - 2026-08-16
 * **Corrección (Hotfix):** Se restauró la función `window.hideLoading()` dentro de `showView()` en `main.js`, la cual fue eliminada accidentalmente durante la implementación del Loader Premium, causando que la pantalla de "Autenticando" se quedara congelada tras un inicio de sesión exitoso.
 * **Archivos Modificados:** `src/main.js`, `index.html`, `package.json`.
+
+### v2.2.3 - 2026-08-16
+* **Corrección Crítica (Hotfix 2):** Se solucionó un error de sintaxis introducido en el parche anterior (`\n` literal) que bloqueaba la carga completa de `main.js`, causando que la pantalla "INICIALIZANDO ENTORNO SEGURO" se quedara colgada infinitamente.
+* **Archivos Modificados:** `src/main.js`, `index.html`, `package.json`.
