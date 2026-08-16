@@ -118,3 +118,7 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 ### v2.2.3 - 2026-08-16
 * **Corrección Crítica (Hotfix 2):** Se solucionó un error de sintaxis introducido en el parche anterior (`\n` literal) que bloqueaba la carga completa de `main.js`, causando que la pantalla "INICIALIZANDO ENTORNO SEGURO" se quedara colgada infinitamente.
 * **Archivos Modificados:** `src/main.js`, `index.html`, `package.json`.
+
+### v2.2.4 - 2026-08-16
+* **UI/UX Enhancement:** Se unificó el estilo visual de todas las pantallas de carga. Ahora el modal intermedio de "Cargando/Autenticando" utiliza exactamente el mismo estilo Premium (modo oscuro, ruleta azul fluida) que el Preloader inicial. Además, el texto del Preloader se ajustó a "ACTUALIZANDO ENTORNO SEGURO...".
+* **Archivos Modificados:** `index.html`, `src/main.js`, `package.json`.

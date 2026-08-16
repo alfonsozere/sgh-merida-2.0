@@ -4,11 +4,15 @@ window.showLoading = (msg) => {
     if(modal) {
         document.getElementById('global-loading-text').textContent = msg || 'Cargando...';
         modal.style.display = 'flex';
+        modal.style.opacity = '1';
     }
 };
 window.hideLoading = () => {
     const modal = document.getElementById('global-loading-modal');
-    if(modal) modal.style.display = 'none';
+    if(modal) {
+        modal.style.opacity = '0';
+        setTimeout(() => modal.style.display = 'none', 400);
+    }
 };
 
 import { showToast, showAlert } from './uiUtils.js';
