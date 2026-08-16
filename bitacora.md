@@ -130,3 +130,7 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 ### v2.2.6 - 2026-08-16
 * **Corrección (Hotfix):** Se reparó un error de CSS que bloqueaba el desplazamiento vertical (*scroll*) de la aplicación. La regla `overflow: hidden` del Preloader inicial se había quedado fijada en la hoja de estilos global, impidiendo hacer scroll en el Dashboard al desbordarse el contenido. Se movió a un estilo en línea temporal para que JavaScript pueda liberarlo correctamente.
 * **Archivos Modificados:** `index.html`, `package.json`.
+
+### v2.2.7 - 2026-08-16
+* **Corrección Crítica (Hotfix):** Se solucionó un error de sintaxis en la primera línea de `style.css` que fue introducido accidentalmente durante la limpieza de fuentes externas. Este error causaba que el navegador ignorara por completo la hoja de estilos, rompiendo todas las variables de color (bordes invisibles, botones blancos sobre fondo blanco) y revirtiendo la tipografía a la fuente por defecto del navegador (descartando `system-ui`).
+* **Archivos Modificados:** `style.css`, `package.json`, `index.html`.
