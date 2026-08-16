@@ -142,3 +142,7 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 ### v2.2.9 - 2026-08-16
 * **Corrección Fuente Global Completa:** Se eliminaron 4 declaraciones de `font-family: monospace` encontradas en estilos en línea dentro de `admin.js` (líneas 519, 786, 1068) y `adminManager.js` (líneas 129, 439). Estas etiquetas JS de tipo "badge/código" tenían fuente propia que ignoraba la herencia global CSS. Ahora 100% del proyecto usa `system-ui`.
 * **Archivos Modificados:** `src/admin.js`, `src/adminManager.js`, `index.html`, `package.json`.
+
+### v2.3.0 - 2026-08-16
+* **Refactorización UI Director:** Se eliminaron elementos visuales innecesarios en la pantalla de carga de matrícula (vista del director): "Paso 1 de 2" en el header, y el encabezado "Paso 1: Información del Plantel - Verifique y complete la matrícula institucional" junto con el logo (`vite.svg`).
+* **Archivos Modificados:** `index.html`, `package.json`.
