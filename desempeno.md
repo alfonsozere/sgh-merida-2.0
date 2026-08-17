@@ -99,3 +99,21 @@ form.onsubmit
 ### 5. Resultado Final
 
 El motor de guardado ahora produce el JSON oficial del sistema SGH 2.0 de forma limpia, dinamica y sin suposiciones. La Escoba Digital garantiza que Firestore no recibe basura. Los totales son correctos y los vacantes se registran solo cuando el director marca el check.
+
+### Hito: Refactorización Estructural JSON y Reactividad UI (v2.4.2 - v2.4.3)
+**Fecha:** 2026-08-17
+**Módulo:** Pantalla de Planteles / Motor de Sincronización Firestore
+
+**1. Diagnóstico del Problema:**
+- Se requería preparar el modelo JSON de \matricula\ para el futuro, incorporando las ramas de "modalidades" (Adultos, Especial) y unificando el cálculo total de la matrícula (Básica + Media) en la raíz del documento.
+- Al guardar la información, la interfaz (el campo \inp-matricula-total\) no reaccionaba en tiempo real para mostrar el dato recién calculado por el servidor/cliente y depositado en la nube.
+- La función de limpieza interna (\sweepZeros\) destruía preventivamente los esquemas vacíos (ej. \modalidades: { adulto: {} }\) y los totales si estos eran cero.
+
+**2. Método Técnico Aplicado:**
+- **Inyección de Estructura Raíz:** Se reprogramó la inicialización del objeto \matricula\ en \main.js\ para pre-construir el cascarón obligatorio solicitado por la gerencia: ramas para \asica\, \media\, \modalidades\ y sumatorias globales \	otal-gen\.
+- **Whitelisting (Lista Blanca):** Se instruyó a la "Escoba Digital" (\sweepZeros\) con un arreglo estricto (\whitelist\) para evitar que purgara los nodos obligatorios de la arquitectura, garantizando su existencia permanente en Firestore.
+- **Limpieza de Colisiones UI:** Se eliminó la actualización estática "Optimista" en \onsubmit\ que causaba una condición de carrera contra la respuesta rápida de la base de datos.
+- **Saneamiento del Suscriptor (Listener):** Se detectó y corrigió un bug de memoria global. \window._unsubPlantel\ no se destruía al cambiar de colegio, dejando "sordo" al sistema para el nuevo plantel. Se incorporó una instrucción de desuscripción explícita (\window._unsubPlantel()\) antes de enganchar un nuevo documento.
+
+**3. Decisiones Operativas y Beneficio:**
+- La interfaz ahora opera bajo el paradigma de "Fuente Única de Verdad" (Single Source of Truth), donde lo que el usuario ve en la pantalla es un espejo milimétrico de lo que se almacenó en la base de datos, garantizando confianza del 100% en los registros. El esquema de datos quedó listo para la expansión a nuevas modalidades sin requerir migraciones complejas de base de datos en el futuro.
