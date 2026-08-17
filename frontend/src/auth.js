@@ -1,4 +1,3 @@
-import { safeSetDoc, safeUpdateDoc, safeAddDoc } from './dbUtils.js';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 

@@ -44,9 +44,7 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, setDoc, deleteField, onSnapshot } from 'firebase/firestore';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut, setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { initAuth } from './auth.js';
-import { initSeed } from './seed.js';
 
-// TODO: Remplazar con la configuración de Firebase de SGH
 const firebaseConfig = {
     apiKey: "AIzaSyDSdDRB10kbtor5ROR50AsCxVmk0fOpqFo",
     authDomain: "sgh-merida.firebaseapp.com",
@@ -60,8 +58,6 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-// Iniciar script temporal de creación de usuarios
-initSeed(db);
 
 // Variables de estado
 let dictionaryData = {};
