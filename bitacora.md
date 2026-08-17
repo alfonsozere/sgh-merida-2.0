@@ -192,3 +192,9 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
   - **Escoba Digital (Whitelisting):** Se reprogramo el metodo de limpieza de ceros (\sweepZeros\) para incluir una lista blanca obligatoria que proteja las ramas principales (\asica\, \media\, \modalidades\) y todos los campos globales, asegurando que su estructura base persista en Firestore aunque sus valores sean momentaneamente cero.
   - **Suscripcion UI:** El campo visual "Matricula Total" (id: \inp-matricula-total\) ahora consume directamente la informacion confirmada de la nube desde \matricula['total-gen']\.
 * **Archivos Modificados:** \src/main.js\, \package.json\.
+
+### v2.4.3 - 2026-08-17
+* **Correccion (Motor Reactivo):** Se corrigio un bug que impedia que la interfaz se actualizara en tiempo real al hacer clic en "Guardar".
+  - **Reinicio de Suscripciones:** Se modifico la funcion \checkPlantelData\ para desconectar explicitamente el \onSnapshot\ anterior (\window._unsubPlantel()\) antes de escuchar un nuevo documento. Esto garantiza que la reactividad siga a la escuela actual si el usuario navega entre diferentes codigos DEA.
+  - **Eliminacion de Colision Optimista:** Se elimino la instruccion estatica que intentaba actualizar el input con un calculo local antiguo inmediatamente despues del guardado, lo que generaba un conflicto ("carrera") que ocultaba la inyeccion real del \onSnapshot\.
+* **Archivos Modificados:** \src/main.js\, \package.json\.
