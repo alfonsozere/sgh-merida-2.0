@@ -688,9 +688,9 @@ function _renderizarMatriculaMedia(planes, guardadas = null) {
 }
 
 async function _abrirModalVacantes() {
-    let mat = parseInt(document.getElementById('inp-sec-maternal')?.value) || 0;
-    let pre = parseInt(document.getElementById('inp-sec-preescolar')?.value) || 0;
-    let pri = parseInt(document.getElementById('inp-sec-primaria')?.value) || 0;
+    let mat = parseInt(document.getElementById('secMat')?.value) || 0;
+    let pre = parseInt(document.getElementById('secPre')?.value) || 0;
+    let pri = parseInt(document.getElementById('secPri')?.value) || 0;
 
     const VAC = window._VACANTES_TEMP || {};
 
@@ -967,15 +967,15 @@ async function mostrarCandado(codigoDEA, dataParcial) {
         /* button always enabled initially */
         
 
-    if (dataParcial && dataParcial.matricula) {
+    if (dataParcial && dataParcial.matricula && typeof dataParcial.matricula === 'object' && Object.keys(dataParcial.matricula).length > 0) {
         const mat = dataParcial.matricula;
         const b20 = mat.basica ? (mat.basica["20000"] || {}) : {};
         const b21 = mat.basica ? (mat.basica["21000"] || {}) : {};
         
         // --- 1. MATERNAL ---
         if (b20.materna) {
-            const numMat = Object.keys(b20.materna).length;
-            if (document.getElementById('inp-sec-maternal')) document.getElementById('inp-sec-maternal').value = numMat;
+            const numMat = Object.keys(b20.materna).filter(k => k.length === 1).length;
+            if (document.getElementById('secMat')) document.getElementById('secMat').value = numMat;
             _renderCajasInicial('maternal', numMat);
             Object.keys(b20.materna).forEach(letra => {
                 const f = document.querySelector('.mat-input.mat-maternal[data-grupo="maternal-' + letra + '"][data-sexo="F"]');
@@ -987,8 +987,8 @@ async function mostrarCandado(codigoDEA, dataParcial) {
         
         // --- 2. PREESCOLAR ---
         if (b20.preescolar) {
-            const numPre = Object.keys(b20.preescolar).length;
-            if (document.getElementById('inp-sec-preescolar')) document.getElementById('inp-sec-preescolar').value = numPre;
+            const numPre = Object.keys(b20.preescolar).filter(k => k.length === 1).length;
+            if (document.getElementById('secPre')) document.getElementById('secPre').value = numPre;
             _renderCajasInicial('preescolar', numPre);
             Object.keys(b20.preescolar).forEach(letra => {
                 const f = document.querySelector('.mat-input.mat-preescolar[data-grupo="preescolar-' + letra + '"][data-sexo="F"]');
@@ -1002,9 +1002,9 @@ async function mostrarCandado(codigoDEA, dataParcial) {
         if (Object.keys(b21).length > 0) {
             let totalPri = 0;
             for (let g = 1; g <= 6; g++) {
-                if (b21[String(g)]) totalPri += Object.keys(b21[String(g)]).length;
+                if (b21[String(g)]) totalPri += Object.keys(b21[String(g)]).filter(k => k.length === 1).length;
             }
-            if (document.getElementById('inp-sec-primaria')) document.getElementById('inp-sec-primaria').value = totalPri;
+            if (document.getElementById('secPri')) document.getElementById('secPri').value = totalPri;
             _renderCajasPrimaria(totalPri);
             for (let g = 1; g <= 6; g++) {
                 if (!b21[String(g)]) continue;
@@ -1053,361 +1053,363 @@ async function mostrarCandado(codigoDEA, dataParcial) {
       form.onsubmit = async (e) => {
           e.preventDefault();
           const btn = form.querySelector('button[type="submit"]');
+          if (!btn) return;
           btn.textContent = "Guardando...";
           btn.disabled = true;
 
+          // ── GUARD: Datos Incompletos ──────────────────────────────────────
           const matTotal = parseInt(document.getElementById('lbl-matricula-total')?.textContent) || 0;
-          
           let secTotal = 0;
-          secTotal += parseInt(document.getElementById('inp-sec-maternal')?.value) || 0;
-          secTotal += parseInt(document.getElementById('inp-sec-preescolar')?.value) || 0;
-          secTotal += parseInt(document.getElementById('inp-sec-primaria')?.value) || 0;
+          secTotal += parseInt(document.getElementById('secMat')?.value) || 0;
+          secTotal += parseInt(document.getElementById('secPre')?.value) || 0;
+          secTotal += parseInt(document.getElementById('secPri')?.value) || 0;
           document.querySelectorAll('.sec-anio-input').forEach(inp => {
-              const b1 = inp.closest('div[id^="bloque-"]'); const b2 = inp.closest('#cont-secciones-detalle'); if ((b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none')) {
+              const b1 = inp.closest('div[id^="bloque-"]');
+              const b2 = inp.closest('#cont-secciones-detalle');
+              if ((b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none')) {
                   secTotal += parseInt(inp.value) || 0;
               }
           });
-          
-          
-            // Check if incomplete
-            if (matTotal === 0 && secTotal === 0 && !window._forceSaveIncompleta) {
-                const modalInc = document.getElementById('modal-confirm-incompleta');
-                if (modalInc) modalInc.style.display = 'flex';
-                btn.textContent = "Guardar Datos y Continuar";
-                btn.disabled = false;
-                return; // abort this save
-            }
-            window._forceSaveIncompleta = false;
-const _dynMG = { "total-med-fem": 0, "total-med-mas": 0, "total-med-gen": 0 };
-const _dynMT = { "total-med-fem": 0, "total-med-mas": 0, "total-med-tec": 0 };
-const seccionesPlanes = {};
-          const matricula = {
-              "basica": {
-                  "20000": {
-                      "materna": {},
-                      "total-mat-mas": 0,
-                      "total-mat-fem": 0,
-                      "total-mat": 0,
-                      "preescolar": {},
-                      "total-pre-mas": 0,
-                      "total-pre-fem": 0,
-                      "total-pre": 0,
-                      "total-20000": 0
-                  },
-                  "21000": {
-                      "1": {}, "2": {}, "3": {}, "4": {}, "5": {}, "6": {},
-                      "total-21000-mas": 0,
-                      "total-21000-fem": 0,
-                      "total-21000": 0
-                  }
-              },
-              "media": {
-                    "media-general": _dynMG,
-                    "media-tecnica": _dynMT,
-                    "total-gen-med": {
-                        "fem": 0,
-                        "mas": 0,
-                        "total": 0
-                    }
-                },
-              "total": matTotal
+
+          if (matTotal === 0 && secTotal === 0 && !window._forceSaveIncompleta) {
+              const modalInc = document.getElementById('modal-confirm-incompleta');
+              if (modalInc) modalInc.style.display = 'flex';
+              btn.textContent = "Guardar Datos y Continuar";
+              btn.disabled = false;
+              return;
+          }
+          window._forceSaveIncompleta = false;
+
+          // ── HELPERS ───────────────────────────────────────────────────────
+          /** Verifica si el input está dentro de un bloque visible del DOM */
+          const isVisible = (el) => {
+              const b1 = el.closest('div[id^="bloque-"]');
+              const b2 = el.closest('#cont-secciones-detalle');
+              return (b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none');
           };
 
-          // 1. MATERNAL Y PREESCOLAR
-          ['maternal', 'preescolar'].forEach(tipo => {
-              const inputs = document.querySelectorAll('.mat-input.mat-' + tipo);
-              if (inputs.length > 0) {
-                  if (!seccionesPlanes["20000"]) seccionesPlanes["20000"] = {};
-              }
-              inputs.forEach(inp => {
-                  const b1 = inp.closest('div[id^="bloque-"]'); const b2 = inp.closest('#cont-secciones-detalle'); if ((b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none')) {
-                      const grupo = inp.dataset.grupo; // ej: "maternal-A"
-                      const secLetra = grupo.split('-')[1];
-                      const val = parseInt(inp.value) || 0;
-                      const isFem = inp.dataset.sexo === 'F';
-                      
-                      if (!seccionesPlanes["20000"]._vistas) seccionesPlanes["20000"]._vistas = new Set();
-                      if (!seccionesPlanes["20000"]._vistas.has(grupo)) {
-                          seccionesPlanes["20000"]._vistas.add(grupo);
-                          seccionesPlanes["20000"][secLetra] = (seccionesPlanes["20000"][secLetra] || 0) + 1;
-                      }
-
-                      const key = tipo === 'maternal' ? 'materna' : 'preescolar';
-                      if (!matricula.basica["20000"][key][secLetra]) {
-                          matricula.basica["20000"][key][secLetra] = { mas: 0, fem: 0 };
-                      }
-                      
-                      if (isFem) {
-                          matricula.basica["20000"][key][secLetra].fem += val;
-                          matricula.basica["20000"]["total-" + tipo.substring(0,3) + "-fem"] += val;
-                      } else {
-                          matricula.basica["20000"][key][secLetra].mas += val;
-                          matricula.basica["20000"]["total-" + tipo.substring(0,3) + "-mas"] += val;
-                      }
-                      matricula.basica["20000"]["total-" + tipo.substring(0,3)] += val;
-                      matricula.basica["20000"]["total-20000"] += val;
+          /** Escoba Digital: elimina claves con valor 0 u objetos vacíos */
+          const sweepZeros = (obj) => {
+              Object.keys(obj).forEach(key => {
+                  if (obj[key] === 0) {
+                      delete obj[key];
+                  } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+                      sweepZeros(obj[key]);
+                      if (Object.keys(obj[key]).length === 0) delete obj[key];
                   }
               });
-              
-              // Inyectar vacantes copiando matrícula (Plazas Docentes Vacantes)
-              const pref = tipo.substring(0,3); // 'mat' o 'pre'
-              const vacPlan = window._VACANTES_TEMP?.[tipo] || {};
-              const key = tipo === 'maternal' ? 'materna' : 'preescolar';
-              
-              for (const secLetra of Object.keys(matricula.basica["20000"][key] || {})) {
-                  if (vacPlan[secLetra] === 1) { // Checkbox marcado en el modal
-                      if (!matricula.basica["20000"][key].vacantes) {
-                          matricula.basica["20000"][key].vacantes = {};
-                          matricula.basica["20000"][key]["total-vac-" + pref + "-mas"] = 0;
-                          matricula.basica["20000"][key]["total-vac-" + pref + "-fem"] = 0;
-                          matricula.basica["20000"][key]["total-vac-" + pref] = 0;
-                      }
-                      if (matricula.basica["20000"]["total-vac-20000-mas"] === undefined) {
-                          matricula.basica["20000"]["total-vac-20000-mas"] = 0;
-                          matricula.basica["20000"]["total-vac-20000-fem"] = 0;
-                          matricula.basica["20000"]["total-vac-20000"] = 0;
-                      }
-                      
-                      const matSec = matricula.basica["20000"][key][secLetra];
-                      matricula.basica["20000"][key].vacantes[secLetra] = { mas: matSec.mas, fem: matSec.fem };
-                      
-                      matricula.basica["20000"][key]["total-vac-" + pref + "-mas"] += matSec.mas;
-                      matricula.basica["20000"][key]["total-vac-" + pref + "-fem"] += matSec.fem;
-                      matricula.basica["20000"][key]["total-vac-" + pref] += (matSec.mas + matSec.fem);
-                      
-                      matricula.basica["20000"]["total-vac-20000-mas"] += matSec.mas;
-                      matricula.basica["20000"]["total-vac-20000-fem"] += matSec.fem;
-                      matricula.basica["20000"]["total-vac-20000"] += (matSec.mas + matSec.fem);
-                  }
-              }
-          });
+          };
 
-          // 2. PRIMARIA
-          const inputsPri = document.querySelectorAll('.mat-input.mat-primaria');
-          if (inputsPri.length > 0) {
-              if (!seccionesPlanes["21000"]) seccionesPlanes["21000"] = {};
-          }
-          inputsPri.forEach(inp => {
-              const b1 = inp.closest('div[id^="bloque-"]'); const b2 = inp.closest('#cont-secciones-detalle'); if ((b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none')) {
-                  const grupo = inp.dataset.grupo; // ej: "primaria-1A"
-                  const match = grupo.match(/primaria-(\d)([A-Z])/);
-                  if (match) {
-                      const grado = match[1];
-                      const secLetra = match[2];
-                      const val = parseInt(inp.value) || 0;
-                      const isFem = inp.dataset.sexo === 'F';
+          // ── SECCIONES-PLANES ──────────────────────────────────────────────
+          const seccionesPlanes = {};
 
-                      if (!seccionesPlanes["21000"]._vistas) seccionesPlanes["21000"]._vistas = new Set();
-                      if (!seccionesPlanes["21000"]._vistas.has(grupo)) {
-                          seccionesPlanes["21000"]._vistas.add(grupo);
-                          seccionesPlanes["21000"][secLetra] = (seccionesPlanes["21000"][secLetra] || 0) + 1;
-                      }
-                      
-                      if (!matricula.basica["21000"][grado][secLetra]) {
-                          matricula.basica["21000"][grado][secLetra] = { mas: 0, fem: 0 };
-                      }
-                      
-                      if (isFem) {
-                          matricula.basica["21000"][grado][secLetra].fem += val;
-                          matricula.basica["21000"]["total-21000-fem"] += val;
-                      } else {
-                          matricula.basica["21000"][grado][secLetra].mas += val;
-                          matricula.basica["21000"]["total-21000-mas"] += val;
-                      }
-                      matricula.basica["21000"]["total-21000"] += val;
-                      
-                      // Totales dinámicos de sección en Primaria
-                      const tKeyMas = "total-mat-seccion" + secLetra.toLowerCase() + "-mas";
-                      const tKeyFem = "total-mat-seccion" + secLetra.toLowerCase() + "-fem";
-                      const tKeyTot = "total-mat-seccion" + secLetra.toLowerCase();
-                      
-                      if (matricula.basica["21000"][grado][tKeyMas] === undefined) {
-                          matricula.basica["21000"][grado][tKeyMas] = 0;
-                          matricula.basica["21000"][grado][tKeyFem] = 0;
-                          matricula.basica["21000"][grado][tKeyTot] = 0;
-                      }
-                      
-                      if (isFem) {
-                          matricula.basica["21000"][grado][tKeyFem] += val;
-                      } else {
-                          matricula.basica["21000"][grado][tKeyMas] += val;
-                      }
-                      matricula.basica["21000"][grado][tKeyTot] += val;
-                  }
-              }
-          });
+          // 20000/maternal: se cuenta 1 box-F por sección
+          if (document.getElementById('bloque-inicial')?.style.display !== 'none') {
+              document.querySelectorAll('.mat-input.mat-maternal[data-sexo="F"]').forEach(inp => {
+                  if (!isVisible(inp)) return;
+                  const secLetra = inp.dataset.grupo.split('-')[1];
+                  if (!seccionesPlanes['20000']) seccionesPlanes['20000'] = {};
+                  if (!seccionesPlanes['20000'].maternal) seccionesPlanes['20000'].maternal = {};
+                  seccionesPlanes['20000'].maternal[secLetra] = 1;
+              });
 
-          // Calcular Vacantes de Primaria (Plazas Docentes Vacantes)
-          const vacPri = window._VACANTES_TEMP?.primaria || {};
-          for (let g = 1; g <= 6; g++) {
-              const gradoStr = String(g);
-              if (!matricula.basica["21000"][gradoStr] || Object.keys(matricula.basica["21000"][gradoStr]).length === 0) continue;
-              
-              for (const secLetra of Object.keys(matricula.basica["21000"][gradoStr])) {
-                  if (secLetra.length !== 1) continue; // Omitir totales
-                  
-                  if (vacPri[gradoStr + secLetra] === 1) { // Checkbox marcado
-                      if (!matricula.basica["21000"][gradoStr].vacantes) {
-                          matricula.basica["21000"][gradoStr].vacantes = {};
-                      }
-                      if (matricula.basica["21000"]["total-vac-21000-mas"] === undefined) {
-                          matricula.basica["21000"]["total-vac-21000-mas"] = 0;
-                          matricula.basica["21000"]["total-vac-21000-fem"] = 0;
-                          matricula.basica["21000"]["total-vac-21000"] = 0;
-                      }
-                      
-                      const tKeyVMas = "total-vac-mat-seccion" + secLetra.toLowerCase() + "-mas";
-                      const tKeyVFem = "total-vac-mat-seccion" + secLetra.toLowerCase() + "-fem";
-                      const tKeyVTot = "total-vac-mat-seccion" + secLetra.toLowerCase();
-                      
-                      if (matricula.basica["21000"][gradoStr][tKeyVMas] === undefined) {
-                          matricula.basica["21000"][gradoStr][tKeyVMas] = 0;
-                          matricula.basica["21000"][gradoStr][tKeyVFem] = 0;
-                          matricula.basica["21000"][gradoStr][tKeyVTot] = 0;
-                      }
-                      
-                      const matSec = matricula.basica["21000"][gradoStr][secLetra];
-                      matricula.basica["21000"][gradoStr].vacantes[secLetra] = { mas: matSec.mas, fem: matSec.fem };
-                      
-                      matricula.basica["21000"][gradoStr][tKeyVMas] += matSec.mas;
-                      matricula.basica["21000"][gradoStr][tKeyVFem] += matSec.fem;
-                      matricula.basica["21000"][gradoStr][tKeyVTot] += (matSec.mas + matSec.fem);
-                      
-                      matricula.basica["21000"]["total-vac-21000-mas"] += matSec.mas;
-                      matricula.basica["21000"]["total-vac-21000-fem"] += matSec.fem;
-                      matricula.basica["21000"]["total-vac-21000"] += (matSec.mas + matSec.fem);
-                  }
-              }
+              // 20000/preescolar
+              document.querySelectorAll('.mat-input.mat-preescolar[data-sexo="F"]').forEach(inp => {
+                  if (!isVisible(inp)) return;
+                  const secLetra = inp.dataset.grupo.split('-')[1];
+                  if (!seccionesPlanes['20000']) seccionesPlanes['20000'] = {};
+                  if (!seccionesPlanes['20000'].preescolar) seccionesPlanes['20000'].preescolar = {};
+                  seccionesPlanes['20000'].preescolar[secLetra] = 1;
+              });
           }
 
-          // 3. MEDIA (Secciones)
-          let codMg = null;
-          let codMt = null;
+          // 21000/primaria: valor = cantidad de grados que tienen esa letra
+          if (document.getElementById('bloque-primaria')?.style.display !== 'none') {
+              document.querySelectorAll('.mat-input.mat-primaria[data-sexo="F"]').forEach(inp => {
+                  if (!isVisible(inp)) return;
+                  const match = inp.dataset.grupo.match(/primaria-(d)([A-Z])/);
+                  if (!match) return;
+                  const secLetra = match[2];
+                  if (!seccionesPlanes['21000']) seccionesPlanes['21000'] = {};
+                  seccionesPlanes['21000'][secLetra] = (seccionesPlanes['21000'][secLetra] || 0) + 1;
+              });
+          }
+
+          // Media: secciones por año de cada plan
           document.querySelectorAll('.sec-anio-input').forEach(inp => {
-              const b1 = inp.closest('div[id^="bloque-"]'); const b2 = inp.closest('#cont-secciones-detalle'); if ((b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none')) {
-                  const plan = inp.dataset.plan;
-                  const anio = inp.dataset.anio;
-                  const val = parseInt(inp.value) || 0;
-                  
+              if (!isVisible(inp)) return;
+              const plan = inp.dataset.plan;
+              const anio = inp.dataset.anio;
+              const val = parseInt(inp.value) || 0;
+              if (val > 0) {
                   if (!seccionesPlanes[plan]) seccionesPlanes[plan] = {};
                   seccionesPlanes[plan][anio] = val;
-
-                  if (plan.startsWith('3')) codMg = plan;
-                  if (plan.startsWith('4')) codMt = plan;
               }
           });
 
-          // Fallbacks en caso de DEA no catalogado
-          if (!codMg) codMg = "31059";
-          if (!codMt) codMt = "41052";
+          // ── MATRÍCULA ─────────────────────────────────────────────────────
+          const matricula = {
+              basica: {},
+              media: {},
+              total: matTotal
+          };
 
-          // 4. MEDIA (Matrícula Global)
-          if (document.getElementById('bloque-mediageneral').style.display !== 'none') {
-                document.querySelectorAll('.dyn-mg-fem').forEach(inp => {
-                    const plan = inp.dataset.plan;
-                    const fVal = parseInt(inp.value || 0);
-                    const mInp = document.querySelector(`.dyn-mg-mas[data-plan="${plan}"]`);
-                    const mVal = mInp ? parseInt(mInp.value || 0) : 0;
-                    
-                    if (matricula.media["media-general"][plan]) {
-                        matricula.media["media-general"][plan].fem += fVal;
-                        matricula.media["media-general"][plan].mas += mVal;
-                        matricula.media["media-general"][plan].total += (fVal + mVal);
-                    }
-                    if (matricula.media["media-general"][`total-med-${plan}-fem`] !== undefined) {
-                        matricula.media["media-general"][`total-med-${plan}-fem`] += fVal;
-                        matricula.media["media-general"][`total-med-${plan}-mas`] += mVal;
-                        matricula.media["media-general"][`total-med-${plan}`] += (fVal + mVal);
-                    } else {
-                        matricula.media["media-general"][`total-med-${plan}-fem`] = fVal;
-                        matricula.media["media-general"][`total-med-${plan}-mas`] = mVal;
-                        matricula.media["media-general"][`total-med-${plan}`] = (fVal + mVal);
-                    }
+          // ── 1. MATERNAL ───────────────────────────────────────────────────
+          if (seccionesPlanes['20000']?.maternal) {
+              const materna = {};
+              let tMatMas = 0, tMatFem = 0;
 
-                    matricula.media["media-general"]["total-med-fem"] += fVal;
-                    matricula.media["media-general"]["total-med-mas"] += mVal;
-                    matricula.media["media-general"]["total-med-gen"] += (fVal + mVal);
-                });
-            }
-  
-            if (document.getElementById('bloque-mediatecnica').style.display !== 'none') {
-                document.querySelectorAll('.dyn-mt-fem').forEach(inp => {
-                    const plan = inp.dataset.plan;
-                    const fVal = parseInt(inp.value || 0);
-                    const mInp = document.querySelector(`.dyn-mt-mas[data-plan="${plan}"]`);
-                    const mVal = mInp ? parseInt(mInp.value || 0) : 0;
-                    
-                    if (matricula.media["media-tecnica"][plan]) {
-                        matricula.media["media-tecnica"][plan].fem += fVal;
-                        matricula.media["media-tecnica"][plan].mas += mVal;
-                        matricula.media["media-tecnica"][plan].total += (fVal + mVal);
-                    }
-                    if (matricula.media["media-tecnica"][`total-med-${plan}-fem`] !== undefined) {
-                        matricula.media["media-tecnica"][`total-med-${plan}-fem`] += fVal;
-                        matricula.media["media-tecnica"][`total-med-${plan}-mas`] += mVal;
-                        matricula.media["media-tecnica"][`total-med-${plan}`] += (fVal + mVal);
-                    } else {
-                        matricula.media["media-tecnica"][`total-med-${plan}-fem`] = fVal;
-                        matricula.media["media-tecnica"][`total-med-${plan}-mas`] = mVal;
-                        matricula.media["media-tecnica"][`total-med-${plan}`] = (fVal + mVal);
-                    }
+              document.querySelectorAll('.mat-input.mat-maternal').forEach(inp => {
+                  if (!isVisible(inp)) return;
+                  const secLetra = inp.dataset.grupo.split('-')[1];
+                  const val = parseInt(inp.value) || 0;
+                  if (!materna[secLetra]) materna[secLetra] = { mas: 0, fem: 0 };
+                  if (inp.dataset.sexo === 'F') {
+                      materna[secLetra].fem += val;
+                      tMatFem += val;
+                  } else {
+                      materna[secLetra].mas += val;
+                      tMatMas += val;
+                  }
+              });
 
-                    matricula.media["media-tecnica"]["total-med-fem"] += fVal;
-                    matricula.media["media-tecnica"]["total-med-mas"] += mVal;
-                    matricula.media["media-tecnica"]["total-med-tec"] += (fVal + mVal);
-                });
-            }
+              // Totales dentro de materna
+              materna['total-mat-mas'] = tMatMas;
+              materna['total-mat-fem'] = tMatFem;
+              materna['total-mat']     = tMatMas + tMatFem;
 
-            matricula.media["total-gen-med"].fem = matricula.media["media-general"]["total-med-fem"] + matricula.media["media-tecnica"]["total-med-fem"];
-          matricula.media["total-gen-med"].mas = matricula.media["media-general"]["total-med-mas"] + matricula.media["media-tecnica"]["total-med-mas"];
-          matricula.media["total-gen-med"].total = matricula.media["total-gen-med"].fem + matricula.media["total-gen-med"].mas;
+              // Vacantes maternal
+              const vacMat = window._VACANTES_TEMP?.maternal || {};
+              const vMatObj = {};
+              let vMatMas = 0, vMatFem = 0;
+              Object.keys(materna).forEach(secLetra => {
+                  if (secLetra.length !== 1) return;
+                  if (vacMat[secLetra] === 1) {
+                      vMatObj[secLetra] = { mas: materna[secLetra].mas, fem: materna[secLetra].fem };
+                      vMatMas += materna[secLetra].mas;
+                      vMatFem += materna[secLetra].fem;
+                  }
+              });
+              if (Object.keys(vMatObj).length > 0) {
+                  materna.vacantes              = vMatObj;
+                  materna['total-vac-mat-mas']  = vMatMas;
+                  materna['total-vac-mat-fem']  = vMatFem;
+                  materna['total-vac-mat']      = vMatMas + vMatFem;
+              }
 
-          try {
-              const docRef = doc(db, "planteles", codigoDEA);
-              
-              delete seccionesPlanes["20000"]?._vistas;
-              delete seccionesPlanes["21000"]?._vistas;
-              // --- ESCOBA DIGITAL (Zero-Waste) ---
-              const sweepZeros = (obj) => {
-                  Object.keys(obj).forEach(key => {
-                      if (obj[key] === 0) {
-                          delete obj[key];
-                      } else if (typeof obj[key] === 'object' && obj[key] !== null) {
-                          sweepZeros(obj[key]);
-                          if (Object.keys(obj[key]).length === 0) {
-                              delete obj[key];
-                          }
+              if (!matricula.basica['20000']) matricula.basica['20000'] = { 'total-20000': 0 };
+              matricula.basica['20000'].materna = materna;
+              matricula.basica['20000']['total-20000'] += (tMatMas + tMatFem);
+          }
+
+          // ── 2. PREESCOLAR ─────────────────────────────────────────────────
+          if (seccionesPlanes['20000']?.preescolar) {
+              const preescolar = {};
+              let tPreMas = 0, tPreFem = 0;
+
+              document.querySelectorAll('.mat-input.mat-preescolar').forEach(inp => {
+                  if (!isVisible(inp)) return;
+                  const secLetra = inp.dataset.grupo.split('-')[1];
+                  const val = parseInt(inp.value) || 0;
+                  if (!preescolar[secLetra]) preescolar[secLetra] = { mas: 0, fem: 0 };
+                  if (inp.dataset.sexo === 'F') {
+                      preescolar[secLetra].fem += val;
+                      tPreFem += val;
+                  } else {
+                      preescolar[secLetra].mas += val;
+                      tPreMas += val;
+                  }
+              });
+
+              preescolar['total-pre-mas'] = tPreMas;
+              preescolar['total-pre-fem'] = tPreFem;
+              preescolar['total-pre']     = tPreMas + tPreFem;
+
+              // Vacantes preescolar
+              const vacPre = window._VACANTES_TEMP?.preescolar || {};
+              const vPreObj = {};
+              let vPreMas = 0, vPreFem = 0;
+              Object.keys(preescolar).forEach(secLetra => {
+                  if (secLetra.length !== 1) return;
+                  if (vacPre[secLetra] === 1) {
+                      vPreObj[secLetra] = { mas: preescolar[secLetra].mas, fem: preescolar[secLetra].fem };
+                      vPreMas += preescolar[secLetra].mas;
+                      vPreFem += preescolar[secLetra].fem;
+                  }
+              });
+              if (Object.keys(vPreObj).length > 0) {
+                  preescolar.vacantes              = vPreObj;
+                  preescolar['total-vac-pre-mas']  = vPreMas;
+                  preescolar['total-vac-pre-fem']  = vPreFem;
+                  preescolar['total-vac-pre']      = vPreMas + vPreFem;
+              }
+
+              if (!matricula.basica['20000']) matricula.basica['20000'] = { 'total-20000': 0 };
+              matricula.basica['20000'].preescolar = preescolar;
+              matricula.basica['20000']['total-20000'] += (tPreMas + tPreFem);
+          }
+
+          // ── 3. PRIMARIA ───────────────────────────────────────────────────
+          if (seccionesPlanes['21000']) {
+              matricula.basica['21000'] = {
+                  'total-21000-mas':     0,
+                  'total-21000-fem':     0,
+                  'total-21000':         0,
+                  'total-vac-21000-mas': 0,
+                  'total-vac-21000-fem': 0,
+                  'total-vac-21000':     0
+              };
+              // Inicializar los 6 grados
+              for (let g = 1; g <= 6; g++) matricula.basica['21000'][String(g)] = {};
+
+              // Leer inputs
+              document.querySelectorAll('.mat-input.mat-primaria').forEach(inp => {
+                  if (!isVisible(inp)) return;
+                  const match = inp.dataset.grupo.match(/primaria-(d)([A-Z])/);
+                  if (!match) return;
+                  const grado = match[1];
+                  const secLetra = match[2];
+                  const val = parseInt(inp.value) || 0;
+                  if (!val) return;
+
+                  const g = matricula.basica['21000'][grado];
+                  if (!g[secLetra]) g[secLetra] = { mas: 0, fem: 0 };
+                  if (inp.dataset.sexo === 'F') {
+                      g[secLetra].fem += val;
+                      matricula.basica['21000']['total-21000-fem'] += val;
+                  } else {
+                      g[secLetra].mas += val;
+                      matricula.basica['21000']['total-21000-mas'] += val;
+                  }
+                  matricula.basica['21000']['total-21000'] += val;
+              });
+
+              // Vacantes primaria (key: gradoStr+secLetra, ej: "1A")
+              const vacPri = window._VACANTES_TEMP?.primaria || {};
+              for (let g = 1; g <= 6; g++) {
+                  const gradoStr = String(g);
+                  const gObj = matricula.basica['21000'][gradoStr];
+                  if (!gObj || Object.keys(gObj).length === 0) continue;
+
+                  const vGrado = {};
+                  let vGMas = 0, vGFem = 0;
+                  Object.keys(gObj).forEach(secLetra => {
+                      if (secLetra.length !== 1) return;
+                      if (vacPri[gradoStr + secLetra] === 1) {
+                          vGrado[secLetra] = { mas: gObj[secLetra].mas, fem: gObj[secLetra].fem };
+                          vGMas += gObj[secLetra].mas;
+                          vGFem += gObj[secLetra].fem;
                       }
                   });
+                  if (Object.keys(vGrado).length > 0) {
+                      gObj.vacantes = vGrado;
+                      matricula.basica['21000']['total-vac-21000-mas'] += vGMas;
+                      matricula.basica['21000']['total-vac-21000-fem'] += vGFem;
+                      matricula.basica['21000']['total-vac-21000']     += (vGMas + vGFem);
+                  }
+              }
+          }
+
+          // ── 4. MEDIA GENERAL ──────────────────────────────────────────────
+          if (document.getElementById('bloque-mediageneral')?.style.display !== 'none') {
+              const mediaGen = { 'total-med-fem': 0, 'total-med-mas': 0, 'total-med-gen': 0 };
+
+              document.querySelectorAll('.dyn-mg-fem').forEach(inp => {
+                  if (!isVisible(inp)) return;
+                  const plan = inp.dataset.plan;
+                  const fVal = parseInt(inp.value) || 0;
+                  const mInp = document.querySelector(`.dyn-mg-mas[data-plan="${plan}"]`);
+                  const mVal = mInp ? (parseInt(mInp.value) || 0) : 0;
+                  if (!fVal && !mVal) return;
+
+                  if (!mediaGen[plan]) mediaGen[plan] = { fem: 0, mas: 0, total: 0 };
+                  mediaGen[plan].fem   += fVal;
+                  mediaGen[plan].mas   += mVal;
+                  mediaGen[plan].total += (fVal + mVal);
+
+                  mediaGen[`total-med-${plan}-fem`] = (mediaGen[`total-med-${plan}-fem`] || 0) + fVal;
+                  mediaGen[`total-med-${plan}-mas`] = (mediaGen[`total-med-${plan}-mas`] || 0) + mVal;
+                  mediaGen[`total-med-${plan}`]     = (mediaGen[`total-med-${plan}`]     || 0) + (fVal + mVal);
+
+                  mediaGen['total-med-fem'] += fVal;
+                  mediaGen['total-med-mas'] += mVal;
+                  mediaGen['total-med-gen'] += (fVal + mVal);
+              });
+
+              matricula.media['media-general'] = mediaGen;
+          }
+
+          // ── 5. MEDIA TÉCNICA ──────────────────────────────────────────────
+          if (document.getElementById('bloque-mediatecnica')?.style.display !== 'none') {
+              const mediaTec = { 'total-med-fem': 0, 'total-med-mas': 0, 'total-med-tec': 0 };
+
+              document.querySelectorAll('.dyn-mt-fem').forEach(inp => {
+                  if (!isVisible(inp)) return;
+                  const plan = inp.dataset.plan;
+                  const fVal = parseInt(inp.value) || 0;
+                  const mInp = document.querySelector(`.dyn-mt-mas[data-plan="${plan}"]`);
+                  const mVal = mInp ? (parseInt(mInp.value) || 0) : 0;
+                  if (!fVal && !mVal) return;
+
+                  if (!mediaTec[plan]) mediaTec[plan] = { fem: 0, mas: 0, total: 0 };
+                  mediaTec[plan].fem   += fVal;
+                  mediaTec[plan].mas   += mVal;
+                  mediaTec[plan].total += (fVal + mVal);
+
+                  mediaTec[`total-med-${plan}-fem`] = (mediaTec[`total-med-${plan}-fem`] || 0) + fVal;
+                  mediaTec[`total-med-${plan}-mas`] = (mediaTec[`total-med-${plan}-mas`] || 0) + mVal;
+                  mediaTec[`total-med-${plan}`]     = (mediaTec[`total-med-${plan}`]     || 0) + (fVal + mVal);
+
+                  mediaTec['total-med-fem'] += fVal;
+                  mediaTec['total-med-mas'] += mVal;
+                  mediaTec['total-med-tec'] += (fVal + mVal);
+              });
+
+              matricula.media['media-tecnica'] = mediaTec;
+          }
+
+          // ── 6. TOTAL GENERAL MEDIA ────────────────────────────────────────
+          if (matricula.media['media-general'] || matricula.media['media-tecnica']) {
+              const mgF = matricula.media['media-general']?.['total-med-fem'] || 0;
+              const mgM = matricula.media['media-general']?.['total-med-mas'] || 0;
+              const mtF = matricula.media['media-tecnica']?.['total-med-fem'] || 0;
+              const mtM = matricula.media['media-tecnica']?.['total-med-mas'] || 0;
+              matricula.media['total-gen-med'] = {
+                  fem:   mgF + mtF,
+                  mas:   mgM + mtM,
+                  total: mgF + mtF + mgM + mtM
               };
+          }
+
+          // ── 7. ESCOBA DIGITAL + GUARDAR ───────────────────────────────────
+          try {
               sweepZeros(matricula);
               sweepZeros(seccionesPlanes);
-              // -----------------------------------
-              
+
+              const docRef = doc(db, "planteles", codigoDEA);
               const payload = {
-                  secciones: deleteField(),
+                  secciones:  deleteField(),
                   "secciones-planes": seccionesPlanes,
-                  matricula: matricula,
-                  vacantes: deleteField(),
+                  matricula:  matricula,
+                  vacantes:   deleteField(),
                   datos_completados: true,
                   ultima_actualizacion: new Date().toISOString()
               };
-              
-              // Reemplazo Total Exclusivo
-              await safeSetDoc(docRef, payload, { mergeFields: ['secciones', 'secciones-planes', 'matricula', 'vacantes', 'datos_completados', 'ultima_actualizacion'] });
-              
-              // showView('dashboard-view'); // Removido por el motor dinámico
+
+              await safeSetDoc(docRef, payload, {
+                  mergeFields: ['secciones', 'secciones-planes', 'matricula', 'vacantes', 'datos_completados', 'ultima_actualizacion']
+              });
               showToast("¡Datos del plantel actualizados con éxito!", "success");
-              
+
           } catch (error) {
               console.error("Error guardando el plantel:", error);
               showToast("Ocurrió un error al guardar los datos.", "error");
-                  } finally {
-            if (btn) {
-                btn.textContent = "Guardar y Desbloquear Sistema";
-                btn.disabled = false;
-            }
-        }
+          } finally {
+              if (btn) {
+                  btn.textContent = "Guardar Datos y Continuar";
+                  btn.disabled = false;
+              }
+          }
       };
     }
 }

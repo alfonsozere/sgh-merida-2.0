@@ -173,3 +173,14 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 * **Limpieza Absoluta (Zero-Waste):** Se corrigió la función sweepZeros en main.js removiendo listas blancas ficticias. Ahora garantiza una limpieza profunda y absoluta de llaves en cero y objetos vacíos antes de enviar a Firestore.
 * **Archivos Modificados:** index.html, src/main.js, package.json.
 
+
+### v2.4.0 - 2026-08-17
+* **Refactorizacion Motor de Guardado (onsubmit):** Reescritura completa y limpia del handler orm.onsubmit en main.js (bloque de 361 lineas). Se elimino codigo basura acumulado de versiones anteriores y se implemento el esquema JSON oficial de inyeccion de datos.
+  - **Secciones-Planes dinamicas:** 20000 ahora anida maternal y preescolar por separado. 21000 almacena la cantidad de grados que tienen cada letra de seccion (U, A, B, C...).
+  - **Matricula por seccion:** Cada registro {mas, fem} se inyecta bajo su letra de seccion correcta dentro del grado/nivel correspondiente.
+  - **Vacantes integradas:** Se copiancorrecta y automaticamente los valores {mas, fem} de cada seccion marcada con check hacia el sub-nodo acantes del grado o nivel.
+  - **Helper isVisible():** Funcion centralizada que verifica visibilidad DOM en bloques [id^="bloque-"], eliminando logica duplicada.
+  - **Helper sweepZeros (Escoba Digital):** Barre recursivamente todo objeto antes de enviarlo a Firestore, eliminando claves con valor 0 y objetos vacios.
+  - **Totales automaticos:** Se calculan y almacenan totales por nivel (maternal, preescolar, grado, plan de media) y gran total.
+  - **Codigos de plan dinamicos:** Se eliminaron codigos de plan hardcodeados; ahora se leen dinamicamente desde los atributos data-plan del DOM.
+* **Archivos Modificados:** src/main.js, package.json.
