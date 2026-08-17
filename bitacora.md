@@ -204,3 +204,9 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
   - **Diagnostico:** Una expresion regular (Regex) utilizada para decodificar las cajas de texto de Primaria sufrio una corrupcion de caracteres (\(d)\ en lugar de \(\d)\), provocando que el algoritmo no reconociera el formato numérico del grado y, por lo tanto, ignorara por completo los datos cargados en pantalla para este nivel.
   - **Resolucion:** Se restauro la expresion regular en los dos modulos extractores de \main.js\. Al presionar Guardar, los datos de los grados de 1ro a 6to ahora se procesan y serializan correctamente dentro del JSON bajo la llave \matricula.basica['21000']\.
 * **Archivos Modificados:** \src/main.js\, \package.json\.
+
+### v2.4.5 - 2026-08-17
+* **Correccion (Motor de Guardado):** Se resolvio una excepcion de Javascript (\TypeError: Cannot read properties of undefined\) que provocaba que el proceso de guardado quedara bloqueado indefinidamente.
+  - **Causa:** El selector general (\.mat-input.mat-primaria\) estaba capturando por accidente unas cajas de texto estáticas (usadas para resúmenes de interfaz) que no poseían el atributo dinámico \data-grupo\. Al intentar procesar ese atributo inexistente, el algoritmo colapsaba.
+  - **Solución:** Se implementó una guardia de seguridad estructural (\if (!inp.dataset.grupo) return;\) que protege al motor de guardado frente a elementos de la interfaz estáticos, aislando exclusivamente los inputs dinámicos de los planes de estudio.
+* **Archivos Modificados:** \src/main.js\, \package.json\.

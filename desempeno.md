@@ -133,3 +133,20 @@ El motor de guardado ahora produce el JSON oficial del sistema SGH 2.0 de forma 
 
 **3. Decisiones Operativas y Beneficio:**
 - Se garantizó la integridad algorítmica del bloque de Básica, permitiendo que la data de Primaria vuelva a fluir correctamente hacia el JSON de Firestore. Al usar Regex precisos (\\d\), blindamos la extracción contra posibles nomenclaturas incorrectas en el HTML.
+
+### Hito: Neutralización de Bucle Infinito de Guardado (v2.4.5)
+**Fecha:** 2026-08-17
+**Módulo:** Motor de Guardado (onsubmit) / Nivel Primaria
+
+**1. Diagnóstico del Problema:**
+- El usuario reportó que la pantalla se quedaba "Guardando... infinito" con un error interno en la consola de \TypeError: Cannot read properties of undefined (reading 'match')\.
+- Esto indicaba una falla catastrófica en el lazo principal de recolección de variables, donde el motor intentaba ejecutar una búsqueda sobre una propiedad que literalmente no existía en el HTML.
+
+**2. Método Técnico Aplicado:**
+- Se rastreó el selector \document.querySelectorAll('.mat-input.mat-primaria')\.
+- Se descubrió que dicho selector no solo estaba atrapando las cajas dinámicas de grados y secciones, sino también unas cajas estáticas del resumen visual de interfaz (id \priFem\ e id \priMas\).
+- Al no tener el atributo de rastreo obligatorio (\data-grupo\), el motor colapsaba arrojando una excepción "No controlado", lo que congelaba la aplicación y dejaba la pantalla de carga permanente.
+- Se inyectó una guardia de seguridad de memoria lógica en JS (\if (!inp.dataset.grupo) return;\), actuando como un escudo protector que obliga al lazo a saltarse silenciosamente cualquier elemento de diseño estático.
+
+**3. Decisiones Operativas y Beneficio:**
+- Se priorizó una solución "No destructiva" (en lugar de cambiar las clases del HTML, se dotó al motor JavaScript de mayor inteligencia defensiva). Esto evita tener que rediseñar el CSS y garantiza que el botón "Guardar" jamás vuelva a congelarse por culpa de un input decorativo mal filtrado.
