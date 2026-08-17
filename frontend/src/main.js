@@ -880,8 +880,8 @@ async function checkPlantelData(codigoDEA) {
               if (snap.exists()) {
                   const liveData = snap.data();
                   const inpMatTotal = document.getElementById('inp-matricula-total');
-                  if (inpMatTotal && liveData.matricula && liveData.matricula.total !== undefined) {
-                      inpMatTotal.value = liveData.matricula.total;
+                  if (inpMatTotal && liveData.matricula && liveData.matricula["total-gen"] !== undefined) {
+                      inpMatTotal.value = liveData.matricula["total-gen"];
                   }
               }
           });
@@ -922,7 +922,7 @@ async function mostrarCandado(codigoDEA, dataParcial) {
         
         document.getElementById('inp-ubicacion').value = dp['ubicacion-geografica'] || '';
         document.getElementById('inp-turnos-plantel').value = dp['turno-plantel'] || '';
-        document.getElementById('inp-matricula-total').value = dp.matricula?.total || '';
+        document.getElementById('inp-matricula-total').value = dp.matricula?.['total-gen'] || '';
         
         // Mantener el oculto para no romper compatibilidad en otras funciones
         const hiddenInp = document.getElementById('inp-nombre-plantel');
@@ -1104,11 +1104,19 @@ async function mostrarCandado(codigoDEA, dataParcial) {
           /** Escoba Digital: elimina claves con valor 0 u objetos vacíos */
           const sweepZeros = (obj) => {
               Object.keys(obj).forEach(key => {
+                  // Lista blanca de propiedades globales que NO deben ser eliminadas aunque estén en 0 o vacías
+                  const whitelist = ['modalidades', 'adulto', 'especial', 'total-gen-fem', 'total-gen-mas', 'total-gen', 'total-vac-gen-fem', 'total-vac-gen-mas', 'total-vac-gen'];
+                  if (whitelist.includes(key)) return;
+
                   if (obj[key] === 0) {
                       delete obj[key];
                   } else if (typeof obj[key] === 'object' && obj[key] !== null) {
                       sweepZeros(obj[key]);
-                      if (Object.keys(obj[key]).length === 0) delete obj[key];
+                      // No eliminar el objeto si es una de las llaves principales obligatorias
+                      const reqKeys = ['basica', 'media'];
+                      if (Object.keys(obj[key]).length === 0 && !reqKeys.includes(key)) {
+                          delete obj[key];
+                      }
                   }
               });
           };
@@ -1164,7 +1172,16 @@ async function mostrarCandado(codigoDEA, dataParcial) {
           const matricula = {
               basica: {},
               media: {},
-              total: matTotal
+              modalidades: {
+                  adulto: {},
+                  especial: {}
+              },
+              'total-gen-fem': 0,
+              'total-gen-mas': 0,
+              'total-gen': 0,
+              'total-vac-gen-fem': 0,
+              'total-vac-gen-mas': 0,
+              'total-vac-gen': 0
           };
 
           // ── 1. MATERNAL ───────────────────────────────────────────────────
@@ -1393,6 +1410,32 @@ async function mostrarCandado(codigoDEA, dataParcial) {
                   total: mgF + mtF + mgM + mtM
               };
           }
+
+          // ── SUMA GLOBAL DE MATRÍCULA (Básica + Media) ─────────────────────
+          let sumFem = 0, sumMas = 0, sumVacFem = 0, sumVacMas = 0;
+          if (matricula.basica['20000']) {
+              sumFem += (matricula.basica['20000'].maternal?.['total-mat-fem'] || 0) + (matricula.basica['20000'].preescolar?.['total-pre-fem'] || 0);
+              sumMas += (matricula.basica['20000'].maternal?.['total-mat-mas'] || 0) + (matricula.basica['20000'].preescolar?.['total-pre-mas'] || 0);
+              sumVacFem += (matricula.basica['20000'].maternal?.['total-vac-mat-fem'] || 0) + (matricula.basica['20000'].preescolar?.['total-vac-pre-fem'] || 0);
+              sumVacMas += (matricula.basica['20000'].maternal?.['total-vac-mat-mas'] || 0) + (matricula.basica['20000'].preescolar?.['total-vac-pre-mas'] || 0);
+          }
+          if (matricula.basica['21000']) {
+              sumFem += matricula.basica['21000']['total-21000-fem'] || 0;
+              sumMas += matricula.basica['21000']['total-21000-mas'] || 0;
+              sumVacFem += matricula.basica['21000']['total-vac-21000-fem'] || 0;
+              sumVacMas += matricula.basica['21000']['total-vac-21000-mas'] || 0;
+          }
+          if (matricula.media['total-gen-med']) {
+              sumFem += matricula.media['total-gen-med'].fem || 0;
+              sumMas += matricula.media['total-gen-med'].mas || 0;
+          }
+          
+          matricula['total-gen-fem'] = sumFem;
+          matricula['total-gen-mas'] = sumMas;
+          matricula['total-gen'] = sumFem + sumMas;
+          matricula['total-vac-gen-fem'] = sumVacFem;
+          matricula['total-vac-gen-mas'] = sumVacMas;
+          matricula['total-vac-gen'] = sumVacFem + sumVacMas;
 
           // ── 7. ESCOBA DIGITAL + GUARDAR ───────────────────────────────────
           try {
