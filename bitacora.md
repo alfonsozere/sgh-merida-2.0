@@ -184,3 +184,11 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
   - **Totales automaticos:** Se calculan y almacenan totales por nivel (maternal, preescolar, grado, plan de media) y gran total.
   - **Codigos de plan dinamicos:** Se eliminaron codigos de plan hardcodeados; ahora se leen dinamicamente desde los atributos data-plan del DOM.
 * **Archivos Modificados:** src/main.js, package.json.
+
+### v2.4.2 - 2026-08-17
+* **Arquitectura de Datos (Matricula):** Refactorizacion del esquema JSON para la entidad matricula.
+  - Se introdujo un nodo global raiz para calculos totales independientes de la rama basica o media (\	otal-gen-fem\, \	otal-gen-mas\, \	otal-gen\, \	otal-vac-gen-fem\, \	otal-vac-gen-mas\, \	otal-vac-gen\).
+  - Se definio por adelantado el objeto vacio \modalidades: { adulto: {}, especial: {} }\ como base para futuras incorporaciones en el sistema.
+  - **Escoba Digital (Whitelisting):** Se reprogramo el metodo de limpieza de ceros (\sweepZeros\) para incluir una lista blanca obligatoria que proteja las ramas principales (\asica\, \media\, \modalidades\) y todos los campos globales, asegurando que su estructura base persista en Firestore aunque sus valores sean momentaneamente cero.
+  - **Suscripcion UI:** El campo visual "Matricula Total" (id: \inp-matricula-total\) ahora consume directamente la informacion confirmada de la nube desde \matricula['total-gen']\.
+* **Archivos Modificados:** \src/main.js\, \package.json\.
