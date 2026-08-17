@@ -117,3 +117,19 @@ El motor de guardado ahora produce el JSON oficial del sistema SGH 2.0 de forma 
 
 **3. Decisiones Operativas y Beneficio:**
 - La interfaz ahora opera bajo el paradigma de "Fuente Única de Verdad" (Single Source of Truth), donde lo que el usuario ve en la pantalla es un espejo milimétrico de lo que se almacenó en la base de datos, garantizando confianza del 100% en los registros. El esquema de datos quedó listo para la expansión a nuevas modalidades sin requerir migraciones complejas de base de datos en el futuro.
+
+### Hito: Restauracion de Serializacion de Primaria (v2.4.4)
+**Fecha:** 2026-08-17
+**Módulo:** Motor de Guardado (onsubmit) / Extractor de Nivel Primaria
+
+**1. Diagnóstico del Problema:**
+- El usuario reportó que el nivel de Primaria (código interno 21000) no se estaba almacenando en Firestore. El sistema estaba procesando exitosamente Maternal/Preescolar (20000) y Media, pero omitía por completo a Primaria, dejando la rama vacía en la base de datos.
+
+**2. Método Técnico Aplicado:**
+- Se realizó una auditoría forense sobre el código de extracción en \main.js\.
+- Se detectó que la expresión regular (Regex) utilizada para decodificar los identificadores HTML de los campos de Primaria (\data-grupo="primaria-1A"\) estaba mal formada en el código. Exigía literalmente un carácter \d\ (\/primaria-(d)([A-Z])/\) en lugar de esperar un dígito numérico (\/primaria-(\d)([A-Z])/\).
+- Al fallar la coincidencia (Match nulo), el algoritmo ejecutaba un \eturn\ anticipado, saltándose todo el procesamiento de cajas de texto correspondientes a Primaria.
+- Se reparó la expresión regular en ambas líneas donde se utiliza (creación del esqueleto y recolección de valores) utilizando un script de parcheo exacto en Node.js.
+
+**3. Decisiones Operativas y Beneficio:**
+- Se garantizó la integridad algorítmica del bloque de Básica, permitiendo que la data de Primaria vuelva a fluir correctamente hacia el JSON de Firestore. Al usar Regex precisos (\\d\), blindamos la extracción contra posibles nomenclaturas incorrectas en el HTML.

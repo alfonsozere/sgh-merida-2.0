@@ -198,3 +198,9 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
   - **Reinicio de Suscripciones:** Se modifico la funcion \checkPlantelData\ para desconectar explicitamente el \onSnapshot\ anterior (\window._unsubPlantel()\) antes de escuchar un nuevo documento. Esto garantiza que la reactividad siga a la escuela actual si el usuario navega entre diferentes codigos DEA.
   - **Eliminacion de Colision Optimista:** Se elimino la instruccion estatica que intentaba actualizar el input con un calculo local antiguo inmediatamente despues del guardado, lo que generaba un conflicto ("carrera") que ocultaba la inyeccion real del \onSnapshot\.
 * **Archivos Modificados:** \src/main.js\, \package.json\.
+
+### v2.4.4 - 2026-08-17
+* **Correccion (Extraccion de Datos):** Se solvento un fallo critico que impedia el guardado de la informacion correspondiente al nivel de **Primaria** en el sistema.
+  - **Diagnostico:** Una expresion regular (Regex) utilizada para decodificar las cajas de texto de Primaria sufrio una corrupcion de caracteres (\(d)\ en lugar de \(\d)\), provocando que el algoritmo no reconociera el formato numérico del grado y, por lo tanto, ignorara por completo los datos cargados en pantalla para este nivel.
+  - **Resolucion:** Se restauro la expresion regular en los dos modulos extractores de \main.js\. Al presionar Guardar, los datos de los grados de 1ro a 6to ahora se procesan y serializan correctamente dentro del JSON bajo la llave \matricula.basica['21000']\.
+* **Archivos Modificados:** \src/main.js\, \package.json\.
