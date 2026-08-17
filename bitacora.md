@@ -1,4 +1,9 @@
-﻿# 📓 Bitácora de Proyecto - Sistema Web (AntiGravity)
+﻿## [v2.3.5] - 2026-08-16
+### Fixed
+- **UI Render Regression (Planes 20000 & 21000)**: Restored the missing \cont-dinamico-maternal\, \cont-dinamico-preescolar\, and \cont-dinamico-primaria\ DOM containers in \index.html\.
+- Re-attached the missing \data-plan\, \data-tipo\, and \sec-master-input\ classes to the static \secMat\, \secPre\, and \secPri\ inputs so that the JavaScript listener correctly triggers the \_renderCajasInicial\ and \_renderCajasPrimaria\ functions when section counts are entered.
+
+# 📓 Bitácora de Proyecto - Sistema Web (AntiGravity)
 
 **Nombre del Proyecto:** Sistema de Gestión Humana (SGH)  
 **Administrador Responsable:** Luis Alfonso Pérez  
@@ -167,3 +172,4 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 * **Modal de Confirmación Incompleta:** Se construyó e inyectó físicamente la interfaz Glassmorphism del modal (modal-confirm-incompleta) en index.html que había sido omitida, permitiendo la declaración de matrículas en cero.
 * **Limpieza Absoluta (Zero-Waste):** Se corrigió la función sweepZeros en main.js removiendo listas blancas ficticias. Ahora garantiza una limpieza profunda y absoluta de llaves en cero y objetos vacíos antes de enviar a Firestore.
 * **Archivos Modificados:** index.html, src/main.js, package.json.
+

@@ -1,4 +1,4 @@
-{
+﻿{
     "name":  "frontend",
     "version":  "2.3.4",
     "private":  true,
@@ -17,3 +17,4 @@
                          "firebase":  "^12.17.1"
                      }
 }
+
