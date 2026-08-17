@@ -1039,7 +1039,7 @@ async function mostrarCandado(codigoDEA, dataParcial) {
     } else if (dataParcial && dataParcial.matricula_detalle) {
         // Fallback legado si el plantel aún no tiene el JSON dinámico v2
         const md = dataParcial.matricula_detalle;
-        ['matFem', 'matMas', 'secMat', 'preFem', 'preMas', 'secPre',
+        ['secMat', 'secPre',
          'priFem', 'priMas', 'secPri', 'mgFem', 'mgMas', 'secMg', 'mtFem', 'mtMas', 'secMt'].forEach(id => {
             const el = document.getElementById(id);
             if (el) el.value = md[id] || 0;

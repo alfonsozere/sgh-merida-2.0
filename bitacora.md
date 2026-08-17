@@ -210,3 +210,9 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
   - **Causa:** El selector general (\.mat-input.mat-primaria\) estaba capturando por accidente unas cajas de texto estáticas (usadas para resúmenes de interfaz) que no poseían el atributo dinámico \data-grupo\. Al intentar procesar ese atributo inexistente, el algoritmo colapsaba.
   - **Solución:** Se implementó una guardia de seguridad estructural (\if (!inp.dataset.grupo) return;\) que protege al motor de guardado frente a elementos de la interfaz estáticos, aislando exclusivamente los inputs dinámicos de los planes de estudio.
 * **Archivos Modificados:** \src/main.js\, \package.json\.
+
+### v2.4.6 - 2026-08-17
+* **Mejora Visual (Limpieza de Interfaz):** Se eliminaron las cajas de texto estáticas de resumen para los géneros Femenino y Masculino correspondientes a Maternal (\matFem\, \matMas\) y Preescolar (\preFem\, \preMas\).
+  - **Motivo:** Ocupaban espacio visual innecesario en pantalla, dado que la captura real de género se procesa por sección y grado dentro de los bloques dinámicos.
+  - **Alcance:** Se retiró el código HTML, se ajustó el sistema de rejilla (CSS Grid) a una sola columna para centrar el cuadro restante (\Sec\) y se purgó la lógica de inicialización residual en JavaScript para prevenir errores de referencia.
+* **Archivos Modificados:** \index.html\, \src/main.js\, \package.json\.
