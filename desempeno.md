@@ -1,3 +1,13 @@
+
+## Versión 2.5.0 (2026-08-17)
+
+**Procedimiento Técnico (Paso a Paso):**
+1. **Análisis Estructural HTML:** Se diagnosticó la posición de la Matrícula para encontrar el punto de anclaje perfecto (`hook`).
+2. **Desacoplamiento Modal:** Mediante un parche asíncrono (`patch_html_inline.js`) se extrajo el HTML del antiguo modal `wizard-personal-modal`, se despojó de su barra de progreso y botones de flujo, y se reconstruyó como `seccion-registro-personal` con la clase CSS `glass-panel` inmediatamente debajo de la etiqueta de cierre del formulario de matrícula.
+3. **Reescritura de Lógica JavaScript:** Se reescribió `personalWizard.js` desde cero. Se erradicó el estado de paginación (`currentStep`). La función `abrirWizardPersonal()` mutó hacia `mostrarFormularioPersonal()`, cuyo único propósito es cambiar el estilo `display: none` a `block` y ejecutar `scrollIntoView()` para llevar al Director al inicio del formulario con un desplazamiento suave.
+4. **Armonización de Estilos CSS:** A petición del usuario y tras análisis del CSS Grid base, se aumentó el límite de la caja maestra del formulario del Plantel y de Personal de `900px` a `1200px` para aprovechar la capacidad responsiva de pantallas modernas de alta resolución.
+5. **Erradicación de Alertas Nativas:** Durante la reescritura, se aseguraron de reemplazar todas las llamadas bloqueantes (`alert())` por la API global del proyecto (`showToast` y `showAlert`), garantizando la preservación de la Jerarquía Z-Index y fluidez de la interfaz.
+
 ﻿# Desempeno Tecnico - Proyecto SGH 2.0
 
 ---

@@ -42,11 +42,13 @@
     "turno-plantel": "",
     "secciones-planes": {
         "20000": {
-            "U": 0,
-            "A": 0,
-            "B": 0,
-            "C": 0,
-            "vacantes": {
+            "maternal":{
+                "U": 0,
+                "A": 0,
+                "B": 0,
+                "C": 0
+            },
+            "preescolar":{
                 "U": 0,
                 "A": 0,
                 "B": 0,
@@ -57,13 +59,7 @@
             "U": 0,
             "A": 0,
             "B": 0,
-            "C": 0,
-            "vacantes": {
-                "U": 0,
-                "A": 0,
-                "B": 0,
-                "C": 0
-            }
+            "C": 0
         },
         "31059": {
             "1": 0,
@@ -277,7 +273,13 @@
                 "mas": 0,
                 "total": 0
             }
-        }
+        },
+        "total-gen-fem": 0,
+        "total-gen-mas": 0,
+        "total-gen": 0,
+        "total-vac-gen-fem": 0,
+        "total-vac-gen-mas": 0,
+        "total-vac-gen": 0
     }
 },
 {

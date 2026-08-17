@@ -1,3 +1,4 @@
+import './personalWizard.js';
 
 window.showLoading = (msg) => {
     const modal = document.getElementById('global-loading-modal');
@@ -1464,6 +1465,11 @@ async function mostrarCandado(codigoDEA, dataParcial) {
 
 
               showToast("¡Datos del plantel actualizados con éxito!", "success");
+
+              // Desplegar Wizard Personal automáticamente si la matrícula se guardó
+              if (typeof window.mostrarFormularioPersonal === "function") {
+                  window.mostrarFormularioPersonal();
+              }
 
           } catch (error) {
               console.error("Error guardando el plantel:", error);
