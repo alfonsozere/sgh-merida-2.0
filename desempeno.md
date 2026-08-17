@@ -150,3 +150,12 @@ El motor de guardado ahora produce el JSON oficial del sistema SGH 2.0 de forma 
 
 **3. Decisiones Operativas y Beneficio:**
 - Se priorizó una solución "No destructiva" (en lugar de cambiar las clases del HTML, se dotó al motor JavaScript de mayor inteligencia defensiva). Esto evita tener que rediseñar el CSS y garantiza que el botón "Guardar" jamás vuelva a congelarse por culpa de un input decorativo mal filtrado.
+
+### Refactorización Visual y Poda de Interfaz (v2.4.6 y v2.4.7) - 2026-08-17
+* **Objetivo:** Liberar espacio visual en pantalla eliminando las cajas de resumen de género estáticas (matFem, matMas, preFem, preMas, priFem, priMas) de los bloques de Inicial y Primaria.
+* **Diagnóstico Inicial:** El diseño original contemplaba cajas de totales de género al lado de las cajas de Secciones Totales. Al evolucionar el sistema hacia el registro dinámico celda por celda (por grado, sección y género), estos totalizadores estáticos se volvieron redundantes a nivel de interfaz de captura y generaban ruido visual. Adicionalmente, el código JS (main.js) esperaba estos IDs durante la inicialización (mostrarCandado), lo que podría lanzar errores silenciosos si los elementos dejaban de existir.
+* **Decisiones Operativas y Ejecución (Zero Assumptions):** 
+  1. **Poda HTML Quirúrgica:** Se removieron los nodos <input> y sus <label> correspondientes, garantizando que no se alteraran contenedores adyacentes.
+  2. **Refactorización CSS Grid:** Al eliminar columnas en el grid de la interfaz (pasando de 3 columnas a 1), se modificó dinámicamente el grid-template-columns: 1fr; del contenedor padre. Esto permitió que la caja restante (Secciones Totales) ocupara todo el ancho disponible, manteniendo el equilibrio visual de las tarjetas.
+  3. **Inmunización Lógica (JS):** Se buscaron los arreglos de inicialización en main.js (línea ~1042) y se sustrajeron los IDs eliminados. Esto previene un TypeError al hacer document.getElementById(), respetando el blindaje del motor de renderizado legado y asegurando la compatibilidad hacia atrás en los planteles.
+* **Resultado:** Interfaz mucho más limpia y un motor de inicialización aligerado, consolidado en las versiones **v2.4.6** (Inicial) y **v2.4.7** (Primaria). Todo sincronizado con el repositorio.
