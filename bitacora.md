@@ -216,3 +216,9 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
   - **Motivo:** Ocupaban espacio visual innecesario en pantalla, dado que la captura real de género se procesa por sección y grado dentro de los bloques dinámicos.
   - **Alcance:** Se retiró el código HTML, se ajustó el sistema de rejilla (CSS Grid) a una sola columna para centrar el cuadro restante (\Sec\) y se purgó la lógica de inicialización residual en JavaScript para prevenir errores de referencia.
 * **Archivos Modificados:** \index.html\, \src/main.js\, \package.json\.
+
+### v2.4.7 - 2026-08-17
+* **Mejora Visual (Limpieza de Interfaz):** Se eliminaron las cajas de texto estáticas de resumen para los géneros Femenino y Masculino correspondientes a Primaria (\priFem\, \priMas\).
+  - **Motivo:** Solicitud administrativa para replicar la limpieza visual realizada previamente en Maternal y Preescolar, liberando espacio en pantalla.
+  - **Alcance:** Se retiró el código HTML, se ajustó la rejilla (CSS Grid) a una sola columna para la caja de \Secciones Totales\ y se purgó la lógica de inicialización en el motor JavaScript.
+* **Archivos Modificados:** \index.html\, \src/main.js\, \package.json\.
