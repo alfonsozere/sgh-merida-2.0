@@ -1151,7 +1151,7 @@ async function mostrarCandado(codigoDEA, dataParcial) {
           if (document.getElementById('bloque-primaria')?.style.display !== 'none') {
               document.querySelectorAll('.mat-input.mat-primaria[data-sexo="F"]').forEach(inp => {
                   if (!isVisible(inp)) return;
-                  const match = inp.dataset.grupo.match(/primaria-(d)([A-Z])/);
+                  const match = inp.dataset.grupo.match(/primaria-(\d)([A-Z])/);
                   if (!match) return;
                   const secLetra = match[2];
                   if (!seccionesPlanes['21000']) seccionesPlanes['21000'] = {};
@@ -1298,7 +1298,7 @@ async function mostrarCandado(codigoDEA, dataParcial) {
               // Leer inputs
               document.querySelectorAll('.mat-input.mat-primaria').forEach(inp => {
                   if (!isVisible(inp)) return;
-                  const match = inp.dataset.grupo.match(/primaria-(d)([A-Z])/);
+                  const match = inp.dataset.grupo.match(/primaria-(\d)([A-Z])/);
                   if (!match) return;
                   const grado = match[1];
                   const secLetra = match[2];
