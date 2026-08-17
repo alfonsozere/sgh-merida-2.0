@@ -1,3 +1,17 @@
+
+## [v2.5.2] - 2026-08-17
+### Fixed
+- **Flujo de Registro (Matrícula)**: Se desvinculó la invocación automática del formulario de registro de personal que se disparaba al finalizar la carga de matrícula. El botón "Guardar Datos" ahora cumple estrictamente con persistir la información sin forzar transiciones de interfaz no solicitadas.
+- **UI Bug (HTML)**: Se eliminó un carácter literal `\n` visible erróneamente en la interfaz de la Matrícula, producto de un residuo en la inyección asíncrona del formulario en línea introducido en la v2.5.0.
+
+## [v2.5.1] - 2026-08-17
+### Refactor & Cleanup
+- **Auditoría de Código Muerto**: Se identificó y purgó código basura que estaba inflando el bundle de producción sin cumplir funciones operativas.
+- **Módulos Huérfanos Eliminados**: Se descartaron `adminManager.js` (21.7 KB) y `approvalManager.js` (4.9 KB) que no estaban referenciados en ningún flujo de la aplicación.
+- **Limpieza de Plantillas Vite**: Se eliminaron los archivos residuales `counter.js` y `javascript.svg` de la plantilla inicial de Vite.
+- **Seguridad y Producción**: Se eliminó del empaquetado `seed.js`, el cual contenía credenciales de prueba y representaba un riesgo de auditoría al estar activo en código de producción. Adicionalmente, se retiraron credenciales reales de Google Cloud (`serviceAccountKey.json`) del historial de git por medidas de seguridad.
+- **Optimización de Importaciones**: Se purgaron importaciones fantasma no utilizadas en `auth.js` y comentarios obsoletos en `main.js`.
+- **Beneficio Administrativo**: Reducción neta del tamaño del código base y mitigación del límite de tamaño de bundle de Vite, resultando en un entorno de trabajo unificado más limpio y seguro para los directores.
 ﻿## [v2.3.5] - 2026-08-16
 ### Fixed
 - **UI Render Regression (Planes 20000 & 21000)**: Restored the missing \cont-dinamico-maternal\, \cont-dinamico-preescolar\, and \cont-dinamico-primaria\ DOM containers in \index.html\.

@@ -1,4 +1,19 @@
 
+## Versión 2.5.2 (2026-08-17)
+
+**Procedimiento Técnico (Paso a Paso):**
+1. **Separación Lógica de Flujos:** En el script `main.js`, se neutralizó la llamada a `window.mostrarFormularioPersonal()` al finalizar el ciclo de vida de `safeSetDoc()`. Esto permite que la persistencia en Firebase concluya exitosamente mostrando la notificación nativa sin alterar la vista actual del usuario.
+2. **Corrección de Renderizado (HTML DOM):** Se identificó y removió un salto de línea literal (`\n`) incrustado accidentalmente tras el cierre del `<form>` de matrícula en el archivo `index.html`, restableciendo la limpieza visual del contenedor padre.
+
+## Versión 2.5.1 (2026-08-17)
+
+**Procedimiento Técnico (Paso a Paso):**
+1. **Auditoría Estática:** Se analizó el árbol de dependencias desde `main.js` hacia el resto de componentes para aislar aquellos módulos y archivos en `frontend/src/` que no tenían vínculos vivos en producción.
+2. **Eliminación Física de Código Muerto:** Se removieron los archivos aislados (`adminManager.js`, `approvalManager.js`, `counter.js`, `javascript.svg`).
+3. **Refactorización Limpia:** Se ajustaron las llamadas en `main.js` para eliminar importaciones inútiles de la capa de `seed.js` y se limpiaron variables exportadas fantasma en `auth.js`.
+4. **Validación de Bundle:** Se recompiló el bundle para garantizar la correcta reducción del volumen (`npm run build`).
+5. **Mitigación de Secretos (Security Check):** Se añadió `exportador/serviceAccountKey.json` al `.gitignore`, se extrajo de la cache de git y se reescribió el commit (amend) para purgar las credenciales de Firebase del log de GitHub y cumplir con el GitHub Push Protection.
+
 ## Versión 2.5.0 (2026-08-17)
 
 **Procedimiento Técnico (Paso a Paso):**

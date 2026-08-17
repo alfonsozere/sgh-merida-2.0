@@ -1464,7 +1464,7 @@ async function mostrarCandado(codigoDEA, dataParcial) {
 
               // Desplegar Wizard Personal automáticamente si la matrícula se guardó
               if (typeof window.mostrarFormularioPersonal === "function") {
-                  window.mostrarFormularioPersonal();
+//                   window.mostrarFormularioPersonal();
               }
 
           } catch (error) {
