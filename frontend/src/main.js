@@ -40,7 +40,7 @@ document.addEventListener('input', (e) => {
 import { safeSetDoc, safeUpdateDoc, safeAddDoc } from './dbUtils.js';
 import './style.css';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc, setDoc, deleteField } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, deleteField, onSnapshot } from 'firebase/firestore';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut, setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { initAuth } from './auth.js';
 import { initSeed } from './seed.js';
@@ -873,6 +873,19 @@ async function checkPlantelData(codigoDEA) {
       // ya no enviamos al dashboard-view antiguo.
       currentPlantel = data;
       mostrarCandado(codigoDEA, data);
+      
+      // Suscripción reactiva a cambios en Firestore para mantener el UI actualizado con los datos reales
+      if (!window._unsubPlantel) {
+          window._unsubPlantel = onSnapshot(docRef, (snap) => {
+              if (snap.exists()) {
+                  const liveData = snap.data();
+                  const inpMatTotal = document.getElementById('inp-matricula-total');
+                  if (inpMatTotal && liveData.matricula && liveData.matricula.total !== undefined) {
+                      inpMatTotal.value = liveData.matricula.total;
+                  }
+              }
+          });
+      }
     } else {
       // El plantel no existe en la base de datos! (Caso de planteles faltantes en CSV)
       mostrarCandado(codigoDEA, null);
@@ -1399,6 +1412,11 @@ async function mostrarCandado(codigoDEA, dataParcial) {
               await safeSetDoc(docRef, payload, {
                   mergeFields: ['secciones', 'secciones-planes', 'matricula', 'vacantes', 'datos_completados', 'ultima_actualizacion']
               });
+
+              // Actualizar el input de la tarjeta con el nuevo total guardado
+              const inpMatTotal = document.getElementById('inp-matricula-total');
+              if (inpMatTotal) inpMatTotal.value = matTotal;
+
               showToast("¡Datos del plantel actualizados con éxito!", "success");
 
           } catch (error) {
