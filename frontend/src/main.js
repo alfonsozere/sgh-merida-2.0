@@ -142,7 +142,13 @@ async function loadMunicipios() {
             const opt = document.createElement('option');
             opt.value = m; opt.textContent = m;
             selectMun.appendChild(opt);
-        });
+        
+          // Actualizar vista
+          if (document.getElementById('lbl-matricula-total')) document.getElementById('lbl-matricula-total').textContent = matTotal;
+          if (document.getElementById('inp-matricula-total')) document.getElementById('inp-matricula-total').value = matTotal;
+          
+          // El botón siempre permanece activo según requerimiento. No se requiere auto-habilitarlo.
+});
     }
 }
 
@@ -491,14 +497,14 @@ document.addEventListener('input', (e) => {
 
 // --- Lógica del "Candado de Navegación" ---
 // Cálculo automático de totales
-document.getElementById('contenedor-matricula')?.addEventListener('input', (e) => {
+document.getElementById('plantel-form')?.addEventListener('input', (e) => {
     if (e.target.tagName.toLowerCase() === 'input') {
         let matTotal = 0;
         
         const sumInputs = (selector) => {
             let sum = 0;
             document.querySelectorAll(selector).forEach(inp => {
-                if (inp.closest('div[id^="bloque-"]').style.display !== 'none') {
+                const b1 = inp.closest('div[id^="bloque-"]'); const b2 = inp.closest('#cont-secciones-detalle'); if ((b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none')) {
                     sum += parseInt(inp.value || 0);
                 }
             });
@@ -516,8 +522,40 @@ document.getElementById('contenedor-matricula')?.addEventListener('input', (e) =
         
         if(document.getElementById('tot-inicial')) document.getElementById('tot-inicial').textContent = totIni;
         if(document.getElementById('tot-primaria')) document.getElementById('tot-primaria').textContent = totPri;
-        if(document.getElementById('tot-media')) document.getElementById('tot-media').textContent = totMed;
-        if(document.getElementById('tot-tecnica')) document.getElementById('tot-tecnica').textContent = totTec;
+        
+          // Calculate dynamic media gen
+          let sumMg = 0, sumMt = 0;
+          document.querySelectorAll('.dyn-mg-fem, .dyn-mg-mas').forEach(i => sumMg += parseInt(i.value||0));
+          document.querySelectorAll('.dyn-mt-fem, .dyn-mt-mas').forEach(i => sumMt += parseInt(i.value||0));
+          
+          if(document.getElementById('tot-media-gen')) document.getElementById('tot-media-gen').textContent = sumMg;
+          if(document.getElementById('tot-media-tec')) document.getElementById('tot-media-tec').textContent = sumMt;
+
+          // Calculate section sums per plan and totals
+          let totalSecMg = 0, totalSecMt = 0;
+          const planesSums = {};
+          document.querySelectorAll('.sec-anio-input').forEach(inp => {
+              if (inp.closest('div[id^="bloque-"]')?.style.display !== 'none' && inp.closest('#cont-secciones-detalle')?.style.display !== 'none') {
+                  const plan = inp.dataset.plan;
+                  const v = parseInt(inp.value || 0);
+                  if (!planesSums[plan]) planesSums[plan] = 0;
+                  planesSums[plan] += v;
+                  
+                  if (plan.startsWith('3')) totalSecMg += v;
+                  if (plan.startsWith('4')) totalSecMt += v;
+              }
+          });
+          
+          // Update the plan section counters
+          Object.keys(planesSums).forEach(p => {
+              const el = document.getElementById('tot-sec-plan-' + p);
+              if (el) el.textContent = planesSums[p];
+          });
+          
+          // Update global section counters
+          if(document.getElementById('tot-sec-media-gen')) document.getElementById('tot-sec-media-gen').textContent = totalSecMg;
+          if(document.getElementById('tot-sec-media-tec')) document.getElementById('tot-sec-media-tec').textContent = totalSecMt;
+        
 
         // Sumar todos los inputs de matrícula (.mat-input)
         document.querySelectorAll('.mat-input').forEach(input => {
@@ -569,30 +607,84 @@ function _renderizarDetalleSecciones(planes, guardadas = null) {
     // Usamos las guardadas o un objeto vacío
     const seccionesGuardadas = guardadas || {}; 
     
-    mediaPlanes.forEach(plan => {
-        const isMt = plan.startsWith('4');
-        const anios = isMt ? 6 : 5;
+    
+      const planesMG = mediaPlanes.filter(p => p.startsWith('3'));
+      const planesMT = mediaPlanes.filter(p => p.startsWith('4'));
+
+      const renderPlan = (plan) => {
+          const isMt = plan.startsWith('4');
+          const anios = isMt ? 6 : 5;
+          const info = planes[plan];
+          let titulo = 'Plan ' + plan;
+          if (info && info.mencion) titulo += ' (' + info.mencion + ')';
+          
+          html += '<div style="margin-bottom: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem; background: #f9fafb;">';
+          html += '<h4 style="margin: 0 0 1rem; color: #1e40af; font-size: 0.95rem;">' + titulo + '</h4>';
+          html += '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 1rem;">';
+          
+          for (let i = 1; i <= anios; i++) {
+              const planSec = seccionesGuardadas[plan] || {};
+              const val = parseInt(planSec[i] !== undefined ? planSec[i] : (planSec[String(i)] !== undefined ? planSec[String(i)] : 0)) || 0;
+              html += '<div style="display: flex; flex-direction: column; gap: 0.3rem;">';
+              html += '<label style="font-size: 0.8rem; font-weight: 600; color: #374151;">' + i + 'º Año</label>';
+              html += '<input type="number" class="sec-anio-input" data-plan="' + plan + '" data-anio="' + i + '" min="0" value="' + (val || '') + '" style="padding: 0.4rem; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px;">';
+              html += '</div>';
+          }
+          
+          html += '</div>';
+          html += '<div style="background: #f1f5f9; padding: 12px 20px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">';
+          html += '<span style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600;">Total Secciones (Plan ' + plan + ')</span>';
+          html += '<span id="tot-sec-plan-' + plan + '" class="tot-sec-plan-label" data-plan="' + plan + '" style="font-size: 1.1rem; color: #0f172a; font-weight: bold;">0</span>';
+          html += '</div>';
+          html += '</div>';
+      };
+
+      if (planesMG.length > 0) {
+          html += '<div style="background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; margin: -20px -20px 20px -20px;"><div style="display: flex; align-items: center; gap: 10px;"><span style="font-size: 1.2rem;">👨‍🏫</span><h3 style="margin: 0; font-size: 1rem; color: #1e293b;">Cantidad de Secciones por Año - Media General</h3></div><div><span style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600;">Total Secciones Media Gen: </span><span id="tot-sec-media-gen" style="font-size: 1.1rem; color: #0f172a; font-weight: bold;">0</span></div></div>';
+          planesMG.forEach(renderPlan);
+      }
+      if (planesMT.length > 0) {
+          html += '<div style="background: #f8fafc; border-bottom: 1px solid #e2e8f0; border-top: 1px solid #e2e8f0; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; margin: 0 -20px 20px -20px;"><div style="display: flex; align-items: center; gap: 10px;"><span style="font-size: 1.2rem;">⚙️</span><h3 style="margin: 0; font-size: 1rem; color: #1e293b;">Cantidad de Secciones por Año - Media Técnica</h3></div><div><span style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600;">Total Secciones Media Téc: </span><span id="tot-sec-media-tec" style="font-size: 1.1rem; color: #0f172a; font-weight: bold;">0</span></div></div>';
+          planesMT.forEach(renderPlan);
+      }
+      
+      contDinamico.innerHTML = html;
+}
+
+
+function _renderizarMatriculaMedia(planes, guardadas = null) {
+    const contMg = document.getElementById('cont-mat-media-general');
+    const contMt = document.getElementById('cont-mat-media-tecnica');
+    if (contMg) contMg.innerHTML = '';
+    if (contMt) contMt.innerHTML = '';
+    
+    const matMedia = guardadas ? guardadas.media : null;
+    const mgSaved = matMedia ? (matMedia["media-general"] || {}) : {};
+    const mtSaved = matMedia ? (matMedia["media-tecnica"] || {}) : {};
+
+    Object.keys(planes).sort().forEach(plan => {
         const info = planes[plan];
         let titulo = 'Plan ' + plan;
         if (info && info.mencion) titulo += ' (' + info.mencion + ')';
-        
-        html += '<div style="margin-bottom: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem; background: #f9fafb;">';
-        html += '<h4 style="margin: 0 0 1rem; color: #1e40af; font-size: 0.95rem;">' + titulo + '</h4>';
-        html += '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 1rem;">';
-        
-        for (let i = 1; i <= anios; i++) {
-            const planSec = seccionesGuardadas[plan] || {};
-            const val = parseInt(planSec[i] !== undefined ? planSec[i] : (planSec[String(i)] !== undefined ? planSec[String(i)] : 0)) || 0;
-            html += '<div style="display: flex; flex-direction: column; gap: 0.3rem;">';
-            html += '<label style="font-size: 0.8rem; font-weight: 600; color: #374151;">' + i + 'º Año</label>';
-            html += '<input type="number" class="sec-anio-input" data-plan="' + plan + '" data-anio="' + i + '" min="0" value="' + (val || '') + '" style="padding: 0.4rem; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px;">';
+
+        if (plan.startsWith('3') && contMg) {
+            const saved = mgSaved[plan] || {};
+            let html = '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; background: #f8fafc;">';
+            html += '<div style="grid-column: span 2;"><h4 style="margin: 0; color: #1e40af; font-size: 0.95rem;">' + titulo + '</h4></div>';
+            html += '<div><label style="font-size: 0.75rem; color: #64748b;">Femenino</label><input type="number" class="mat-input mat-media dyn-mg-fem" data-plan="' + plan + '" min="0" value="' + (saved.fem || '') + '" style="background: white; color: #0f172a; border-color: #cbd5e1; width: 100%;" /></div>';
+            html += '<div><label style="font-size: 0.75rem; color: #64748b;">Masculino</label><input type="number" class="mat-input mat-media dyn-mg-mas" data-plan="' + plan + '" min="0" value="' + (saved.mas || '') + '" style="background: white; color: #0f172a; border-color: #cbd5e1; width: 100%;" /></div>';
             html += '</div>';
+            contMg.innerHTML += html;
+        } else if (plan.startsWith('4') && contMt) {
+            const saved = mtSaved[plan] || {};
+            let html = '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; background: #f8fafc;">';
+            html += '<div style="grid-column: span 2;"><h4 style="margin: 0; color: #1e40af; font-size: 0.95rem;">' + titulo + '</h4></div>';
+            html += '<div><label style="font-size: 0.75rem; color: #64748b;">Femenino</label><input type="number" class="mat-input mat-media dyn-mt-fem" data-plan="' + plan + '" min="0" value="' + (saved.fem || '') + '" style="background: white; color: #0f172a; border-color: #cbd5e1; width: 100%;" /></div>';
+            html += '<div><label style="font-size: 0.75rem; color: #64748b;">Masculino</label><input type="number" class="mat-input mat-media dyn-mt-mas" data-plan="' + plan + '" min="0" value="' + (saved.mas || '') + '" style="background: white; color: #0f172a; border-color: #cbd5e1; width: 100%;" /></div>';
+            html += '</div>';
+            contMt.innerHTML += html;
         }
-        
-        html += '</div></div>';
     });
-    
-    contDinamico.innerHTML = html;
 }
 
 async function _abrirModalVacantes() {
@@ -743,13 +835,7 @@ document.getElementById('btn-confirmar-vacantes')?.addEventListener('click', () 
     window._VACANTES_TEMP = vacFinal;
     document.getElementById('modal-vacantes').style.display = 'none';
     
-    // Habilitar botón de guardar
-    const btnGuardar = document.getElementById('btn-guardar-matricula');
-    if (btnGuardar) {
-        btnGuardar.disabled = false;
-        btnGuardar.style.cursor = 'pointer';
-        btnGuardar.style.opacity = '1';
-    }
+    
 });
 
 // Selector de Vacantes SI/NO
@@ -767,20 +853,9 @@ document.getElementById('toggle-vacantes')?.addEventListener('click', (e) => {
         e.target.style.color = val === 'SI' ? '#b45309' : '#166534';
         e.target.style.fontWeight = 'bold';
 
-        const btnGuardar = document.getElementById('btn-guardar-matricula');
         if (val === 'NO') {
             window._VACANTES_TEMP = {};
-            if (btnGuardar) {
-                btnGuardar.disabled = false;
-                btnGuardar.style.cursor = 'pointer';
-                btnGuardar.style.opacity = '1';
-            }
         } else if (val === 'SI') {
-            if (btnGuardar) {
-                btnGuardar.disabled = true;
-                btnGuardar.style.cursor = 'not-allowed';
-                btnGuardar.style.opacity = '0.5';
-            }
             _abrirModalVacantes();
         }
     }
@@ -880,6 +955,17 @@ async function mostrarCandado(codigoDEA, dataParcial) {
     // Carga de Secciones Dinámicas para Media (Pasando los guardados)
     const savedSeccionesPlanes = dataParcial ? (dataParcial["secciones-planes"] || {}) : {};
     _renderizarDetalleSecciones(planes, savedSeccionesPlanes);
+      const savedMatricula = dataParcial ? dataParcial.matricula : null;
+      _renderizarMatriculaMedia(planes, savedMatricula);
+        
+        const tieneBasica = ("20000" in planes) || ("21000" in planes);
+        const contVacantes = document.getElementById('contenedor-pregunta-vacantes');
+        if (contVacantes) {
+            contVacantes.style.display = tieneBasica ? 'flex' : 'none';
+        }
+        
+        /* button always enabled initially */
+        
 
     if (dataParcial && dataParcial.matricula) {
         const mat = dataParcial.matricula;
@@ -932,15 +1018,8 @@ async function mostrarCandado(codigoDEA, dataParcial) {
             }
         }
         
-        // --- 4. MEDIA GENERAL Y TÉCNICA ---
-        if (mat.media) {
-            const mg = mat.media["media-general"] || {};
-            const mt = mat.media["media-tecnica"] || {};
-            if (document.getElementById('mgFem')) document.getElementById('mgFem').value = mg["total-med-fem"] || 0;
-            if (document.getElementById('mgMas')) document.getElementById('mgMas').value = mg["total-med-mas"] || 0;
-            if (document.getElementById('mtFem')) document.getElementById('mtFem').value = mt["total-med-fem"] || 0;
-            if (document.getElementById('mtMas')) document.getElementById('mtMas').value = mt["total-med-mas"] || 0;
-        }
+        // --- 4. MEDIA GENERAL Y TECNICA ---
+          // Now handled by _renderizarMatriculaMedia
     } else if (dataParcial && dataParcial.matricula_detalle) {
         // Fallback legado si el plantel aún no tiene el JSON dinámico v2
         const md = dataParcial.matricula_detalle;
@@ -984,12 +1063,24 @@ async function mostrarCandado(codigoDEA, dataParcial) {
           secTotal += parseInt(document.getElementById('inp-sec-preescolar')?.value) || 0;
           secTotal += parseInt(document.getElementById('inp-sec-primaria')?.value) || 0;
           document.querySelectorAll('.sec-anio-input').forEach(inp => {
-              if (inp.closest('div[id^="bloque-"]').style.display !== 'none') {
+              const b1 = inp.closest('div[id^="bloque-"]'); const b2 = inp.closest('#cont-secciones-detalle'); if ((b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none')) {
                   secTotal += parseInt(inp.value) || 0;
               }
           });
           
-          const seccionesPlanes = {};
+          
+            // Check if incomplete
+            if (matTotal === 0 && secTotal === 0 && !window._forceSaveIncompleta) {
+                const modalInc = document.getElementById('modal-confirm-incompleta');
+                if (modalInc) modalInc.style.display = 'flex';
+                btn.textContent = "Guardar Datos y Continuar";
+                btn.disabled = false;
+                return; // abort this save
+            }
+            window._forceSaveIncompleta = false;
+const _dynMG = { "total-med-fem": 0, "total-med-mas": 0, "total-med-gen": 0 };
+const _dynMT = { "total-med-fem": 0, "total-med-mas": 0, "total-med-tec": 0 };
+const seccionesPlanes = {};
           const matricula = {
               "basica": {
                   "20000": {
@@ -1011,22 +1102,14 @@ async function mostrarCandado(codigoDEA, dataParcial) {
                   }
               },
               "media": {
-                  "media-general": {
-                      "total-med-fem": 0,
-                      "total-med-mas": 0,
-                      "total-med-gen": 0
-                  },
-                  "media-tecnica": {
-                      "total-med-fem": 0,
-                      "total-med-mas": 0,
-                      "total-med-tec": 0
-                  },
-                  "total-gen-med": {
-                      "fem": 0,
-                      "mas": 0,
-                      "total": 0
-                  }
-              },
+                    "media-general": _dynMG,
+                    "media-tecnica": _dynMT,
+                    "total-gen-med": {
+                        "fem": 0,
+                        "mas": 0,
+                        "total": 0
+                    }
+                },
               "total": matTotal
           };
 
@@ -1037,7 +1120,7 @@ async function mostrarCandado(codigoDEA, dataParcial) {
                   if (!seccionesPlanes["20000"]) seccionesPlanes["20000"] = {};
               }
               inputs.forEach(inp => {
-                  if (inp.closest('div[id^="bloque-"]').style.display !== 'none') {
+                  const b1 = inp.closest('div[id^="bloque-"]'); const b2 = inp.closest('#cont-secciones-detalle'); if ((b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none')) {
                       const grupo = inp.dataset.grupo; // ej: "maternal-A"
                       const secLetra = grupo.split('-')[1];
                       const val = parseInt(inp.value) || 0;
@@ -1105,7 +1188,7 @@ async function mostrarCandado(codigoDEA, dataParcial) {
               if (!seccionesPlanes["21000"]) seccionesPlanes["21000"] = {};
           }
           inputsPri.forEach(inp => {
-              if (inp.closest('div[id^="bloque-"]').style.display !== 'none') {
+              const b1 = inp.closest('div[id^="bloque-"]'); const b2 = inp.closest('#cont-secciones-detalle'); if ((b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none')) {
                   const grupo = inp.dataset.grupo; // ej: "primaria-1A"
                   const match = grupo.match(/primaria-(\d)([A-Z])/);
                   if (match) {
@@ -1201,7 +1284,7 @@ async function mostrarCandado(codigoDEA, dataParcial) {
           let codMg = null;
           let codMt = null;
           document.querySelectorAll('.sec-anio-input').forEach(inp => {
-              if (inp.closest('div[id^="bloque-"]').style.display !== 'none') {
+              const b1 = inp.closest('div[id^="bloque-"]'); const b2 = inp.closest('#cont-secciones-detalle'); if ((b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none')) {
                   const plan = inp.dataset.plan;
                   const anio = inp.dataset.anio;
                   const val = parseInt(inp.value) || 0;
@@ -1220,32 +1303,62 @@ async function mostrarCandado(codigoDEA, dataParcial) {
 
           // 4. MEDIA (Matrícula Global)
           if (document.getElementById('bloque-mediageneral').style.display !== 'none') {
-              const mgFem = parseInt(document.getElementById('mgFem').value || 0);
-              const mgMas = parseInt(document.getElementById('mgMas').value || 0);
-              matricula.media["media-general"][codMg] = {
-                  fem: mgFem,
-                  mas: mgMas,
-                  total: mgFem + mgMas
-              };
-              matricula.media["media-general"]["total-med-fem"] += mgFem;
-              matricula.media["media-general"]["total-med-mas"] += mgMas;
-              matricula.media["media-general"]["total-med-gen"] += (mgFem + mgMas);
-          }
+                document.querySelectorAll('.dyn-mg-fem').forEach(inp => {
+                    const plan = inp.dataset.plan;
+                    const fVal = parseInt(inp.value || 0);
+                    const mInp = document.querySelector(`.dyn-mg-mas[data-plan="${plan}"]`);
+                    const mVal = mInp ? parseInt(mInp.value || 0) : 0;
+                    
+                    if (matricula.media["media-general"][plan]) {
+                        matricula.media["media-general"][plan].fem += fVal;
+                        matricula.media["media-general"][plan].mas += mVal;
+                        matricula.media["media-general"][plan].total += (fVal + mVal);
+                    }
+                    if (matricula.media["media-general"][`total-med-${plan}-fem`] !== undefined) {
+                        matricula.media["media-general"][`total-med-${plan}-fem`] += fVal;
+                        matricula.media["media-general"][`total-med-${plan}-mas`] += mVal;
+                        matricula.media["media-general"][`total-med-${plan}`] += (fVal + mVal);
+                    } else {
+                        matricula.media["media-general"][`total-med-${plan}-fem`] = fVal;
+                        matricula.media["media-general"][`total-med-${plan}-mas`] = mVal;
+                        matricula.media["media-general"][`total-med-${plan}`] = (fVal + mVal);
+                    }
 
-          if (document.getElementById('bloque-mediatecnica').style.display !== 'none') {
-              const mtFem = parseInt(document.getElementById('mtFem').value || 0);
-              const mtMas = parseInt(document.getElementById('mtMas').value || 0);
-              matricula.media["media-tecnica"][codMt] = {
-                  fem: mtFem,
-                  mas: mtMas,
-                  total: mtFem + mtMas
-              };
-              matricula.media["media-tecnica"]["total-med-fem"] += mtFem;
-              matricula.media["media-tecnica"]["total-med-mas"] += mtMas;
-              matricula.media["media-tecnica"]["total-med-tec"] += (mtFem + mtMas);
-          }
+                    matricula.media["media-general"]["total-med-fem"] += fVal;
+                    matricula.media["media-general"]["total-med-mas"] += mVal;
+                    matricula.media["media-general"]["total-med-gen"] += (fVal + mVal);
+                });
+            }
+  
+            if (document.getElementById('bloque-mediatecnica').style.display !== 'none') {
+                document.querySelectorAll('.dyn-mt-fem').forEach(inp => {
+                    const plan = inp.dataset.plan;
+                    const fVal = parseInt(inp.value || 0);
+                    const mInp = document.querySelector(`.dyn-mt-mas[data-plan="${plan}"]`);
+                    const mVal = mInp ? parseInt(mInp.value || 0) : 0;
+                    
+                    if (matricula.media["media-tecnica"][plan]) {
+                        matricula.media["media-tecnica"][plan].fem += fVal;
+                        matricula.media["media-tecnica"][plan].mas += mVal;
+                        matricula.media["media-tecnica"][plan].total += (fVal + mVal);
+                    }
+                    if (matricula.media["media-tecnica"][`total-med-${plan}-fem`] !== undefined) {
+                        matricula.media["media-tecnica"][`total-med-${plan}-fem`] += fVal;
+                        matricula.media["media-tecnica"][`total-med-${plan}-mas`] += mVal;
+                        matricula.media["media-tecnica"][`total-med-${plan}`] += (fVal + mVal);
+                    } else {
+                        matricula.media["media-tecnica"][`total-med-${plan}-fem`] = fVal;
+                        matricula.media["media-tecnica"][`total-med-${plan}-mas`] = mVal;
+                        matricula.media["media-tecnica"][`total-med-${plan}`] = (fVal + mVal);
+                    }
 
-          matricula.media["total-gen-med"].fem = matricula.media["media-general"]["total-med-fem"] + matricula.media["media-tecnica"]["total-med-fem"];
+                    matricula.media["media-tecnica"]["total-med-fem"] += fVal;
+                    matricula.media["media-tecnica"]["total-med-mas"] += mVal;
+                    matricula.media["media-tecnica"]["total-med-tec"] += (fVal + mVal);
+                });
+            }
+
+            matricula.media["total-gen-med"].fem = matricula.media["media-general"]["total-med-fem"] + matricula.media["media-tecnica"]["total-med-fem"];
           matricula.media["total-gen-med"].mas = matricula.media["media-general"]["total-med-mas"] + matricula.media["media-tecnica"]["total-med-mas"];
           matricula.media["total-gen-med"].total = matricula.media["total-gen-med"].fem + matricula.media["total-gen-med"].mas;
 
@@ -1289,10 +1402,12 @@ async function mostrarCandado(codigoDEA, dataParcial) {
           } catch (error) {
               console.error("Error guardando el plantel:", error);
               showToast("Ocurrió un error al guardar los datos.", "error");
-          } finally {
-              btn.textContent = "Guardar y Desbloquear Sistema";
-              btn.disabled = false;
-          }
+                  } finally {
+            if (btn) {
+                btn.textContent = "Guardar y Desbloquear Sistema";
+                btn.disabled = false;
+            }
+        }
       };
     }
 }
@@ -1351,3 +1466,19 @@ if (btnHamburger) {
 }
 
 if (overlay) overlay.addEventListener('click', window.closeSidebar);
+
+
+// --- Modal Declaración Incompleta ---
+document.getElementById('btn-cancelar-incompleta')?.addEventListener('click', () => {
+    document.getElementById('modal-confirm-incompleta').style.display = 'none';
+});
+document.getElementById('btn-aceptar-incompleta')?.addEventListener('click', () => {
+    document.getElementById('modal-confirm-incompleta').style.display = 'none';
+    window._forceSaveIncompleta = true;
+    
+    const form = document.getElementById('plantel-form');
+    if (form) {
+        // Create and dispatch a submit event
+        form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+    }
+});

@@ -312,50 +312,38 @@
 
             <!-- MEDIA GENERAL -->
             <div id="bloque-mediageneral" style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 20px; overflow: hidden; display: none;">
-              <div style="background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 1.2rem;">#</span>
-                <h3 style="margin: 0; font-size: 1rem; color: #1e293b;">Media General</h3>
-              </div>
-              <div style="padding: 20px;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-                  <div><label style="font-size: 0.75rem; color: #64748b;">Media Gen Fem</label><input type="number" class="mat-input mat-media" id="mgFem" min="0" value="" style="background: white; color: #0f172a; border-color: #cbd5e1;" /></div>
-                  <div><label style="font-size: 0.75rem; color: #64748b;">Media Gen Mas</label><input type="number" class="mat-input mat-media" id="mgMas" min="0" value="" style="background: white; color: #0f172a; border-color: #cbd5e1;" /></div>
-                  <div><label style="font-size: 0.75rem; color: #64748b;">Secciones Totales</label><input type="number" class="sec-input sec-media" id="secMg" min="0" value="" style="background: white; color: #0f172a; border-color: #cbd5e1;" /></div>
+                <div style="background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; align-items: center; gap: 10px;">
+                  <span style="font-size: 1.2rem;">#</span>
+                  <h3 style="margin: 0; font-size: 1rem; color: #1e293b;">Media General</h3>
                 </div>
-                <div style="background: #f1f5f9; padding: 12px 20px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
-                  <span style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600;">Total Media Gen</span>
-                  <span id="tot-media" style="font-size: 1.1rem; color: #0f172a; font-weight: bold;">0</span>
+                <div style="padding: 20px;">
+                  <div id="cont-mat-media-general" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;"></div>
+                  <div style="background: #f1f5f9; padding: 12px 20px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                    <div><span style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600;">Total Alumnos Media Gen: </span>
+                    <span id="tot-media-gen" style="font-size: 1.1rem; color: #0f172a; font-weight: bold;">0</span></div>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- MEDIA TÉCNICA -->
+              <!-- MEDIA TÉCNICA -->
             <div id="bloque-mediatecnica" style="background: white; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 20px; overflow: hidden; display: none;">
-              <div style="background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 1.2rem;">⚙️</span>
-                <h3 style="margin: 0; font-size: 1rem; color: #1e293b;">Media Técnica</h3>
-              </div>
-              <div style="padding: 20px;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-                  <div><label style="font-size: 0.75rem; color: #64748b;">Media Téc Fem</label><input type="number" class="mat-input mat-tecnica" id="mtFem" min="0" value="" style="background: white; color: #0f172a; border-color: #cbd5e1;" /></div>
-                  <div><label style="font-size: 0.75rem; color: #64748b;">Media Téc Mas</label><input type="number" class="mat-input mat-tecnica" id="mtMas" min="0" value="" style="background: white; color: #0f172a; border-color: #cbd5e1;" /></div>
-                  <div><label style="font-size: 0.75rem; color: #64748b;">Secciones Totales</label><input type="number" class="sec-input sec-tecnica" id="secMt" min="0" value="" style="background: white; color: #0f172a; border-color: #cbd5e1;" /></div>
+                <div style="background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; align-items: center; gap: 10px;">
+                  <span style="font-size: 1.2rem;">⚙️</span>
+                  <h3 style="margin: 0; font-size: 1rem; color: #1e293b;">Media Técnica</h3>
                 </div>
-                <div style="background: #f1f5f9; padding: 12px 20px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
-                  <span style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600;">Total Media Téc</span>
-                  <span id="tot-tecnica" style="font-size: 1.1rem; color: #0f172a; font-weight: bold;">0</span>
+                <div style="padding: 20px;">
+                  <div id="cont-mat-media-tecnica" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;"></div>
+                  <div style="background: #f1f5f9; padding: 12px 20px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                    <div><span style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600;">Total Alumnos Media Téc: </span>
+                    <span id="tot-media-tec" style="font-size: 1.1rem; color: #0f172a; font-weight: bold;">0</span></div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-            
-          <!-- CONTENEDOR DINÁMICO PARA MEDIA GENERAL Y TÉCNICA -->
+              
+            <!-- CONTENEDOR DINÁMICO PARA MEDIA GENERAL Y TÉCNICA -->
           <div id="cont-secciones-detalle" style="display: none; background: white; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 20px; overflow: hidden;">
-            <div style="background: #f8fafc; border-bottom: 1px solid #e2e8f0; padding: 12px 20px; display: flex; align-items: center; gap: 10px;">
-              <span style="font-size: 1.2rem;">🎓</span>
-              <h3 style="margin: 0; font-size: 1rem; color: #1e293b;">Cantidad de Secciones por Año</h3>
-            </div>
-            <div id="cont-secciones-dinamicas" style="padding: 20px;"></div>
+              <div id="cont-secciones-dinamicas" style="padding: 20px;"></div>
           </div>
 
           <!-- Variables ocultas -->
@@ -364,7 +352,7 @@
 
           <!-- Botones de Acción -->
           <div style="margin-top: 20px; padding: 20px; background: white; border-radius: 12px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 15px;">
-            <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px;">
+            <div id="contenedor-pregunta-vacantes" style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px;">
               <div>
                 <h4 style="margin: 0; color: #0f172a; font-size: 1rem;">¿El plantel tiene Vacantes Físicas?</h4>
                 <p style="margin: 5px 0 0; color: #64748b; font-size: 0.8rem;">Requerido para habilitar el guardado de datos.</p>
@@ -375,7 +363,7 @@
               </div>
             </div>
             
-            <button type="submit" id="btn-guardar-matricula" disabled style="width: 100%; text-transform: uppercase; padding: 14px; cursor: not-allowed; opacity: 0.5;">Guardar Datos y Continuar</button>
+            <button type="submit" id="btn-guardar-matricula" style="width: 100%; text-transform: uppercase; padding: 14px; cursor: pointer; opacity: 1; background: #003399; color: white; font-weight: bold; border-radius: 8px; border: none;">Guardar Datos y Continuar</button>
           </div>
           
           <input type="hidden" id="inp-vacantes" value="0" />
@@ -804,6 +792,19 @@
     </section>
     <script type="module" src="/src/main.js"></script>
   
+    
+    <!-- Modal Confirmación Incompleta -->
+    <div id="modal-confirm-incompleta" class="lock-screen" aria-hidden="true" style="display: none; z-index: 10003; align-items: center; justify-content: center;">
+      <div class="lock-card glass-panel" style="max-width: 400px; width: 100%; text-align: center;">
+        <h2 style="color: var(--primary-color); font-size: 1.3rem; margin-bottom: 15px;">Confirmación</h2>
+        <p style="color: var(--text-main); margin-bottom: 25px;">¿Está seguro de declarar secciones y matrículas incompletas?</p>
+        <div style="display: flex; gap: 10px; justify-content: center;">
+          <button type="button" id="btn-cancelar-incompleta" class="btn-secondary" style="padding: 10px 20px; border-radius: 6px;">Cancelar</button>
+          <button type="button" id="btn-aceptar-incompleta" style="background: #003399; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">Aceptar</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Global Loading Modal -->
     <div id="global-loading-modal" style="display: none; z-index: 999999; position: fixed; inset: 0; background-color: #0f172a; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.4s ease;">
       <div class="spinner"></div>

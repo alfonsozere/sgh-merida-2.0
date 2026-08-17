@@ -157,4 +157,13 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 
 ### v2.3.3 - 2026-08-16
 * **Ajuste UI de Matrícula Total:** Se reposicionó el campo "Matrícula Total" para que quede justo debajo de "Ubicación Geográfica" conforme al requerimiento visual.
-* **Archivos Modificados:** `index.html`, `src/style.css`, `package.json`.
+* **Archivos Modificados:** `index.html`, `src/style.css`, `package.json`.## [v1.4.0] - 2026-08-16
+### Agregado
+- **Motor de Vacantes (Plazas Docentes):** Integración de lógica dinámica en el guardado de Firebase para copiar los valores exactos de la matrícula (FEM/MAS) hacia el nodo de vacantes cuando el director marca el checkbox, facilitando reportes de déficit docente.
+- **Escoba Digital (Zero-Waste):** Implementación de una función recursiva de barrido en _construirPayloadMatricula que elimina automáticamente cualquier campo con valor   y cualquier objeto vacío {} en toda la estructura de matrícula antes de guardarla en Firestore, optimizando masivamente el consumo de datos.
+
+### v2.3.4 - 2026-08-16
+* **Resolución Crítica - Flujo de Guardado y UI:** Se reparó un ReferenceError de variables dinámicas no declaradas (_dynMG, _dynMT) que congelaba el botón "Guardando...".
+* **Modal de Confirmación Incompleta:** Se construyó e inyectó físicamente la interfaz Glassmorphism del modal (modal-confirm-incompleta) en index.html que había sido omitida, permitiendo la declaración de matrículas en cero.
+* **Limpieza Absoluta (Zero-Waste):** Se corrigió la función sweepZeros en main.js removiendo listas blancas ficticias. Ahora garantiza una limpieza profunda y absoluta de llaves en cero y objetos vacíos antes de enviar a Firestore.
+* **Archivos Modificados:** index.html, src/main.js, package.json.

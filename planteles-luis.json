@@ -1,81 +1,299 @@
 [
 {
-    "municipio": "SANTOS MARQUINA",
-    "parroquia": "TABAY",
-    "denominacion": "LICEO",
+    "municipio": "",
+    "parroquia": "",
+    "denominacion": "",
     "nombre-plantel": {
-        "nominal": "C B DR MIGUEL OTERO SILVA",
-        "nuevo-eponimo": "DOCTOR MIGUEL OTERO SILVA"
+        "nominal": "",
+        "nuevo-eponimo": ""
     },
     "codigos": {
-        "plantel": "S1539D1419",
+        "plantel": "",
         "dependencia": [
-            7918580
+            0
         ],
-        "estadistico": 140807
+        "estadistico": 0
     },
-    "dependencia": "NACIONAL",
+    "dependencia": "",
     "planes-estudio": {
+        "20000":{
+            "especialidad": "",
+            "mencion": ""
+        },
+        "21000":{
+            "especialidad": "",
+            "mencion": ""
+        },
         "31059": {
-            "especialidad": "MEDIA GENERAL",
-            "mencion": "CIENCIAS"
+            "especialidad": "",
+            "mencion": ""
         },
         "31060": {
-            "especialidad": "MEDIA GENERAL",
-            "mencion": "CIENCIAS Y TECNOLOGIA"
+            "especialidad": "",
+            "mencion": ""
+        },
+        "41052": {
+            "especialidad": "",
+            "mencion": ""
         }
     },
-    "ubicacion-geografica": "RURAL",
-    "nivel": "MEDIA GENERAL",
-    "turno-plantel": "DOBLE TURNO",
+    "ubicacion-geografica": "",
+    "nivel": "",
+    "turno-plantel": "",
     "secciones-planes": {
+        "20000": {
+            "U": 0,
+            "A": 0,
+            "B": 0,
+            "C": 0,
+            "vacantes": {
+                "U": 0,
+                "A": 0,
+                "B": 0,
+                "C": 0
+            }
+        },
+        "21000": {
+            "U": 0,
+            "A": 0,
+            "B": 0,
+            "C": 0,
+            "vacantes": {
+                "U": 0,
+                "A": 0,
+                "B": 0,
+                "C": 0
+            }
+        },
         "31059": {
-            "1": 4,
+            "1": 0,
             "2": 0,
             "3": 0,
             "4": 0,
-            "5": 4
+            "5": 0
         },
         "31060": {
             "1": 0,
-            "2": 4,
-            "3": 4,
-            "4": 4,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0
+        },
+        "41052": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
             "5": 0
         }
     },
     "matricula": {
-        "media-general": {
-            "31059": {
-                "fem": 0,
-                "mas": 0,
-                "total": 0
+        "basica": {
+            "20000": {
+                "materna":{
+                    "U": {"mas": 0,"fem": 0},
+                    "A": {"mas": 0,"fem": 0},
+                    "B": {"mas": 0,"fem": 0},
+                    "C": {"mas": 0,"fem": 0},
+                    "vacantes": {
+                        "U": {"mas": 0,"fem": 0},
+                        "A": {"mas": 0,"fem": 0},
+                        "B": {"mas": 0,"fem": 0},
+                        "C": {"mas": 0,"fem": 0}
+                    },
+                    "total-mat-mas": 0,
+                    "total-mat-fem": 0,
+                    "total-mat": 0,
+                    "total-vac-mat-mas": 0,
+                    "total-vac-mat-fem": 0,
+                    "total-vac-mat": 0
+                },
+                "preescolar":{
+                    "U": {"mas": 0,"fem": 0},
+                    "A": {"mas": 0,"fem": 0},
+                    "B": {"mas": 0,"fem": 0},
+                    "C": {"mas": 0,"fem": 0},
+                    "vacantes": {
+                        "U": {"mas": 0,"fem": 0},
+                        "A": {"mas": 0,"fem": 0},
+                        "B": {"mas": 0,"fem": 0},
+                        "C": {"mas": 0,"fem": 0}
+                    },
+                    "total-pre-mas": 0,
+                    "total-pre-fem": 0,
+                    "total-pre": 0,
+                    "total-vac-pre-mas": 0,
+                    "total-vac-pre-fem": 0,
+                    "total-vac-pre": 0
+                },
+                "total-20000": 0
             },
-            "31060": {
+            "21000": {
+                "1":{
+                    "U":{"mas":0,"fem":0},
+                    "A":{"mas":0,"fem":0},
+                    "B":{"mas":0,"fem":0},
+                    "C":{"mas":0,"fem":0},
+                    "vacantes": {
+                        "U": {"mas": 0,"fem": 0},
+                        "A": {"mas": 0,"fem": 0},
+                        "B": {"mas": 0,"fem": 0},
+                        "C": {"mas": 0,"fem": 0}
+                    },
+                    "total-mat-seccionx-mas": 0,
+                    "total-mat-seccionx-fem": 0,
+                    "total-mat-seccionx": 0,
+                    "total-vac-mat-seccionx-mas": 0,
+                    "total-vac-mat-seccionx-fem": 0,
+                    "total-vac-mat-seccionx": 0
+                },
+                "2":{
+                    "U":{"mas":0,"fem":0},
+                    "A":{"mas":0,"fem":0},
+                    "B":{"mas":0,"fem":0},
+                    "C":{"mas":0,"fem":0},
+                    "vacantes": {
+                        "U": {"mas": 0,"fem": 0},
+                        "A": {"mas": 0,"fem": 0},
+                        "B": {"mas": 0,"fem": 0},
+                        "C": {"mas": 0,"fem": 0}
+                    },
+                    "total-mat-seccionx-mas": 0,
+                    "total-mat-seccionx-fem": 0,
+                    "total-mat-seccionx": 0,
+                    "total-vac-mat-seccionx-mas": 0,
+                    "total-vac-mat-seccionx-fem": 0,
+                    "total-vac-mat-seccionx": 0
+                },
+                "3": {
+                    "U":{"mas":0,"fem":0},
+                    "A":{"mas":0,"fem":0},
+                    "B":{"mas":0,"fem":0},
+                    "C":{"mas":0,"fem":0},
+                    "vacantes": {
+                        "U": {"mas": 0,"fem": 0},
+                        "A": {"mas": 0,"fem": 0},
+                        "B": {"mas": 0,"fem": 0},
+                        "C": {"mas": 0,"fem": 0}
+                    },
+                    "total-mat-seccionx-mas": 0,
+                    "total-mat-seccionx-fem": 0,
+                    "total-mat-seccionx": 0,
+                    "total-vac-mat-seccionx-mas": 0,
+                    "total-vac-mat-seccionx-fem": 0,
+                    "total-vac-mat-seccionx": 0
+                },
+                "4": {
+                    "U":{"mas":0,"fem":0},
+                    "A":{"mas":0,"fem":0},
+                    "B":{"mas":0,"fem":0},
+                    "C":{"mas":0,"fem":0},
+                    "vacantes": {
+                        "U": {"mas": 0,"fem": 0},
+                        "A": {"mas": 0,"fem": 0},
+                        "B": {"mas": 0,"fem": 0},
+                        "C": {"mas": 0,"fem": 0}
+                    },
+                    "total-mat-seccionx-mas": 0,
+                    "total-mat-seccionx-fem": 0,
+                    "total-mat-seccionx": 0,
+                    "total-vac-mat-seccionx-mas": 0,
+                    "total-vac-mat-seccionx-fem": 0,
+                    "total-vac-mat-seccionx": 0
+                },
+                "5": {
+                    "U":{"mas":0,"fem":0},
+                    "A":{"mas":0,"fem":0},
+                    "B":{"mas":0,"fem":0},
+                    "C":{"mas":0,"fem":0},
+                    "vacantes": {
+                        "U": {"mas": 0,"fem": 0},
+                        "A": {"mas": 0,"fem": 0},
+                        "B": {"mas": 0,"fem": 0},
+                        "C": {"mas": 0,"fem": 0}
+                    },
+                    "total-mat-seccionx-mas": 0,
+                    "total-mat-seccionx-fem": 0,
+                    "total-mat-seccionx": 0,
+                    "total-vac-mat-seccionx-mas": 0,
+                    "total-vac-mat-seccionx-fem": 0,
+                    "total-vac-mat-seccionx": 0   
+                },
+                "6": {
+                    "U":{"mas":0,"fem":0},
+                    "A":{"mas":0,"fem":0},
+                    "B":{"mas":0,"fem":0},
+                    "C":{"mas":0,"fem":0},
+                    "vacantes": {
+                        "U": {"mas": 0,"fem": 0},
+                        "A": {"mas": 0,"fem": 0},
+                        "B": {"mas": 0,"fem": 0},
+                        "C": {"mas": 0,"fem": 0}
+                    },
+                    "total-mat-seccionx-mas": 0,
+                    "total-mat-seccionx-fem": 0,
+                    "total-mat-seccionx": 0,
+                    "total-vac-mat-seccionx-mas": 0,
+                    "total-vac-mat-seccionx-fem": 0,
+                    "total-vac-mat-seccionx": 0   
+                },
+            "total-21000-mas": 0,
+            "total-21000-fem": 0,
+            "total-21000": 0,
+            "total-vac-21000-mas": 0,
+            "total-vac-21000-fem": 0,
+            "total-vac-21000": 0
+            }
+        },
+        "media":{
+            "media-general": {
+                "31059": { "fem": 0, "mas": 0, "total": 0},
+                "31060": { "fem": 0, "mas": 0, "total": 0},
+                "total-med-31059-fem": 0,
+                "total-med-31059-mas": 0,
+                "total-med-31059": 0,
+                "total-med-31060-fem": 0,
+                "total-med-31060-mas": 0,
+                "total-med-31060": 0,
+                "total-med-fem": 0,
+                "total-med-mas": 0,
+                "total-med-gen": 0
+                },
+            "media-tecnica": {
+                "41052": { "fem": 0, "mas": 0, "total": 0},
+                "45032": { "fem": 0, "mas": 0, "total": 0},
+                "total-med-41052-fem": 0,
+                "total-med-41052-mas": 0,
+                "total-med-41052": 0,
+                "total-med-45032-fem": 0,
+                "total-med-45032-mas": 0,
+                "total-med-45032": 0,
+                "total-med-fem": 0,
+                "total-med-mas": 0,
+                "total-med-tec": 0
+                },
+            "total-gen-med": {
                 "fem": 0,
                 "mas": 0,
                 "total": 0
             }
-        },
-        "total": 0
+        }
     }
 },
 {
-    "municipio": "SANTOS MARQUINA",
-    "parroquia": "TABAY",
-    "denominacion": "LICEO",
+    "municipio": "",
+    "parroquia": "",
+    "denominacion": "",
     "nombre-plantel": {
-        "nominal": "C B DR MIGUEL OTERO SILVA",
-        "nuevo-eponimo": "DOCTOR MIGUEL OTERO SILVA"
+        "nominal": "",
+        "nuevo-eponimo": ""
     },
     "codigos": {
-        "plantel": "S1539D1419",
-        "dependencia": [
-            7918580
-        ],
-        "estadistico": 140807
+        "plantel": "",
+        "dependencia": [],
+        "estadistico": ""
     },
-    "dependencia": "NACIONAL",
+    "dependencia": "",
     "planes-estudio": {
         "31059": {
             "especialidad": null,
@@ -86,9 +304,9 @@
             "mencion": null
         }
     },
-    "ubicacion-geografica": "RURAL",
-    "nivel": "MEDIA GENERAL",
-    "turno-plantel": "DOBLE TURNO",
+    "ubicacion-geografica": "",
+    "nivel": "",
+    "turno-plantel": "",
     "secciones-planes": {},
     "matricula": {}
 }
