@@ -875,17 +875,20 @@ async function checkPlantelData(codigoDEA) {
       mostrarCandado(codigoDEA, data);
       
       // Suscripción reactiva a cambios en Firestore para mantener el UI actualizado con los datos reales
-      if (!window._unsubPlantel) {
-          window._unsubPlantel = onSnapshot(docRef, (snap) => {
-              if (snap.exists()) {
-                  const liveData = snap.data();
-                  const inpMatTotal = document.getElementById('inp-matricula-total');
-                  if (inpMatTotal && liveData.matricula && liveData.matricula["total-gen"] !== undefined) {
-                      inpMatTotal.value = liveData.matricula["total-gen"];
-                  }
-              }
-          });
+      if (window._unsubPlantel) {
+          window._unsubPlantel(); // Desuscribir el anterior si cambió de escuela
       }
+      window._unsubPlantel = onSnapshot(docRef, (snap) => {
+          if (snap.exists()) {
+              const liveData = snap.data();
+              console.log("🔥 [onSnapshot] Datos recibidos de Firestore:", liveData.matricula);
+              const inpMatTotal = document.getElementById('inp-matricula-total');
+              if (inpMatTotal && liveData.matricula && liveData.matricula["total-gen"] !== undefined) {
+                  inpMatTotal.value = liveData.matricula["total-gen"];
+                  console.log("✅ [onSnapshot] Input de Matrícula Total actualizado a:", liveData.matricula["total-gen"]);
+              }
+          }
+      });
     } else {
       // El plantel no existe en la base de datos! (Caso de planteles faltantes en CSV)
       mostrarCandado(codigoDEA, null);
@@ -1456,9 +1459,7 @@ async function mostrarCandado(codigoDEA, dataParcial) {
                   mergeFields: ['secciones', 'secciones-planes', 'matricula', 'vacantes', 'datos_completados', 'ultima_actualizacion']
               });
 
-              // Actualizar el input de la tarjeta con el nuevo total guardado
-              const inpMatTotal = document.getElementById('inp-matricula-total');
-              if (inpMatTotal) inpMatTotal.value = matTotal;
+
 
               showToast("¡Datos del plantel actualizados con éxito!", "success");
 
