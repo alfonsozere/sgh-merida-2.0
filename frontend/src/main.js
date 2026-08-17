@@ -40,7 +40,7 @@ document.addEventListener('input', (e) => {
 import { safeSetDoc, safeUpdateDoc, safeAddDoc } from './dbUtils.js';
 import './style.css';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, deleteField } from 'firebase/firestore';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut, setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { initAuth } from './auth.js';
 import { initSeed } from './seed.js';
@@ -193,7 +193,7 @@ initAuth(auth, db, {
         await checkPlantelData(userData.jerarquia.plantel_codigo);
     } else {
         userDisplayName.textContent = `${userData.nombre}`;
-        showView('dashboard-view');
+        // showView('dashboard-view'); // Removido por el motor dinámico
     }
   },
 
@@ -360,9 +360,9 @@ document.getElementById('register-form')?.addEventListener('submit', async (e) =
             err.textContent = "Error al registrarse. Revise sus datos e intente de nuevo.";
             if(error.code === 'auth/email-already-in-use') err.textContent = "El correo ya está en uso.";
             err.style.display = 'block';
-        window.hideLoading();
         }
     } finally {
+        window.hideLoading();
         btn.disabled = false;
         btn.innerHTML = 'Registrarse';
         const formElements = document.getElementById('register-form').querySelectorAll('input, select');
@@ -372,12 +372,128 @@ document.getElementById('register-form')?.addEventListener('submit', async (e) =
     }
 });
 
+
+// --- Lógica Dinámica de Matrícula (Fase 2) ---
+
+
+function _distribuirSecciones(numSec, numGrados) {
+    const base = Math.floor(numSec / numGrados);
+    const resto = numSec % numGrados;
+    const dist = [];
+    for (let g = 0; g < numGrados; g++) {
+        dist.push(base + (g < resto ? 1 : 0));
+    }
+    return dist;
+}
+
+function _letraGrupo(s) {
+    return String.fromCharCode(65 + s);
+}
+
+function _renderCajasInicial(tipo, numSec) {
+    const cont = document.getElementById('cont-dinamico-' + tipo);
+    if (!cont) return;
+    
+    if (numSec === 0) {
+        cont.innerHTML = '';
+        return;
+    }
+
+    let html = '<div style="margin-top: 15px;">';
+    html += '<h4 style="font-size: 0.9rem; color: #475569; margin-bottom: 10px; text-transform: capitalize;">' + tipo + '</h4>';
+    html += '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px;">';
+
+    for (let i = 0; i < numSec; i++) {
+        const letra = numSec === 1 ? 'U' : _letraGrupo(i);
+        const ident = tipo + '-' + letra;
+        
+        html += '<div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; background: #f8fafc;">';
+        html += '  <h5 style="margin: 0 0 8px; font-size: 0.85rem; color: #1e293b; text-align: center;">Grupo ' + letra + '</h5>';
+        html += '  <div style="display: flex; gap: 10px;">';
+        html += '    <div style="flex: 1;">';
+        html += '      <label style="font-size: 0.65rem; color: #64748b; display: block; text-align: center;">FEM</label>';
+        html += '      <input type="number" class="mat-input mat-' + tipo + '" data-grupo="' + ident + '" data-sexo="F" min="0" value="" style="width: 100%; padding: 0.3rem; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px;">';
+        html += '    </div>';
+        html += '    <div style="flex: 1;">';
+        html += '      <label style="font-size: 0.65rem; color: #64748b; display: block; text-align: center;">MAS</label>';
+        html += '      <input type="number" class="mat-input mat-' + tipo + '" data-grupo="' + ident + '" data-sexo="M" min="0" value="" style="width: 100%; padding: 0.3rem; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px;">';
+        html += '    </div>';
+        html += '  </div>';
+        html += '</div>';
+    }
+    
+    html += '</div></div>';
+    cont.innerHTML = html;
+}
+
+function _renderCajasPrimaria(numSec) {
+    const cont = document.getElementById('cont-dinamico-primaria');
+    if (!cont) return;
+
+    if (numSec === 0) {
+        cont.innerHTML = '';
+        return;
+    }
+
+    const dist = _distribuirSecciones(numSec, 6);
+    const ORDINALES = ['1er', '2do', '3er', '4to', '5to', '6to'];
+    
+    let html = '<div style="margin-top: 15px;">';
+    html += '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;">';
+
+    for (let g = 0; g < 6; g++) {
+        if (dist[g] === 0) continue;
+        
+        const secsEnGrado = dist[g];
+        for (let s = 0; s < secsEnGrado; s++) {
+            const letra = secsEnGrado === 1 ? 'U' : _letraGrupo(s);
+            const titulo = ORDINALES[g] + ' Grado ' + letra;
+            const ident = 'primaria-' + (g+1) + letra;
+            
+            html += '<div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; background: #f8fafc;">';
+            html += '  <h5 style="margin: 0 0 8px; font-size: 0.85rem; color: #1e293b; text-align: center;">' + titulo + '</h5>';
+            html += '  <div style="display: flex; gap: 10px;">';
+            html += '    <div style="flex: 1;">';
+            html += '      <label style="font-size: 0.65rem; color: #64748b; display: block; text-align: center;">FEM</label>';
+            html += '      <input type="number" class="mat-input mat-primaria" data-grupo="' + ident + '" data-sexo="F" min="0" value="" style="width: 100%; padding: 0.3rem; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px;">';
+            html += '    </div>';
+            html += '    <div style="flex: 1;">';
+            html += '      <label style="font-size: 0.65rem; color: #64748b; display: block; text-align: center;">MAS</label>';
+            html += '      <input type="number" class="mat-input mat-primaria" data-grupo="' + ident + '" data-sexo="M" min="0" value="" style="width: 100%; padding: 0.3rem; text-align: center; border: 1px solid #cbd5e1; border-radius: 4px;">';
+            html += '    </div>';
+            html += '  </div>';
+            html += '</div>';
+        }
+    }
+
+    html += '</div></div>';
+    cont.innerHTML = html;
+}
+
+document.addEventListener('input', (e) => {
+    if (e.target.classList.contains('sec-master-input')) {
+        const val = parseInt(e.target.value) || 0;
+        const plan = e.target.getAttribute('data-plan');
+        
+        if (plan === '20000') {
+            const tipo = e.target.getAttribute('data-tipo');
+            _renderCajasInicial(tipo, val);
+        } else if (plan === '21000') {
+            _renderCajasPrimaria(val);
+        }
+        
+        // Recalcular matrícula al redibujar
+        document.getElementById('contenedor-matricula').dispatchEvent(new Event('input', { bubbles: true }));
+    }
+});
+
+// Reemplazar la lógica anterior de sumatoria de matrícula
+
 // --- Lógica del "Candado de Navegación" ---
 // Cálculo automático de totales
 document.getElementById('contenedor-matricula')?.addEventListener('input', (e) => {
     if (e.target.tagName.toLowerCase() === 'input') {
         let matTotal = 0;
-        let secTotal = 0;
         
         const sumInputs = (selector) => {
             let sum = 0;
@@ -390,7 +506,10 @@ document.getElementById('contenedor-matricula')?.addEventListener('input', (e) =
         };
 
         // Subtotales
-        const totIni = sumInputs('.mat-inicial');
+        const totMat = sumInputs('.mat-maternal');
+        const totPre = sumInputs('.mat-preescolar');
+        const totIni = totMat + totPre;
+        
         const totPri = sumInputs('.mat-primaria');
         const totMed = sumInputs('.mat-media');
         const totTec = sumInputs('.mat-tecnica');
@@ -400,22 +519,14 @@ document.getElementById('contenedor-matricula')?.addEventListener('input', (e) =
         if(document.getElementById('tot-media')) document.getElementById('tot-media').textContent = totMed;
         if(document.getElementById('tot-tecnica')) document.getElementById('tot-tecnica').textContent = totTec;
 
-        // Sumar todos los inputs de matrícula
+        // Sumar todos los inputs de matrícula (.mat-input)
         document.querySelectorAll('.mat-input').forEach(input => {
             if (input.closest('div[id^="bloque-"]').style.display !== 'none') {
                 matTotal += parseInt(input.value || 0);
             }
         });
         
-        // Sumar todos los inputs de secciones
-        document.querySelectorAll('.sec-input').forEach(input => {
-            if (input.closest('div[id^="bloque-"]').style.display !== 'none') {
-                secTotal += parseInt(input.value || 0);
-            }
-        });
-        
-        document.getElementById('lbl-matricula-total').textContent = matTotal;
-        document.getElementById('lbl-secciones-total').textContent = secTotal;
+
     }
 });
 
@@ -426,15 +537,7 @@ function _letraSec(s, nTotal) {
     return nTotal === 1 ? 'U' : String.fromCharCode(65 + s);
 }
 
-function _distribuirSecciones(numSec, numGrados) {
-    const base = Math.floor(numSec / numGrados);
-    const resto = numSec % numGrados;
-    const dist = [];
-    for (let g = 0; g < numGrados; g++) {
-        dist.push(base + (g < resto ? 1 : 0));
-    }
-    return dist;
-}
+
 
 function _getGuardado(data, clavePrincipal) {
     if (!data) return 0;
@@ -446,7 +549,7 @@ function _getGuardado(data, clavePrincipal) {
     return 0;
 }
 
-function _renderizarDetalleSecciones(planes) {
+function _renderizarDetalleSecciones(planes, guardadas = null) {
     const cont = document.getElementById('cont-secciones-detalle');
     const contDinamico = document.getElementById('cont-secciones-dinamicas');
     if (!cont || !contDinamico) return;
@@ -463,8 +566,8 @@ function _renderizarDetalleSecciones(planes) {
     cont.style.display = 'block';
     let html = '';
     
-    // Asumimos un objeto vacío de secciones previas
-    const seccionesGuardadas = {}; 
+    // Usamos las guardadas o un objeto vacío
+    const seccionesGuardadas = guardadas || {}; 
     
     mediaPlanes.forEach(plan => {
         const isMt = plan.startsWith('4');
@@ -493,9 +596,9 @@ function _renderizarDetalleSecciones(planes) {
 }
 
 async function _abrirModalVacantes() {
-    let mat = parseInt(document.getElementById('secMat')?.value) || 0;
-    let pre = parseInt(document.getElementById('secPre')?.value) || 0;
-    let pri = parseInt(document.getElementById('secPri')?.value) || 0;
+    let mat = parseInt(document.getElementById('inp-sec-maternal')?.value) || 0;
+    let pre = parseInt(document.getElementById('inp-sec-preescolar')?.value) || 0;
+    let pri = parseInt(document.getElementById('inp-sec-primaria')?.value) || 0;
 
     const VAC = window._VACANTES_TEMP || {};
 
@@ -528,15 +631,26 @@ async function _abrirModalVacantes() {
             const letra = _letraSec(s, numSec);
             const guardado = _getGuardado(tempData, letra);
             const wrap = document.createElement('div');
-            wrap.style.cssText = 'display:flex; flex-direction:column; gap:0.2rem;';
-            const lbl = document.createElement('label');
-            lbl.textContent = 'SECCIÓN ' + letra;
-            lbl.style.cssText = 'font-size:0.8rem; color:#78350f; font-weight:600;';
+            wrap.style.cssText = 'display:flex; align-items:center; justify-content:space-between; gap:0.5rem; background:#fff; padding:0.5rem 0.8rem; border-radius:4px; border:1px solid #e2e8f0;';
+            
+            const ident = keyPlan + '-' + letra;
+            const inputsFemMas = document.querySelectorAll('.mat-input.mat-' + keyPlan + '[data-grupo="' + ident + '"]');
+            let totalSec = 0;
+            inputsFemMas.forEach(i => totalSec += (parseInt(i.value) || 0));
+            
             const inp = document.createElement('input');
-            inp.type = 'number'; inp.min = '0'; inp.value = String(guardado);
+            inp.type = 'checkbox'; 
+            inp.checked = (guardado !== 0 && guardado !== undefined && guardado !== "");
             inp.dataset.plan = keyPlan; inp.dataset.sec = letra;
             inp.className = 'vac-input';
-            inp.style.cssText = 'padding:0.4rem; font-size:0.9rem; text-align:center; border: 1px solid #f59e0b; border-radius: 4px;';
+            inp.style.cssText = 'width:18px; height:18px; cursor:pointer; accent-color:#f59e0b; margin:0 !important; padding:0 !important; flex-shrink:0;';
+            inp.id = 'chk-vac-' + keyPlan + '-' + letra;
+            
+            const lbl = document.createElement('label');
+            lbl.innerHTML = '<span style="color:#64748b; font-weight:normal; margin-right:4px;">(' + totalSec + ')</span> SECCIÓN ' + letra;
+            lbl.style.cssText = 'font-size:0.85rem; color:#475569; font-weight:600; cursor:pointer; user-select:none; margin:0;';
+            lbl.htmlFor = inp.id;
+            
             wrap.appendChild(lbl); wrap.appendChild(inp);
             grid.appendChild(wrap);
         }
@@ -567,15 +681,26 @@ async function _abrirModalVacantes() {
                 const clave = String(g + 1) + letra;
                 const guardado = _getGuardado(dataPri, clave);
                 const wrapG = document.createElement('div');
-                wrapG.style.cssText = 'display:flex; flex-direction:column; gap:0.2rem;';
-                const lblG = document.createElement('label');
-                lblG.textContent = ORDINALES[g] + ' GRADO ' + letra;
-                lblG.style.cssText = 'font-size:0.78rem; color:#78350f; font-weight:600;';
+                wrapG.style.cssText = 'display:flex; align-items:center; justify-content:space-between; gap:0.5rem; background:#fff; padding:0.5rem 0.8rem; border-radius:4px; border:1px solid #e2e8f0;';
+                
+                const ident = 'primaria-' + (g + 1) + letra;
+                const inputsFemMas = document.querySelectorAll('.mat-input.mat-primaria[data-grupo="' + ident + '"]');
+                let totalSec = 0;
+                inputsFemMas.forEach(i => totalSec += (parseInt(i.value) || 0));
+                
                 const inpG = document.createElement('input');
-                inpG.type = 'number'; inpG.min = '0'; inpG.value = String(guardado);
+                inpG.type = 'checkbox'; 
+                inpG.checked = (guardado !== 0 && guardado !== undefined && guardado !== "");
                 inpG.dataset.plan = 'primaria'; inpG.dataset.grado = String(g + 1); inpG.dataset.sec = letra;
                 inpG.className = 'vac-input';
-                inpG.style.cssText = 'padding:0.35rem; font-size:0.88rem; text-align:center; border: 1px solid #f59e0b; border-radius: 4px;';
+                inpG.style.cssText = 'width:18px; height:18px; cursor:pointer; accent-color:#f59e0b; margin:0 !important; padding:0 !important; flex-shrink:0;';
+                inpG.id = 'chk-vac-pri-' + (g+1) + '-' + letra;
+                
+                const lblG = document.createElement('label');
+                lblG.innerHTML = '<span style="color:#64748b; font-weight:normal; margin-right:4px;">(' + totalSec + ')</span> ' + ORDINALES[g] + ' ' + letra;
+                lblG.style.cssText = 'font-size:0.85rem; color:#475569; font-weight:600; cursor:pointer; user-select:none; margin:0;';
+                lblG.htmlFor = inpG.id;
+                
                 wrapG.appendChild(lblG); wrapG.appendChild(inpG);
                 gridG.appendChild(wrapG);
             }
@@ -598,7 +723,7 @@ document.getElementById('btn-confirmar-vacantes')?.addEventListener('click', () 
     const vacFinal = { maternal: {}, preescolar: {}, primaria: {} };
 
     inputs.forEach(inp => {
-        const val = parseInt(inp.value, 10) || 0;
+        const val = inp.type === 'checkbox' ? (inp.checked ? 1 : 0) : (parseInt(inp.value, 10) || 0);
         if (val <= 0) return;
         const plan = inp.dataset.plan || '';
         const sec = inp.dataset.sec || '';
@@ -669,14 +794,10 @@ async function checkPlantelData(codigoDEA) {
     if (docSnap.exists()) {
       const data = docSnap.data();
       // Verificamos si los datos requeridos existen
-      if (data.matricula !== undefined && data.secciones !== undefined && data.datos_completados === true) {
-        // Todo en orden, ocultar candado
-        currentPlantel = data;
-        showView('dashboard-view');
-      } else {
-        // Faltan datos, mostrar candado
-        mostrarCandado(codigoDEA, data);
-      }
+      // Siempre mostrar la pantalla de datos del plantel (formulario de matrícula/secciones)
+      // ya no enviamos al dashboard-view antiguo.
+      currentPlantel = data;
+      mostrarCandado(codigoDEA, data);
     } else {
       // El plantel no existe en la base de datos! (Caso de planteles faltantes en CSV)
       mostrarCandado(codigoDEA, null);
@@ -726,7 +847,7 @@ async function mostrarCandado(codigoDEA, dataParcial) {
     }
 
     // Lógica dinámica de visibilidad basada en planes_estudio
-    const planes = dp ? (dp.planes_estudio || {}) : {};
+    const planes = dp ? (dp["planes-estudio"] || {}) : {};
     let mostrarInicial = "20000" in planes;
     let mostrarPrimaria = "21000" in planes;
     let mostrarMediaGen = false;
@@ -756,11 +877,72 @@ async function mostrarCandado(codigoDEA, dataParcial) {
     if (mostrarMediaGen) document.getElementById('bloque-mediageneral').style.display = 'block';
     if (mostrarMediaTec) document.getElementById('bloque-mediatecnica').style.display = 'block';
 
-    // Renderizar secciones dinámicas si hay media
-    _renderizarDetalleSecciones(planes);
+    // Carga de Secciones Dinámicas para Media (Pasando los guardados)
+    const savedSeccionesPlanes = dataParcial ? (dataParcial["secciones-planes"] || {}) : {};
+    _renderizarDetalleSecciones(planes, savedSeccionesPlanes);
 
-    if (dataParcial && dataParcial.matricula_detalle) {
-        // Restaurar matrícula si ya existe
+    if (dataParcial && dataParcial.matricula) {
+        const mat = dataParcial.matricula;
+        const b20 = mat.basica ? (mat.basica["20000"] || {}) : {};
+        const b21 = mat.basica ? (mat.basica["21000"] || {}) : {};
+        
+        // --- 1. MATERNAL ---
+        if (b20.materna) {
+            const numMat = Object.keys(b20.materna).length;
+            if (document.getElementById('inp-sec-maternal')) document.getElementById('inp-sec-maternal').value = numMat;
+            _renderCajasInicial('maternal', numMat);
+            Object.keys(b20.materna).forEach(letra => {
+                const f = document.querySelector('.mat-input.mat-maternal[data-grupo="maternal-' + letra + '"][data-sexo="F"]');
+                const m = document.querySelector('.mat-input.mat-maternal[data-grupo="maternal-' + letra + '"][data-sexo="M"]');
+                if (f) f.value = b20.materna[letra].fem || 0;
+                if (m) m.value = b20.materna[letra].mas || 0;
+            });
+        }
+        
+        // --- 2. PREESCOLAR ---
+        if (b20.preescolar) {
+            const numPre = Object.keys(b20.preescolar).length;
+            if (document.getElementById('inp-sec-preescolar')) document.getElementById('inp-sec-preescolar').value = numPre;
+            _renderCajasInicial('preescolar', numPre);
+            Object.keys(b20.preescolar).forEach(letra => {
+                const f = document.querySelector('.mat-input.mat-preescolar[data-grupo="preescolar-' + letra + '"][data-sexo="F"]');
+                const m = document.querySelector('.mat-input.mat-preescolar[data-grupo="preescolar-' + letra + '"][data-sexo="M"]');
+                if (f) f.value = b20.preescolar[letra].fem || 0;
+                if (m) m.value = b20.preescolar[letra].mas || 0;
+            });
+        }
+
+        // --- 3. PRIMARIA ---
+        if (Object.keys(b21).length > 0) {
+            let totalPri = 0;
+            for (let g = 1; g <= 6; g++) {
+                if (b21[String(g)]) totalPri += Object.keys(b21[String(g)]).length;
+            }
+            if (document.getElementById('inp-sec-primaria')) document.getElementById('inp-sec-primaria').value = totalPri;
+            _renderCajasPrimaria(totalPri);
+            for (let g = 1; g <= 6; g++) {
+                if (!b21[String(g)]) continue;
+                Object.keys(b21[String(g)]).forEach(letra => {
+                    const ident = 'primaria-' + g + letra;
+                    const f = document.querySelector('.mat-input.mat-primaria[data-grupo="' + ident + '"][data-sexo="F"]');
+                    const m = document.querySelector('.mat-input.mat-primaria[data-grupo="' + ident + '"][data-sexo="M"]');
+                    if (f) f.value = b21[String(g)][letra].fem || 0;
+                    if (m) m.value = b21[String(g)][letra].mas || 0;
+                });
+            }
+        }
+        
+        // --- 4. MEDIA GENERAL Y TÉCNICA ---
+        if (mat.media) {
+            const mg = mat.media["media-general"] || {};
+            const mt = mat.media["media-tecnica"] || {};
+            if (document.getElementById('mgFem')) document.getElementById('mgFem').value = mg["total-med-fem"] || 0;
+            if (document.getElementById('mgMas')) document.getElementById('mgMas').value = mg["total-med-mas"] || 0;
+            if (document.getElementById('mtFem')) document.getElementById('mtFem').value = mt["total-med-fem"] || 0;
+            if (document.getElementById('mtMas')) document.getElementById('mtMas').value = mt["total-med-mas"] || 0;
+        }
+    } else if (dataParcial && dataParcial.matricula_detalle) {
+        // Fallback legado si el plantel aún no tiene el JSON dinámico v2
         const md = dataParcial.matricula_detalle;
         ['matFem', 'matMas', 'secMat', 'preFem', 'preMas', 'secPre',
          'priFem', 'priMas', 'secPri', 'mgFem', 'mgMas', 'secMg', 'mtFem', 'mtMas', 'secMt'].forEach(id => {
@@ -770,12 +952,21 @@ async function mostrarCandado(codigoDEA, dataParcial) {
     }
     
     // Restaurar vacantes
-    if (dataParcial && dataParcial.vacantes !== undefined) {
-        document.getElementById('inp-vacantes').value = dataParcial.vacantes;
+    if (dataParcial && dataParcial.vacantes !== undefined && Object.keys(dataParcial.vacantes).length > 0) {
+        window._VACANTES_TEMP = dataParcial.vacantes;
+        const keys = Object.keys(window._VACANTES_TEMP);
+        // Si hay vacantes con datos, marcamos el toggle visualmente
+        if (keys.length > 0 && keys.some(k => Object.keys(window._VACANTES_TEMP[k]).length > 0)) {
+            const btnSi = document.querySelector('#toggle-vacantes button[data-val="SI"]');
+            if (btnSi) btnSi.click();
+        } else {
+            const btnNo = document.querySelector('#toggle-vacantes button[data-val="NO"]');
+            if (btnNo) btnNo.click();
+        }
     }
     
     // Forzar recálculo
-    document.getElementById('matFem')?.dispatchEvent(new Event('input', { bubbles: true }));
+    document.getElementById('contenedor-matricula')?.dispatchEvent(new Event('input', { bubbles: true }));
 
     // Guardar los datos cuando el director llene el form
     const form = document.getElementById('plantel-form');
@@ -786,42 +977,313 @@ async function mostrarCandado(codigoDEA, dataParcial) {
           btn.textContent = "Guardando...";
           btn.disabled = true;
 
-          const matTotal = parseInt(document.getElementById('lbl-matricula-total').textContent);
-          const secTotal = parseInt(document.getElementById('lbl-secciones-total').textContent);
+          const matTotal = parseInt(document.getElementById('lbl-matricula-total')?.textContent) || 0;
           
-          // Recopilar detalle básico
-          const detalle = {};
-          document.querySelectorAll('.mat-input, .sec-input').forEach(input => {
-              detalle[input.id] = parseInt(input.value || 0);
+          let secTotal = 0;
+          secTotal += parseInt(document.getElementById('inp-sec-maternal')?.value) || 0;
+          secTotal += parseInt(document.getElementById('inp-sec-preescolar')?.value) || 0;
+          secTotal += parseInt(document.getElementById('inp-sec-primaria')?.value) || 0;
+          document.querySelectorAll('.sec-anio-input').forEach(inp => {
+              if (inp.closest('div[id^="bloque-"]').style.display !== 'none') {
+                  secTotal += parseInt(inp.value) || 0;
+              }
+          });
+          
+          const seccionesPlanes = {};
+          const matricula = {
+              "basica": {
+                  "20000": {
+                      "materna": {},
+                      "total-mat-mas": 0,
+                      "total-mat-fem": 0,
+                      "total-mat": 0,
+                      "preescolar": {},
+                      "total-pre-mas": 0,
+                      "total-pre-fem": 0,
+                      "total-pre": 0,
+                      "total-20000": 0
+                  },
+                  "21000": {
+                      "1": {}, "2": {}, "3": {}, "4": {}, "5": {}, "6": {},
+                      "total-21000-mas": 0,
+                      "total-21000-fem": 0,
+                      "total-21000": 0
+                  }
+              },
+              "media": {
+                  "media-general": {
+                      "total-med-fem": 0,
+                      "total-med-mas": 0,
+                      "total-med-gen": 0
+                  },
+                  "media-tecnica": {
+                      "total-med-fem": 0,
+                      "total-med-mas": 0,
+                      "total-med-tec": 0
+                  },
+                  "total-gen-med": {
+                      "fem": 0,
+                      "mas": 0,
+                      "total": 0
+                  }
+              },
+              "total": matTotal
+          };
+
+          // 1. MATERNAL Y PREESCOLAR
+          ['maternal', 'preescolar'].forEach(tipo => {
+              const inputs = document.querySelectorAll('.mat-input.mat-' + tipo);
+              if (inputs.length > 0) {
+                  if (!seccionesPlanes["20000"]) seccionesPlanes["20000"] = {};
+              }
+              inputs.forEach(inp => {
+                  if (inp.closest('div[id^="bloque-"]').style.display !== 'none') {
+                      const grupo = inp.dataset.grupo; // ej: "maternal-A"
+                      const secLetra = grupo.split('-')[1];
+                      const val = parseInt(inp.value) || 0;
+                      const isFem = inp.dataset.sexo === 'F';
+                      
+                      if (!seccionesPlanes["20000"]._vistas) seccionesPlanes["20000"]._vistas = new Set();
+                      if (!seccionesPlanes["20000"]._vistas.has(grupo)) {
+                          seccionesPlanes["20000"]._vistas.add(grupo);
+                          seccionesPlanes["20000"][secLetra] = (seccionesPlanes["20000"][secLetra] || 0) + 1;
+                      }
+
+                      const key = tipo === 'maternal' ? 'materna' : 'preescolar';
+                      if (!matricula.basica["20000"][key][secLetra]) {
+                          matricula.basica["20000"][key][secLetra] = { mas: 0, fem: 0 };
+                      }
+                      
+                      if (isFem) {
+                          matricula.basica["20000"][key][secLetra].fem += val;
+                          matricula.basica["20000"]["total-" + tipo.substring(0,3) + "-fem"] += val;
+                      } else {
+                          matricula.basica["20000"][key][secLetra].mas += val;
+                          matricula.basica["20000"]["total-" + tipo.substring(0,3) + "-mas"] += val;
+                      }
+                      matricula.basica["20000"]["total-" + tipo.substring(0,3)] += val;
+                      matricula.basica["20000"]["total-20000"] += val;
+                  }
+              });
+              
+              // Inyectar vacantes copiando matrícula (Plazas Docentes Vacantes)
+              const pref = tipo.substring(0,3); // 'mat' o 'pre'
+              const vacPlan = window._VACANTES_TEMP?.[tipo] || {};
+              const key = tipo === 'maternal' ? 'materna' : 'preescolar';
+              
+              for (const secLetra of Object.keys(matricula.basica["20000"][key] || {})) {
+                  if (vacPlan[secLetra] === 1) { // Checkbox marcado en el modal
+                      if (!matricula.basica["20000"][key].vacantes) {
+                          matricula.basica["20000"][key].vacantes = {};
+                          matricula.basica["20000"][key]["total-vac-" + pref + "-mas"] = 0;
+                          matricula.basica["20000"][key]["total-vac-" + pref + "-fem"] = 0;
+                          matricula.basica["20000"][key]["total-vac-" + pref] = 0;
+                      }
+                      if (matricula.basica["20000"]["total-vac-20000-mas"] === undefined) {
+                          matricula.basica["20000"]["total-vac-20000-mas"] = 0;
+                          matricula.basica["20000"]["total-vac-20000-fem"] = 0;
+                          matricula.basica["20000"]["total-vac-20000"] = 0;
+                      }
+                      
+                      const matSec = matricula.basica["20000"][key][secLetra];
+                      matricula.basica["20000"][key].vacantes[secLetra] = { mas: matSec.mas, fem: matSec.fem };
+                      
+                      matricula.basica["20000"][key]["total-vac-" + pref + "-mas"] += matSec.mas;
+                      matricula.basica["20000"][key]["total-vac-" + pref + "-fem"] += matSec.fem;
+                      matricula.basica["20000"][key]["total-vac-" + pref] += (matSec.mas + matSec.fem);
+                      
+                      matricula.basica["20000"]["total-vac-20000-mas"] += matSec.mas;
+                      matricula.basica["20000"]["total-vac-20000-fem"] += matSec.fem;
+                      matricula.basica["20000"]["total-vac-20000"] += (matSec.mas + matSec.fem);
+                  }
+              }
           });
 
-          // Recopilar secciones por año dinámicas (Media)
-          const seccionesPorAnio = {};
-          document.querySelectorAll('.sec-anio-input').forEach(inp => {
-              const plan = inp.dataset.plan;
-              const anio = inp.dataset.anio;
-              const val = parseInt(inp.value) || 0;
-              if (!seccionesPorAnio[plan]) seccionesPorAnio[plan] = {};
-              seccionesPorAnio[plan][anio] = val;
+          // 2. PRIMARIA
+          const inputsPri = document.querySelectorAll('.mat-input.mat-primaria');
+          if (inputsPri.length > 0) {
+              if (!seccionesPlanes["21000"]) seccionesPlanes["21000"] = {};
+          }
+          inputsPri.forEach(inp => {
+              if (inp.closest('div[id^="bloque-"]').style.display !== 'none') {
+                  const grupo = inp.dataset.grupo; // ej: "primaria-1A"
+                  const match = grupo.match(/primaria-(\d)([A-Z])/);
+                  if (match) {
+                      const grado = match[1];
+                      const secLetra = match[2];
+                      const val = parseInt(inp.value) || 0;
+                      const isFem = inp.dataset.sexo === 'F';
+
+                      if (!seccionesPlanes["21000"]._vistas) seccionesPlanes["21000"]._vistas = new Set();
+                      if (!seccionesPlanes["21000"]._vistas.has(grupo)) {
+                          seccionesPlanes["21000"]._vistas.add(grupo);
+                          seccionesPlanes["21000"][secLetra] = (seccionesPlanes["21000"][secLetra] || 0) + 1;
+                      }
+                      
+                      if (!matricula.basica["21000"][grado][secLetra]) {
+                          matricula.basica["21000"][grado][secLetra] = { mas: 0, fem: 0 };
+                      }
+                      
+                      if (isFem) {
+                          matricula.basica["21000"][grado][secLetra].fem += val;
+                          matricula.basica["21000"]["total-21000-fem"] += val;
+                      } else {
+                          matricula.basica["21000"][grado][secLetra].mas += val;
+                          matricula.basica["21000"]["total-21000-mas"] += val;
+                      }
+                      matricula.basica["21000"]["total-21000"] += val;
+                      
+                      // Totales dinámicos de sección en Primaria
+                      const tKeyMas = "total-mat-seccion" + secLetra.toLowerCase() + "-mas";
+                      const tKeyFem = "total-mat-seccion" + secLetra.toLowerCase() + "-fem";
+                      const tKeyTot = "total-mat-seccion" + secLetra.toLowerCase();
+                      
+                      if (matricula.basica["21000"][grado][tKeyMas] === undefined) {
+                          matricula.basica["21000"][grado][tKeyMas] = 0;
+                          matricula.basica["21000"][grado][tKeyFem] = 0;
+                          matricula.basica["21000"][grado][tKeyTot] = 0;
+                      }
+                      
+                      if (isFem) {
+                          matricula.basica["21000"][grado][tKeyFem] += val;
+                      } else {
+                          matricula.basica["21000"][grado][tKeyMas] += val;
+                      }
+                      matricula.basica["21000"][grado][tKeyTot] += val;
+                  }
+              }
           });
+
+          // Calcular Vacantes de Primaria (Plazas Docentes Vacantes)
+          const vacPri = window._VACANTES_TEMP?.primaria || {};
+          for (let g = 1; g <= 6; g++) {
+              const gradoStr = String(g);
+              if (!matricula.basica["21000"][gradoStr] || Object.keys(matricula.basica["21000"][gradoStr]).length === 0) continue;
+              
+              for (const secLetra of Object.keys(matricula.basica["21000"][gradoStr])) {
+                  if (secLetra.length !== 1) continue; // Omitir totales
+                  
+                  if (vacPri[gradoStr + secLetra] === 1) { // Checkbox marcado
+                      if (!matricula.basica["21000"][gradoStr].vacantes) {
+                          matricula.basica["21000"][gradoStr].vacantes = {};
+                      }
+                      if (matricula.basica["21000"]["total-vac-21000-mas"] === undefined) {
+                          matricula.basica["21000"]["total-vac-21000-mas"] = 0;
+                          matricula.basica["21000"]["total-vac-21000-fem"] = 0;
+                          matricula.basica["21000"]["total-vac-21000"] = 0;
+                      }
+                      
+                      const tKeyVMas = "total-vac-mat-seccion" + secLetra.toLowerCase() + "-mas";
+                      const tKeyVFem = "total-vac-mat-seccion" + secLetra.toLowerCase() + "-fem";
+                      const tKeyVTot = "total-vac-mat-seccion" + secLetra.toLowerCase();
+                      
+                      if (matricula.basica["21000"][gradoStr][tKeyVMas] === undefined) {
+                          matricula.basica["21000"][gradoStr][tKeyVMas] = 0;
+                          matricula.basica["21000"][gradoStr][tKeyVFem] = 0;
+                          matricula.basica["21000"][gradoStr][tKeyVTot] = 0;
+                      }
+                      
+                      const matSec = matricula.basica["21000"][gradoStr][secLetra];
+                      matricula.basica["21000"][gradoStr].vacantes[secLetra] = { mas: matSec.mas, fem: matSec.fem };
+                      
+                      matricula.basica["21000"][gradoStr][tKeyVMas] += matSec.mas;
+                      matricula.basica["21000"][gradoStr][tKeyVFem] += matSec.fem;
+                      matricula.basica["21000"][gradoStr][tKeyVTot] += (matSec.mas + matSec.fem);
+                      
+                      matricula.basica["21000"]["total-vac-21000-mas"] += matSec.mas;
+                      matricula.basica["21000"]["total-vac-21000-fem"] += matSec.fem;
+                      matricula.basica["21000"]["total-vac-21000"] += (matSec.mas + matSec.fem);
+                  }
+              }
+          }
+
+          // 3. MEDIA (Secciones)
+          let codMg = null;
+          let codMt = null;
+          document.querySelectorAll('.sec-anio-input').forEach(inp => {
+              if (inp.closest('div[id^="bloque-"]').style.display !== 'none') {
+                  const plan = inp.dataset.plan;
+                  const anio = inp.dataset.anio;
+                  const val = parseInt(inp.value) || 0;
+                  
+                  if (!seccionesPlanes[plan]) seccionesPlanes[plan] = {};
+                  seccionesPlanes[plan][anio] = val;
+
+                  if (plan.startsWith('3')) codMg = plan;
+                  if (plan.startsWith('4')) codMt = plan;
+              }
+          });
+
+          // Fallbacks en caso de DEA no catalogado
+          if (!codMg) codMg = "31059";
+          if (!codMt) codMt = "41052";
+
+          // 4. MEDIA (Matrícula Global)
+          if (document.getElementById('bloque-mediageneral').style.display !== 'none') {
+              const mgFem = parseInt(document.getElementById('mgFem').value || 0);
+              const mgMas = parseInt(document.getElementById('mgMas').value || 0);
+              matricula.media["media-general"][codMg] = {
+                  fem: mgFem,
+                  mas: mgMas,
+                  total: mgFem + mgMas
+              };
+              matricula.media["media-general"]["total-med-fem"] += mgFem;
+              matricula.media["media-general"]["total-med-mas"] += mgMas;
+              matricula.media["media-general"]["total-med-gen"] += (mgFem + mgMas);
+          }
+
+          if (document.getElementById('bloque-mediatecnica').style.display !== 'none') {
+              const mtFem = parseInt(document.getElementById('mtFem').value || 0);
+              const mtMas = parseInt(document.getElementById('mtMas').value || 0);
+              matricula.media["media-tecnica"][codMt] = {
+                  fem: mtFem,
+                  mas: mtMas,
+                  total: mtFem + mtMas
+              };
+              matricula.media["media-tecnica"]["total-med-fem"] += mtFem;
+              matricula.media["media-tecnica"]["total-med-mas"] += mtMas;
+              matricula.media["media-tecnica"]["total-med-tec"] += (mtFem + mtMas);
+          }
+
+          matricula.media["total-gen-med"].fem = matricula.media["media-general"]["total-med-fem"] + matricula.media["media-tecnica"]["total-med-fem"];
+          matricula.media["total-gen-med"].mas = matricula.media["media-general"]["total-med-mas"] + matricula.media["media-tecnica"]["total-med-mas"];
+          matricula.media["total-gen-med"].total = matricula.media["total-gen-med"].fem + matricula.media["total-gen-med"].mas;
 
           try {
               const docRef = doc(db, "planteles", codigoDEA);
               
+              delete seccionesPlanes["20000"]?._vistas;
+              delete seccionesPlanes["21000"]?._vistas;
+              // --- ESCOBA DIGITAL (Zero-Waste) ---
+              const sweepZeros = (obj) => {
+                  Object.keys(obj).forEach(key => {
+                      if (obj[key] === 0) {
+                          delete obj[key];
+                      } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+                          sweepZeros(obj[key]);
+                          if (Object.keys(obj[key]).length === 0) {
+                              delete obj[key];
+                          }
+                      }
+                  });
+              };
+              sweepZeros(matricula);
+              sweepZeros(seccionesPlanes);
+              // -----------------------------------
+              
               const payload = {
-                  matricula: matTotal,
-                  secciones: secTotal,
-                  vacantes: window._VACANTES_TEMP || {},
-                  matricula_detalle: detalle,
-                  secciones_por_anio: seccionesPorAnio,
+                  secciones: deleteField(),
+                  "secciones-planes": seccionesPlanes,
+                  matricula: matricula,
+                  vacantes: deleteField(),
                   datos_completados: true,
                   ultima_actualizacion: new Date().toISOString()
               };
               
-              await safeSetDoc(docRef, payload, { merge: true });
+              // Reemplazo Total Exclusivo
+              await safeSetDoc(docRef, payload, { mergeFields: ['secciones', 'secciones-planes', 'matricula', 'vacantes', 'datos_completados', 'ultima_actualizacion'] });
               
-              // Desbloqueamos
-              showView('dashboard-view');
+              // showView('dashboard-view'); // Removido por el motor dinámico
               showToast("¡Datos del plantel actualizados con éxito!", "success");
               
           } catch (error) {
