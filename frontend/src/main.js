@@ -139,13 +139,7 @@ async function loadMunicipios() {
             const opt = document.createElement('option');
             opt.value = m; opt.textContent = m;
             selectMun.appendChild(opt);
-        
-          // Actualizar vista
-          if (document.getElementById('lbl-matricula-total')) document.getElementById('lbl-matricula-total').textContent = matTotal;
-          if (document.getElementById('inp-matricula-total')) document.getElementById('inp-matricula-total').value = matTotal;
-          
-          // El botón siempre permanece activo según requerimiento. No se requiere auto-habilitarlo.
-});
+        });
     }
 }
 
@@ -1550,3 +1544,5 @@ document.getElementById('btn-aceptar-incompleta')?.addEventListener('click', () 
         form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
     }
 });
+
+
