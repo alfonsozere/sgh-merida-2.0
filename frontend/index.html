@@ -1,74 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SGH - v2.5.0</title>
-
-  <style>
-    /* ANTI-FOUC (Flash of Unstyled Content) & PREMIUM LOADER */
-    body {
-      margin: 0;
-      background-color: #0f172a;
-    }
-
-    #app-loader,
-    #global-loading-modal {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-color: #0f172a;
-      z-index: 999999;
-      transition: opacity 0.4s ease;
-    }
-
-    #app-loader .spinner,
-    #global-loading-modal .spinner {
-      width: 45px;
-      height: 45px;
-      border: 4px solid rgba(255, 255, 255, 0.1);
-      border-top-color: #3b82f6;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin-bottom: 20px;
-    }
-
-    #app-loader .text,
-    #global-loading-modal #global-loading-text {
-      color: #94a3b8;
-      font-family: system-ui, sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes spin {
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 0.6;
-      }
-
-      50% {
-        opacity: 1;
-      }
-    }
-
-    .view {
-      display: none !important;
-    }
-  </style>
+  <title>SGH - v2.8.0</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body style="overflow: hidden;">
@@ -218,7 +157,7 @@
     <section id="dashboard-view" class="view">
       <nav class="navbar">
         <div class="nav-brand">
-          <span style="color: var(--primary-color);">SGH</span> v2.0.0
+          <span style="color: var(--primary-color);">SGH</span> v2.8.0
         </div>
         <div class="nav-user">
           <span id="user-display-name" style="font-weight: 500;">Cargando...</span>
@@ -247,7 +186,7 @@
     <!-- HEADER / NAVBAR -->
     <nav class="navbar" style="width: 100%; margin-bottom: 20px;">
       <div class="nav-brand">
-        <span style="color: var(--primary-color);">SGH</span> v2.0.0
+        <span style="color: var(--primary-color);">SGH</span> v2.8.0
       </div>
       <div class="nav-user" style="display: flex; gap: 15px; align-items: center;">
 
@@ -509,6 +448,38 @@
       </form>
     </div>
     <!-- SECCIÓN REGISTRO DE PERSONAL (EN LÍNEA) -->
+    
+    <!-- TABLA DE PERSONAL EXISTENTE -->
+    <div id="seccion-personal-existente" class="lock-card glass-panel" style="display: none; margin: 30px auto 0; padding: 24px; max-width: 1200px; width: 95%;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+          <h2 style="margin: 0; font-size: 1.5rem; color: #0f172a;">
+            Personal Registrado en el Plantel
+          </h2>
+          <div class="search-wrapper">
+            <span class="search-icon">
+               <i class="bi bi-search"></i>
+            </span>
+            <input type="text" id="buscador-personal" class="search-input" placeholder="Buscar cédula o nombre...">
+          </div>
+        </div>
+        <div style="max-height: 300px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 8px;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead style="background-color: #f8fafc; position: sticky; top: 0; z-index: 1;">
+              <tr>
+                <th style="padding: 12px; border-bottom: 2px solid #cbd5e1; color: #475569;">Cédula</th>
+                <th style="padding: 12px; border-bottom: 2px solid #cbd5e1; color: #475569;">Nombre y Apellido</th>
+                <th style="padding: 12px; border-bottom: 2px solid #cbd5e1; color: #475569;">Tipo de Personal</th>
+                <th style="padding: 12px; border-bottom: 2px solid #cbd5e1; color: #475569;">Situación Laboral</th>
+                <th style="padding: 12px; border-bottom: 2px solid #cbd5e1; color: #475569; text-align: center;">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-personal-existente">
+              <!-- Renderizado dinámicamente -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     <div id="seccion-registro-personal" class="lock-card glass-panel"
       style="display: none; margin: 30px auto 0; padding: 24px; max-width: 1200px; width: 95%;">
       <h2
@@ -518,99 +489,160 @@
         a la plantilla de este plantel.</p>
 
       <form id="form-personal-inline" onsubmit="event.preventDefault(); window.guardarPersonalInline();">
-        <!-- DATOS PERSONALES -->
-        <h3 style="color: #334155; margin-bottom: 15px; font-size: 1.1rem;">1. Datos Personales</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
-          <div><label class="form-label">Cédula</label><input type="text" id="wp-cedula" class="form-input"
-              placeholder="Ej: 10012819"></div>
-          <div><label class="form-label">Nombres y Apellidos</label><input type="text" id="wp-nombres"
-              class="form-input" placeholder="Nombre completo"></div>
-          <div><label class="form-label">Fecha de Nacimiento</label><input type="date" id="wp-nacimiento"
-              class="form-input" onchange="if(window.calcularEdadWizard) window.calcularEdadWizard()"></div>
-          <div><label class="form-label">Edad</label><input type="text" id="wp-edad" class="form-input" readonly
-              placeholder="Auto-calculada"></div>
-          <div><label class="form-label">Género</label>
-            <select id="wp-genero" class="form-input">
-              <option value="">Seleccione...</option>
-              <option value="Masculino">Masculino</option>
-              <option value="Femenino">Femenino</option>
-            </select>
-          </div>
+        <!-- 1. DATOS PERSONALES -->
+        <h3 style="color: #334155; margin-bottom: 15px; font-size: 1.1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;">1. Datos Personales</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
           <div><label class="form-label">Nacionalidad</label>
-            <select id="wp-nacionalidad" class="form-input">
+            <select id="wp-nacionalidad" class="form-input" required onchange="if(window.validarCedulaUI) window.validarCedulaUI()">
               <option value="V">Venezolano (V)</option>
               <option value="E">Extranjero (E)</option>
             </select>
           </div>
-        </div>
-
-        <!-- DATOS INSTITUCIONALES -->
-        <h3 style="color: #334155; margin-bottom: 15px; font-size: 1.1rem;">2. Datos Institucionales</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
-          <div><label class="form-label">Tipo de Personal</label>
-            <select id="wp-tipo-personal" class="form-input">
-              <option value="Docente">Docente</option>
-              <option value="Administrativo">Administrativo</option>
-              <option value="Obrero">Obrero</option>
+          <div><label class="form-label">Cédula</label><input type="number" id="wp-cedula" class="form-input" placeholder="Ej: 10012819" required oninput="if(window.validarCedulaUI) window.validarCedulaUI()"></div>
+          <div style="grid-column: span 2;"><label class="form-label">Nombres y Apellidos</label><input type="text" id="wp-nombres" class="form-input" required></div>
+          <div style="grid-column: span 2;"><label class="form-label">Lugar de Nacimiento</label><input type="text" id="wp-lugar-nacimiento" class="form-input"></div>
+          <div><label class="form-label">Fecha de Nacimiento</label><input type="date" id="wp-nacimiento" class="form-input" onchange="if(window.calcularEdadUI) window.calcularEdadUI()"></div>
+          <div><label class="form-label">Edad</label><input type="text" id="wp-edad" class="form-input" readonly disabled placeholder="Auto"></div>
+          <div><label class="form-label">Género</label>
+            <select id="wp-genero" class="form-input">
+              <option value="">Seleccione...</option>
+              <option value="FEM">FEM</option>
+              <option value="MAS">MAS</option>
             </select>
           </div>
-          <div><label class="form-label">Cargo</label><input type="text" id="wp-cargo" class="form-input"
-              placeholder="Ej: Docente de Aula"></div>
-          <div><label class="form-label">Condición / Situación Laboral</label>
-            <select id="wp-situacion" class="form-input">
+          
+          <!-- TELEFONOS CON PREFIJO -->
+          <div style="display: flex; gap: 5px;">
+            <div style="width: 40%;"><label class="form-label">Pref. Hab.</label>
+              <select id="wp-prefijo-hab" class="form-input">
+                <option value="0271">0271</option><option value="0272">0272</option><option value="0273">0273</option><option value="0274">0274</option><option value="0275">0275</option><option value="0276">0276</option>
+              </select>
+            </div>
+            <div style="flex: 1;"><label class="form-label">Tel. Habitación</label><input type="text" id="wp-tel-habitacion" class="form-input" maxlength="7" pattern="\d{7}" placeholder="1234567"></div>
+          </div>
+          <div style="display: flex; gap: 5px;">
+            <div style="width: 40%;"><label class="form-label">Pref. Cel.</label>
+              <select id="wp-prefijo-cel" class="form-input">
+                <option value="0416">0416</option><option value="0426">0426</option><option value="0414">0414</option><option value="0424">0424</option><option value="0412">0412</option><option value="0422">0422</option>
+              </select>
+            </div>
+            <div style="flex: 1;"><label class="form-label">Tel. Celular</label><input type="text" id="wp-tel-celular" class="form-input" maxlength="7" pattern="\d{7}" placeholder="1234567"></div>
+          </div>
+          <div style="display: flex; gap: 5px;">
+            <div style="width: 40%;"><label class="form-label">Pref. Ofi.</label>
+              <select id="wp-prefijo-ofi" class="form-input">
+                <option value="0271">0271</option><option value="0272">0272</option><option value="0273">0273</option><option value="0274">0274</option><option value="0275">0275</option><option value="0276">0276</option>
+              </select>
+            </div>
+            <div style="flex: 1;"><label class="form-label">Tel. Oficina</label><input type="text" id="wp-tel-oficina" class="form-input" maxlength="7" pattern="\d{7}" placeholder="1234567"></div>
+          </div>
+
+          <div><label class="form-label">Correo</label><input type="email" id="wp-correo" class="form-input" style="text-transform: lowercase;"></div>
+          <div><label class="form-label">Estado Civil</label>
+            <select id="wp-estado-civil" class="form-input c-cat" data-cat="estado-civil"><option value="">Cargando...</option></select>
+          </div>
+          <div><label class="form-label">Nivel de Instrucción</label>
+            <select id="wp-instruccion" class="form-input c-cat" data-cat="instruccion"><option value="">Cargando...</option></select>
+          </div>
+          <div><label class="form-label">Profesión</label><input type="text" id="wp-profesion" class="form-input"></div>
+          <div style="grid-column: span 2;"><label class="form-label">Dirección</label><textarea id="wp-direccion" class="form-input" rows="2"></textarea></div>
+        </div>
+
+        <!-- 2. DATOS LABORALES -->
+        <h3 style="color: #334155; margin-bottom: 15px; font-size: 1.1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;">2. Datos Laborales</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+          <div><label class="form-label">Ubicación Administrativa</label><input type="text" id="wp-ubicacion-administrativa" class="form-input" maxlength="7" pattern="\d{7}" placeholder="7 dígitos"></div>
+          <div><label class="form-label">Dependencia</label>
+            <select id="wp-dependencia" class="form-input c-cat c-cascade" data-cat="dependencia"><option value="">Cargando...</option></select>
+          </div>
+          <div><label class="form-label">Tipo de Personal</label>
+            <select id="wp-tipo-personal" class="form-input c-cat c-cascade" data-cat="tipo-personal"><option value="">Cargando...</option></select>
+          </div>
+          <div><label class="form-label">Sub Categoría 1 TP</label>
+            <select id="wp-subcategoria" class="form-input c-cat c-cascade" data-cat="subcategoria"><option value="">Cargando...</option></select>
+          </div>
+          <div><label class="form-label">Cargo</label>
+            <select id="wp-cargo" class="form-input c-cat c-cascade" data-cat="cargo"><option value="">Cargando...</option></select>
+          </div>
+          <div><label class="form-label">Código RAC</label>
+            <select id="wp-codigo-rac" class="form-input c-cat c-cascade" data-cat="codigo-rac"><option value="">Cargando...</option></select>
+          </div>
+          <div><label class="form-label">Titular / Interino</label>
+            <select id="wp-titular" class="form-input">
               <option value="Titular">Titular</option>
               <option value="Interino">Interino</option>
-              <option value="Contratado">Contratado</option>
-              <option value="Incapacitado">Incapacitado</option>
             </select>
           </div>
-          <div><label class="form-label">Especialidad</label><input type="text" id="wp-especialidad" class="form-input"
-              placeholder="Ej: Matemática"></div>
-        </div>
-
-        <!-- DATOS LABORALES / ACADÉMICOS -->
-        <h3 style="color: #334155; margin-bottom: 15px; font-size: 1.1rem;">3. Datos Laborales y Académicos</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
-          <div><label class="form-label">Fecha de Ingreso (MPPE/Gobernación)</label><input type="date"
-              id="wp-fecha-ingreso" class="form-input"
-              onchange="if(window.calcularAntiguedadWizard) window.calcularAntiguedadWizard()"></div>
-          <div><label class="form-label">Años de Servicio (Antigüedad)</label><input type="text" id="wp-antiguedad"
-              class="form-input" readonly placeholder="Auto-calculada"></div>
-          <div><label class="form-label">Nivel de Instrucción</label>
-            <select id="wp-instruccion" class="form-input">
-              <option value="Bachiller">Bachiller</option>
-              <option value="TSU">TSU</option>
-              <option value="Licenciado/Profesor">Licenciado/Profesor</option>
-              <option value="Especialización">Especialización</option>
-              <option value="Maestría">Maestría</option>
-              <option value="Doctorado">Doctorado</option>
-            </select>
+          <div><label class="form-label">Horas Académicas</label><input type="number" id="wp-horas-academicas" class="form-input" min="0"></div>
+          <div><label class="form-label">Horas Administrativas</label><input type="number" id="wp-horas-administrativas" class="form-input" min="0"></div>
+          <div><label class="form-label">Fecha de Ingreso</label><input type="date" id="wp-fecha-ingreso" class="form-input" onchange="if(window.calcularAntiguedadUI) window.calcularAntiguedadUI()"></div>
+          <div><label class="form-label">Antigüedad (Años)</label><input type="text" id="wp-antiguedad" class="form-input" readonly disabled placeholder="Auto"></div>
+          <div><label class="form-label">Turnos que Atiende</label>
+            <select id="wp-turnos-atiende" class="form-input c-cat" data-cat="turnos-atiende"><option value="">Cargando...</option></select>
           </div>
-          <div><label class="form-label">Título Obtenido</label><input type="text" id="wp-titulo" class="form-input"
-              placeholder="Ej: Lic. en Educación Integral"></div>
-        </div>
-
-        <!-- DATOS EXTRA -->
-        <h3 style="color: #334155; margin-bottom: 15px; font-size: 1.1rem;">4. Datos Salud y Extras</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
-          <div><label class="form-label">Talla Pantalón / Camisa</label><input type="text" id="wp-talla"
-              class="form-input" placeholder="Ej: P:32 C:M"></div>
-          <div><label class="form-label">Calzado</label><input type="text" id="wp-calzado" class="form-input"
-              placeholder="Ej: 40"></div>
-          <div><label class="form-label">Carnet de la Patria (Opcional)</label><input type="text" id="wp-carnet"
-              class="form-input" placeholder="Código"></div>
           <div><label class="form-label">¿Atiende Matrícula?</label>
-            <select id="wp-atiende-matricula" class="form-input">
-              <option value="SI">Sí (Docente de Aula)</option>
-              <option value="NO">No (Admins/Obreros)</option>
+            <select id="wp-atiende-matricula" class="form-input" onchange="if(window.toggleMatriculaUI) window.toggleMatriculaUI()">
+              <option value="NO">NO</option>
+              <option value="SI">SI</option>
             </select>
           </div>
+          <div id="container-nivel-modalidad" style="display: none;"><label class="form-label">Nivel Modalidad</label><input type="text" id="wp-nivel-modalidad" class="form-input"></div>
+          <div id="container-especialidad" style="display: none;"><label class="form-label">Especialidad Imparte</label><input type="text" id="wp-especialidad-imparte" class="form-input"></div>
         </div>
 
-        <div style="display: flex; justify-content: flex-end;">
+        <!-- 3. SITUACIÓN DEL TRABAJADOR -->
+        <h3 style="color: #334155; margin-bottom: 15px; font-size: 1.1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;">3. Situación del Trabajador</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+          <div><label class="form-label">Situación Laboral</label>
+            <select id="wp-situacion-laboral" class="form-input c-cat" data-cat="situacion-laboral"><option value="">Cargando...</option></select>
+          </div>
+          <div style="grid-column: span 2;"><label class="form-label">Descripción</label><input type="text" id="wp-descripcion-situacion" class="form-input" readonly disabled></div>
+          <div style="grid-column: span 3;"><label class="form-label">Observaciones</label><textarea id="wp-observaciones" class="form-input" rows="2"></textarea></div>
+        </div>
+
+        <!-- 4. BIENESTAR SOCIAL -->
+        <h3 style="color: #334155; margin-bottom: 15px; font-size: 1.1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;">4. Datos Bienestar Social</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+          <div><label class="form-label">Talla Camisa</label>
+            <select id="wp-talla-camisa" class="form-input c-cat" data-cat="talla-camisa"><option value="">Cargando...</option></select>
+          </div>
+          <div><label class="form-label">Talla Pantalón</label>
+            <select id="wp-talla-pantalon" class="form-input c-cat" data-cat="talla-pantalon"><option value="">Cargando...</option></select>
+          </div>
+          <div><label class="form-label">Talla Zapato</label>
+            <select id="wp-talla-zapato" class="form-input c-cat" data-cat="talla-zapato"><option value="">Cargando...</option></select>
+          </div>
+          <div><label class="form-label">Actividad Deportiva</label><input type="text" id="wp-actividad-deportiva" class="form-input"></div>
+          <div><label class="form-label">Actividad Cultural</label><input type="text" id="wp-actividad-cultural" class="form-input"></div>
+          <div><label class="form-label">Tipo Vivienda</label>
+            <select id="wp-tipo-vivienda" class="form-input c-cat" data-cat="tipo-vivienda"><option value="">Cargando...</option></select>
+          </div>
+          <div><label class="form-label">Condición Vivienda</label>
+            <select id="wp-condicion-vivienda" class="form-input c-cat" data-cat="condicion-vivienda"><option value="">Cargando...</option></select>
+          </div>
+          <div><label class="form-label">Tipo Material</label><input type="text" id="wp-tipo-material" class="form-input"></div>
+          <div><label class="form-label">Posee Discapacidad</label>
+            <select id="wp-discapacidad" class="form-input">
+              <option value="NO">NO</option>
+              <option value="SI">SI</option>
+            </select>
+          </div>
+          <div style="grid-column: span 2;"><label class="form-label">Tipo Enfermedad</label><input type="text" id="wp-tipo-enfermedad" class="form-input"></div>
+          <div style="grid-column: span 2;"><label class="form-label">Medicamento</label><input type="text" id="wp-medicamento" class="form-input"></div>
+        </div>
+
+        <!-- 5. PUNTO Y CÍRCULO -->
+        <h3 style="color: #334155; margin-bottom: 15px; font-size: 1.1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;">5. Datos Punto y Círculo</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+          <div><label class="form-label">UBCH</label><input type="text" id="wp-ubch" class="form-input"></div>
+          <div><label class="form-label">Circuito Comunal</label><input type="text" id="wp-circuito-comunal" class="form-input"></div>
+          <div><label class="form-label">Centro de Votación</label><input type="text" id="wp-centro-votacion" class="form-input"></div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 15px;">
+          <button type="button" class="form-input" style="background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase;">CUADRATURA</button>
           <button type="submit" id="btn-guardar-empleado-inline"
-            style="background: #10b981; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase;">Guardar
-            Empleado</button>
+            style="background: #10b981; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase;">Guardar Empleado</button>
         </div>
       </form>
     </div>

@@ -42,7 +42,7 @@ import { safeSetDoc, safeUpdateDoc, safeAddDoc } from './dbUtils.js';
 import './style.css';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, setDoc, deleteField, onSnapshot } from 'firebase/firestore';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut, setPersistence, browserSessionPersistence } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut, setPersistence, inMemoryPersistence } from 'firebase/auth';
 import { initAuth } from './auth.js';
 
 const firebaseConfig = {
@@ -183,7 +183,8 @@ initAuth(auth, db, {
     if (msjEl) msjEl.textContent = mensaje;
   },
   onLogin: async (userData) => {
-    if(userData.rol === 'plaadmin') {
+      window.sgh_user_data = userData;
+      if(userData.rol === 'plaadmin') {
         const dp = await findPlantel(userData.jerarquia.plantel_codigo);
         const nombrePlantel = dp ? dp.nombre_plantel : "Plantel Desconocido";
         userDisplayName.textContent = `${userData.jerarquia.plantel_codigo} - ${nombrePlantel}`;
@@ -266,7 +267,7 @@ document.getElementById('login-form')?.addEventListener('submit', async (e) => {
     const linkRegister = document.getElementById('link-go-register');
     if (linkRegister) { linkRegister.style.pointerEvents = 'none'; linkRegister.style.opacity = '0.5'; }
 
-    await setPersistence(auth, browserSessionPersistence);
+    await setPersistence(auth, inMemoryPersistence);
     
     await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
@@ -863,7 +864,8 @@ async function checkPlantelData(codigoDEA) {
       // Siempre mostrar la pantalla de datos del plantel (formulario de matrícula/secciones)
       // ya no enviamos al dashboard-view antiguo.
       currentPlantel = data;
-      mostrarCandado(codigoDEA, data);
+        window.currentPlantelDEA = codigoDEA;
+        mostrarCandado(codigoDEA, data);
       
       // Suscripción reactiva a cambios en Firestore para mantener el UI actualizado con los datos reales
       if (window._unsubPlantel) {
@@ -874,6 +876,24 @@ async function checkPlantelData(codigoDEA) {
               const liveData = snap.data();
               console.log("🔥 [onSnapshot] Datos recibidos de Firestore:", liveData.matricula);
               const inpMatTotal = document.getElementById('inp-matricula-total');
+              if (liveData.personal_resumen && liveData.personal_resumen.length > 0) {
+                  const tbody = document.getElementById('tbody-lista-personal');
+                  const seccionLista = document.getElementById('seccion-lista-personal');
+                  if (tbody && seccionLista) {
+                      seccionLista.style.display = 'block';
+                      tbody.innerHTML = liveData.personal_resumen.map(p => 
+                          '<tr style="border-bottom: 1px solid #f1f5f9;">' +
+                          '<td style="padding: 12px; color: #334155;">' + (p.cedula || '') + '</td>' +
+                          '<td style="padding: 12px; color: #334155; font-weight: 500;">' + (p.nombre || '') + '</td>' +
+                          '<td style="padding: 12px; color: #64748b;">' + (p.cargo || '') + '</td>' +
+                          '</tr>'
+                      ).join('');
+                  }
+              } else {
+                  const seccionLista = document.getElementById('seccion-lista-personal');
+                  if (seccionLista) seccionLista.style.display = 'none';
+              }
+              
               if (inpMatTotal && liveData.matricula && liveData.matricula["total-gen"] !== undefined) {
                   inpMatTotal.value = liveData.matricula["total-gen"];
                   console.log("✅ [onSnapshot] Input de Matrícula Total actualizado a:", liveData.matricula["total-gen"]);
@@ -1054,6 +1074,25 @@ async function mostrarCandado(codigoDEA, dataParcial) {
     // Forzar recálculo
     document.getElementById('contenedor-matricula')?.dispatchEvent(new Event('input', { bubbles: true }));
 
+    // Mostrar Formulario Personal si ya hay matrícula registrada (Carga inicial)
+    let hasData = false;
+    if (dataParcial && dataParcial.matricula) {
+        const checkValues = (obj) => {
+            for (let key in obj) {
+                if (typeof obj[key] === 'number' && obj[key] > 0) return true;
+                if (typeof obj[key] === 'object' && obj[key] !== null) {
+                    if (checkValues(obj[key])) return true;
+                }
+            }
+            return false;
+        };
+        hasData = checkValues(dataParcial.matricula);
+    }
+
+    if (hasData && typeof window.mostrarFormularioPersonal === "function") {
+        window.mostrarFormularioPersonal();
+    }
+
     // Guardar los datos cuando el director llene el form
     const form = document.getElementById('plantel-form');
     if (form) {
@@ -1099,7 +1138,7 @@ async function mostrarCandado(codigoDEA, dataParcial) {
           const sweepZeros = (obj) => {
               Object.keys(obj).forEach(key => {
                   // Lista blanca de propiedades globales que NO deben ser eliminadas aunque estén en 0 o vacías
-                  const whitelist = ['modalidades', 'adulto', 'especial', 'total-gen-fem', 'total-gen-mas', 'total-gen', 'total-vac-gen-fem', 'total-vac-gen-mas', 'total-vac-gen'];
+                  const whitelist = []; // Zero-Cost Optimization
                   if (whitelist.includes(key)) return;
 
                   if (obj[key] === 0) {
@@ -1107,7 +1146,7 @@ async function mostrarCandado(codigoDEA, dataParcial) {
                   } else if (typeof obj[key] === 'object' && obj[key] !== null) {
                       sweepZeros(obj[key]);
                       // No eliminar el objeto si es una de las llaves principales obligatorias
-                      const reqKeys = ['basica', 'media'];
+                      const reqKeys = []; // Zero-Cost Optimization
                       if (Object.keys(obj[key]).length === 0 && !reqKeys.includes(key)) {
                           delete obj[key];
                       }
@@ -1456,9 +1495,11 @@ async function mostrarCandado(codigoDEA, dataParcial) {
 
               showToast("¡Datos del plantel actualizados con éxito!", "success");
 
-              // Desplegar Wizard Personal automáticamente si la matrícula se guardó
-              if (typeof window.mostrarFormularioPersonal === "function") {
-//                   window.mostrarFormularioPersonal();
+                                                                                    // Desplegar Formulario Personal SOLO si se ingresó alguna matrícula
+              if (typeof window.mostrarFormularioPersonal === "function" && (matTotal > 0 || secTotal > 0)) {
+                   window.mostrarFormularioPersonal();
+              } else if (typeof window.cerrarFormularioPersonal === "function") {
+                   window.cerrarFormularioPersonal();
               }
 
           } catch (error) {

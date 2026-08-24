@@ -184,3 +184,20 @@ El motor de guardado ahora produce el JSON oficial del sistema SGH 2.0 de forma 
   2. **Refactorización CSS Grid:** Al eliminar columnas en el grid de la interfaz (pasando de 3 columnas a 1), se modificó dinámicamente el grid-template-columns: 1fr; del contenedor padre. Esto permitió que la caja restante (Secciones Totales) ocupara todo el ancho disponible, manteniendo el equilibrio visual de las tarjetas.
   3. **Inmunización Lógica (JS):** Se buscaron los arreglos de inicialización en main.js (línea ~1042) y se sustrajeron los IDs eliminados. Esto previene un TypeError al hacer document.getElementById(), respetando el blindaje del motor de renderizado legado y asegurando la compatibilidad hacia atrás en los planteles.
 * **Resultado:** Interfaz mucho más limpia y un motor de inicialización aligerado, consolidado en las versiones **v2.4.6** (Inicial) y **v2.4.7** (Primaria). Todo sincronizado con el repositorio.
+
+### Hito: Activación Automática del Formulario de Personal (v2.7.1)
+**Fecha:** 2026-08-19
+**Módulo:** Pantalla de Planteles / Motor de Inicialización (mostrarCandado)
+
+**1. Diagnóstico del Problema:**
+- El sistema exigía que el director presionara el botón "Guardar Datos y Continuar" para poder visualizar el formulario de registro de personal, incluso cuando el plantel ya contaba con datos de matrícula y secciones guardados de sesiones anteriores.
+- Al cargar el plantel (`mostrarCandado`), la interfaz restauraba los datos correctamente, pero omitía disparar la lógica de visibilidad del formulario de personal.
+
+**2. Método Técnico Aplicado:**
+- Se inyectó una validación de estado en el flujo de inicialización (`mostrarCandado`) de `main.js`.
+- El algoritmo ahora evalúa el objeto `dataParcial.matricula`. Si detecta que ya existen registros almacenados en Firebase al momento de cargar el plantel, ejecuta directamente la función `window.mostrarFormularioPersonal()`.
+- Se incrementó la versión semántica a v2.7.1 en la interfaz visual.
+
+**3. Decisiones Operativas y Beneficio:**
+- Se mejoró drásticamente la experiencia de usuario (UX) al evitar clics redundantes (Zero Friction).
+- El sistema ahora respeta el paradigma de retención de estado: si los requisitos (matrícula) ya están en la base de datos, los módulos dependientes (registro de personal) se desbloquean inmediatamente en la carga inicial.

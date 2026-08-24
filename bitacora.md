@@ -236,3 +236,46 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
   - **Motivo:** Solicitud administrativa para replicar la limpieza visual realizada previamente en Maternal y Preescolar, liberando espacio en pantalla.
   - **Alcance:** Se retiró el código HTML, se ajustó la rejilla (CSS Grid) a una sola columna para la caja de \Secciones Totales\ y se purgó la lógica de inicialización en el motor JavaScript.
 * **Archivos Modificados:** \index.html\, \src/main.js\, \package.json\.
+
+## [19-08-2026] Hito: Zero-Cost Optimization (Matrícula) y Formulario de Personal
+- **Tarea Lograda**: Vaciado absoluto de campos inactivos en Firebase.
+- **Archivos Modificados**: 
+  - `frontend/src/main.js`: Se vació la lista blanca (`whitelist` y `reqKeys`) de la función `sweepZeros`. Ahora, si el usuario hace clic en "Guardar y Continuar" con todos los campos en blanco, se envía el objeto minimalista `{ "secciones-planes": {}, "matricula": {} }`.
+- **Decisiones Arquitectónicas**:
+  - Al validar que la interfaz está protegida por `Optional Chaining` (`?.`), pudimos implementar una optimización total de Firebase (Zero-Cost Optimization), evitando grabar campos en 0 que consumirían espacio y ancho de banda.
+  - El formulario de registro de personal ya fue desconectado de un flujo "wizard" y actualmente reside como bloque `#seccion-registro-personal` (inline) bajo los datos principales en `index.html`.
+
+## [19-08-2026] Hito: Reconexión del Formulario de Personal
+- **Tarea Lograda**: Conexión del bloque de Registro de Personal al flujo principal de guardado.
+- **Archivos Modificados**: 
+  - `frontend/src/main.js`: Se habilitó la llamada a `window.mostrarFormularioPersonal()` dentro del ciclo de éxito al presionar "Guardar Datos y Continuar". Ahora el sistema muestra el bloque de personal (`#seccion-registro-personal`) y hace scroll automático sin recargar la página.
+
+## [19-08-2026] Hito: Condición de Matrícula para Formulario de Personal
+- **Tarea Lograda**: Se implementó una regla de negocio estricta: el formulario de registro de personal solo se muestra si el usuario realmente llenó los datos de matrícula.
+- **Detalles Técnicos**:
+  - En `frontend/src/main.js`, tras ejecutar la Escoba Digital (`sweepZeros`), validamos que `Object.keys(matricula).length > 0`.
+  - Gracias a la Escoba Digital, un objeto vacío significa de forma inequívoca absoluta inactividad del usuario en esas casillas, logrando una comprobación `Zero-Cost` pura y sin recorrer DOM adicional.
+
+## [19-08-2026] Hito: Tabla de Personal Zero-Cost
+- **Tarea Lograda**: Se agregó una tabla visual para mostrar el personal registrado en el plantel sin consumir lecturas adicionales de Firebase.
+- **Detalles Arquitectónicos (Desnormalización)**:
+  - `index.html`: Se inyectó la tabla con ID `seccion-lista-personal`.
+  - `frontend/src/personalWizard.js`: Al guardar un empleado, se usa `arrayUnion` para inyectar un mini-resumen (Cédula, Nombre, Cargo) directamente en el documento del plantel.
+  - `frontend/src/main.js`: `onSnapshot` ahora lee `personal_resumen` y renderiza la tabla. Todo esto cuesta exactamente 0 lecturas adicionales, aprovechando el canal de datos ya abierto.
+
+### Hito: Activación Automática del Formulario de Personal (v2.7.1)
+**Fecha:** 2026-08-19
+**Módulo:** Pantalla de Planteles / Motor de Inicialización (mostrarCandado)
+
+**1. Diagnóstico del Problema:**
+- El sistema exigía que el director presionara el botón "Guardar Datos y Continuar" para poder visualizar el formulario de registro de personal, incluso cuando el plantel ya contaba con datos de matrícula y secciones guardados de sesiones anteriores.
+- Al cargar el plantel (`mostrarCandado`), la interfaz restauraba los datos correctamente, pero omitía disparar la lógica de visibilidad del formulario de personal.
+
+**2. Método Técnico Aplicado:**
+- Se inyectó una validación de estado en el flujo de inicialización (`mostrarCandado`) de `main.js`.
+- El algoritmo ahora evalúa el objeto `dataParcial.matricula`. Si detecta que ya existen registros almacenados en Firebase al momento de cargar el plantel, ejecuta directamente la función `window.mostrarFormularioPersonal()`.
+- Se incrementó la versión semántica a v2.7.1 en la interfaz visual.
+
+**3. Decisiones Operativas y Beneficio:**
+- Se mejoró drásticamente la experiencia de usuario (UX) al evitar clics redundantes (Zero Friction).
+- El sistema ahora respeta el paradigma de retención de estado: si los requisitos (matrícula) ya están en la base de datos, los módulos dependientes (registro de personal) se desbloquean inmediatamente en la carga inicial.
