@@ -279,3 +279,97 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 **3. Decisiones Operativas y Beneficio:**
 - Se mejoró drásticamente la experiencia de usuario (UX) al evitar clics redundantes (Zero Friction).
 - El sistema ahora respeta el paradigma de retención de estado: si los requisitos (matrícula) ya están en la base de datos, los módulos dependientes (registro de personal) se desbloquean inmediatamente en la carga inicial.
+
+### Hito: Carga Integral de Catálogos, Cascada Laboral y Ajustes de Formulario de Personal (v2.9.1 a v2.9.5)
+**Fecha:** 2026-09-03
+**Módulo:** Gestión de Talento Humano / Registro de Personal
+
+**1. Diagnóstico del Problema:**
+- Los catálogos maestros de selectores (.c-cat) no cargaban en el entorno local/producción, quedando en estado 'Cargando...'.
+- La cascada de dependencias laborales no respetaba el orden institucional estricto: Tipo de Personal -> Dependencia -> Cargos / Códigos RAC o Rangos Obrero.
+- Al seleccionar situación laboral no se desplegaba su descripción normativa oficial.
+- Teléfonos de habitación/oficina y datos médicos imponían validaciones bloqueantes.
+- El elemento Nivel / Modalidad era un input de texto libre en lugar de un selector clasificado.
+- El cursor de los selectores mostraba el ícono de prohibición (🚫) por colisión de especificidad con .form-input:read-only.
+- El botón Cuadratura y el campo Especialidad Imparte presentaban colapso dimensional en la grilla responsive.
+
+**2. Soluciones Técnicas Aplicadas:**
+- Se implementó un cargador resiliente 'Zero-Cost' (localStorage -> Firestore -> Respaldo en memoria con los 147 cargos docentes, 14 administrativos y 24 rangos obreros).
+- Se programó la cascada laboral estricta en el orden establecido, gestionando la visibilidad del selector de Rangos de Obrero y la sincronización con Códigos RAC.
+- Se configuró la reactividad en tiempo real de 'Situación Laboral' contra el mapa de las 22 descripciones legales e institucionales.
+- Se convirtió 'Nivel / Modalidad' en un selector agrupado (optgroup) que contiene Niveles Educativos y Modalidades.
+- Se eliminaron las restricciones rígidas en teléfonos y datos médicos, habilitando prefijos opcionales.
+- Se corrigió la regla CSS en style.css restringiendo :read-only a campos de texto y forzando cursor: pointer !important en los selectores.
+- Se reestructuró la grilla para que 'Especialidad Imparte' y 'Cuadratura' ocupen celdas contiguas con alineación horizontal milimétrica (42px).
+
+**3. Archivos Modificados:**
+- frontend/src/personalWizard.js
+- frontend/src/style.css
+- frontend/index.html
+- frontend/package.json
+
+### Hito: Validación Simétrica de Empleado (Guardar / Actualizar) y Diagnóstico de Reglas de Seguridad (v2.10.2)
+**Fecha:** 2026-09-03
+**Módulo:** Registro y Actualización de Personal / Seguridad Firestore
+
+**1. Diagnóstico del Problema:**
+- El guardado y la actualización de empleados carecían de una validación exhaustiva de campos requeridos, permitiendo envíos con solo cédula y nombres.
+- Existía disparidad potencial entre el flujo de creación y el flujo de edición.
+- En el formulario de registro de usuario director (plaadmin), la consulta del código DEA fallaba con "El código DEA no existe" debido al bloqueo de permisos de Firestore al no haber sesión iniciada (request.auth == null).
+
+**2. Soluciones Técnicas Aplicadas:**
+- Se implementó la función `validarFormularioPersonal()` integrada simétricamente en `guardarPersonalInline()`, ejecutándose con el mismo rigor tanto para nuevos empleados como para empleados en edición.
+- Se respetó la lista oficial de campos no requeridos: Teléfono Habitación, Teléfono Oficina, Tipo de Enfermedad, Medicamento y Observaciones.
+- Se programó la validación dinámica de dependencias condicionales (Rango de Obrero para Nacional/Obrero, Nivel/Modalidad y Especialidad para Atiende Matrícula = SÍ).
+- Se incorporó resaltado visual inmediato (borde rojo), enfoque automático y desplazamiento suave (scrollIntoView) al primer campo faltante, junto con notificaciones Toast descriptivas.
+- Se documentó la arquitectura de reglas por departamentos en Firestore para permitir la lectura pública de planteles sin comprometer datos confidenciales.
+
+**3. Archivos Modificados:**
+- frontend/src/personalWizard.js
+- frontend/package.json
+- frontend/index.html
+
+### Hito: Lista Extensa de Instrucción y Reglas Condicionales de Horas por Tipo de Personal (v2.10.6)
+**Fecha:** 2026-09-03
+**Módulo:** Personal Wizard / Formulario y Validación
+
+**1. Diagnóstico y Requerimientos:**
+- El selector de nivel de instrucción con solo 3 opciones resultaba escueto; se requería la jerarquía completa de 8 niveles académicos.
+- En modo edición, los registros antiguos con 'SUPERIOR' no cargaban si el catálogo difería.
+- El campo 'Ubicación Administrativa' debía ser completamente opcional.
+- Las Horas Académicas deben ser requeridas únicamente para personal DOCENTE.
+- Las Horas Administrativas deben ser requeridas únicamente para personal ADMINISTRATIVO y OBRERO.
+
+**2. Soluciones Técnicas Aplicadas:**
+- Se implementó `LISTA_EXTENSA_INSTRUCCION` fija con los 8 niveles oficiales: SIN INSTRUCCION, BASICA, PRIMARIA, BACHILLER, TECNICO MEDIO, TSU, UNIVERSITARIO, POSTGRADO.
+- Se implementó `setSelectSmart()` para tolerancia y normalización automática de términos (ej. SUPERIOR -> UNIVERSITARIO, FEMENINO -> FEM).
+- Se retiró `wp-ubicacion-administrativa` de los campos requeridos en `validarFormularioPersonal()`.
+- Se integró la lógica condicional en `validarFormularioPersonal()` para exigir Horas Académicas solo si tipo === 'DOCENTE', y Horas Administrativas solo si tipo === 'ADMINISTRATIVO' o tipo === 'OBRERO'.
+
+**3. Archivos Modificados:**
+- frontend/src/personalWizard.js
+- frontend/index.html
+- frontend/package.json
+
+### Hito: Limpieza del Buscador y Desplazamiento Inteligente Diferenciado (v2.10.10)
+**Fecha:** 2026-09-03
+**Módulo:** Personal Wizard / Usabilidad y Experiencia de Usuario (UX)
+
+**1. Diagnóstico y Requerimientos:**
+- El campo de búsqueda (#buscador-personal) conservaba filtros residuales al actualizar un registro, impidiendo visualizar la plantilla completa.
+- Al guardar o actualizar, la vista permanecía estática al final de la página o colisionaba contra el borde del header fijo (sticky navbar).
+- Se identificó la necesidad de bifurcar el flujo de navegación post-persistencia:
+  * Al ACTUALIZAR (edición): El operador desea verificar la tabla de funcionarios registrados.
+  * Al GUARDAR (nuevo registro): El operador registra empleados en lote y requiere permanecer en el formulario para el siguiente ingreso.
+
+**2. Soluciones Técnicas Aplicadas:**
+- Limpieza Reactiva del Buscador: Al invocar `guardarPersonalInline` en modo edición o `limpiarFormularioPersonal`, se restablece el input de búsqueda a cadena vacía y se despacha el evento sintético `input` para re-renderizar todas las filas de la tabla.
+- Calibración de Header Offset: Se implementó un desplazamiento programático con `window.scrollTo` aplicando una compensación de 95px (75px de header sticky + 20px de respiro visual). Además, se añadió `scroll-margin-top: 95px;` a los contenedores `#seccion-personal-existente` y `#seccion-registro-personal`.
+- Desplazamiento Condicional y Foco Dinámico:
+  * Si `isEditing === true`: Desplaza la vista a `#seccion-personal-existente` y asigna el foco al buscador (#buscador-personal).
+  * Si `isEditing === false`: Desplaza la vista a `#seccion-registro-personal` y asigna el foco al campo inicial de Cédula (#wp-cedula).
+
+**3. Archivos Modificados:**
+- frontend/src/personalWizard.js
+- frontend/index.html
+- frontend/package.json

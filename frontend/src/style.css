@@ -206,10 +206,22 @@ button:active { transform: translateY(0); }
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
 
-.form-input:read-only {
+input.form-input:read-only,
+textarea.form-input:read-only,
+.form-input:disabled {
     background-color: #f8fafc;
     color: #64748b;
     cursor: not-allowed;
+}
+
+select.form-input {
+    cursor: pointer !important;
+}
+
+select.form-input:disabled {
+    background-color: #f8fafc;
+    color: #64748b;
+    cursor: not-allowed !important;
 }
 
 .wizard-step {
@@ -219,4 +231,9 @@ button:active { transform: translateY(0); }
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+
+select.form-input {
+    cursor: pointer;
 }

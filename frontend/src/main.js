@@ -549,14 +549,17 @@ document.getElementById('plantel-form')?.addEventListener('input', (e) => {
           if(document.getElementById('tot-sec-media-tec')) document.getElementById('tot-sec-media-tec').textContent = totalSecMt;
         
 
-        // Sumar todos los inputs de matrícula (.mat-input)
+                // Sumar todos los inputs de matrícula (.mat-input)
         document.querySelectorAll('.mat-input').forEach(input => {
             if (input.closest('div[id^="bloque-"]').style.display !== 'none') {
                 matTotal += parseInt(input.value || 0);
             }
         });
         
-
+        matTotal += sumMg + sumMt;
+        
+        if (document.getElementById('lbl-matricula-total')) document.getElementById('lbl-matricula-total').textContent = matTotal;
+        if (document.getElementById('inp-matricula-total')) document.getElementById('inp-matricula-total').value = matTotal;
     }
 });
 
@@ -1074,23 +1077,40 @@ async function mostrarCandado(codigoDEA, dataParcial) {
     // Forzar recálculo
     document.getElementById('contenedor-matricula')?.dispatchEvent(new Event('input', { bubbles: true }));
 
-    // Mostrar Formulario Personal si ya hay matrícula registrada (Carga inicial)
+    // Mostrar Formulario Personal si el plantel YA tiene matrícula o secciones cargadas (Carga inicial)
     let hasData = false;
-    if (dataParcial && dataParcial.matricula) {
-        const checkValues = (obj) => {
-            for (let key in obj) {
-                if (typeof obj[key] === 'number' && obj[key] > 0) return true;
-                if (typeof obj[key] === 'object' && obj[key] !== null) {
-                    if (checkValues(obj[key])) return true;
-                }
+    const checkObjHasNumbers = (obj) => {
+        if (!obj || typeof obj !== 'object') return false;
+        for (let key in obj) {
+            if (typeof obj[key] === 'number' && obj[key] > 0) return true;
+            if (typeof obj[key] === 'object' && obj[key] !== null) {
+                if (checkObjHasNumbers(obj[key])) return true;
             }
-            return false;
-        };
-        hasData = checkValues(dataParcial.matricula);
+        }
+        return false;
+    };
+
+    if (dataParcial) {
+        if (dataParcial.datos_completados) hasData = true;
+        if (dataParcial.matricula && (checkObjHasNumbers(dataParcial.matricula) || (dataParcial.matricula['total-gen'] > 0))) hasData = true;
+        if (dataParcial['matricula-total'] && parseInt(dataParcial['matricula-total']) > 0) hasData = true;
+        if (dataParcial['secciones-planes'] && checkObjHasNumbers(dataParcial['secciones-planes'])) hasData = true;
+        if (dataParcial.secciones && parseInt(dataParcial.secciones) > 0) hasData = true;
+        if (dataParcial.matricula_detalle) hasData = true;
     }
 
+    if (!hasData && dp) {
+        if (dp.matricula && (checkObjHasNumbers(dp.matricula) || (dp.matricula['total-gen'] > 0))) hasData = true;
+        if (dp['matricula-total'] && parseInt(dp['matricula-total']) > 0) hasData = true;
+        if (dp['secciones-planes'] && checkObjHasNumbers(dp['secciones-planes'])) hasData = true;
+    }
+
+    const currentInpTotal = parseInt(document.getElementById('inp-matricula-total')?.value || 0);
+    if (currentInpTotal > 0) hasData = true;
+
+    console.log("🏫 [SGH] ¿Plantel posee matrícula/secciones previas?:", hasData);
     if (hasData && typeof window.mostrarFormularioPersonal === "function") {
-        window.mostrarFormularioPersonal();
+        window.mostrarFormularioPersonal(false);
     }
 
     // Guardar los datos cuando el director llene el form
@@ -1103,17 +1123,31 @@ async function mostrarCandado(codigoDEA, dataParcial) {
           btn.textContent = "Guardando...";
           btn.disabled = true;
 
+          // ── HELPERS ───────────────────────────────────────────────────────
+          /** Verifica si el input está dentro de un bloque visible del DOM */
+          const isVisible = (el) => {
+              const b1 = el.closest('div[id^="bloque-"]');
+              const b2 = el.closest('#cont-secciones-detalle');
+              return (b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none');
+          };
+
           // ── GUARD: Datos Incompletos ──────────────────────────────────────
-          const matTotal = parseInt(document.getElementById('lbl-matricula-total')?.textContent) || 0;
+          let matTotal = 0;
+          document.querySelectorAll('.mat-input, .dyn-mg-fem, .dyn-mg-mas, .dyn-mt-fem, .dyn-mt-mas').forEach(inp => {
+              if (isVisible(inp)) {
+                  matTotal += parseInt(inp.value || 0);
+              }
+          });
+          if (document.getElementById('lbl-matricula-total')) document.getElementById('lbl-matricula-total').textContent = matTotal;
+          if (document.getElementById('inp-matricula-total')) document.getElementById('inp-matricula-total').value = matTotal;
+
           let secTotal = 0;
           secTotal += parseInt(document.getElementById('secMat')?.value) || 0;
           secTotal += parseInt(document.getElementById('secPre')?.value) || 0;
           secTotal += parseInt(document.getElementById('secPri')?.value) || 0;
           document.querySelectorAll('.sec-anio-input').forEach(inp => {
-              const b1 = inp.closest('div[id^="bloque-"]');
-              const b2 = inp.closest('#cont-secciones-detalle');
-              if ((b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none')) {
-                  secTotal += parseInt(inp.value) || 0;
+              if (isVisible(inp)) {
+                  secTotal += parseInt(inp.value || 0);
               }
           });
 
@@ -1125,14 +1159,6 @@ async function mostrarCandado(codigoDEA, dataParcial) {
               return;
           }
           window._forceSaveIncompleta = false;
-
-          // ── HELPERS ───────────────────────────────────────────────────────
-          /** Verifica si el input está dentro de un bloque visible del DOM */
-          const isVisible = (el) => {
-              const b1 = el.closest('div[id^="bloque-"]');
-              const b2 = el.closest('#cont-secciones-detalle');
-              return (b1 && b1.style.display !== 'none') || (b2 && b2.style.display !== 'none');
-          };
 
           /** Escoba Digital: elimina claves con valor 0 u objetos vacíos */
           const sweepZeros = (obj) => {
@@ -1495,11 +1521,9 @@ async function mostrarCandado(codigoDEA, dataParcial) {
 
               showToast("¡Datos del plantel actualizados con éxito!", "success");
 
-                                                                                    // Desplegar Formulario Personal SOLO si se ingresó alguna matrícula
-              if (typeof window.mostrarFormularioPersonal === "function" && (matTotal > 0 || secTotal > 0)) {
-                   window.mostrarFormularioPersonal();
-              } else if (typeof window.cerrarFormularioPersonal === "function") {
-                   window.cerrarFormularioPersonal();
+              // Desplegar Formulario de Personal y Tabla de Personal automáticamente al guardar
+              if (typeof window.mostrarFormularioPersonal === "function") {
+                   window.mostrarFormularioPersonal(true);
               }
 
           } catch (error) {
