@@ -402,3 +402,10 @@ Mayor seguridad perimetral (nadie entra sin validar su correo) y una experiencia
 **3. Archivos Involucrados:**
 - INFORME_VIABILIDAD_CUADRATURA_SGH.docx
 - bitacora.md
+
+**Actualización Normativa Complementaria (Media - Administrativos y Obreros):**
+- Se incorporó la aclaratoria institucional de que en el subsistema de EDUCACIÓN MEDIA (Media General y Media Técnica) TAMBIÉN APLICA LA REGLA DE 30 ESTUDIANTES POR ADMINISTRATIVO/OBRERO.
+- Por ende, el cálculo de Cuadratura en los liceos audita de forma dual:
+  * Docentes: Mediante Horas de Malla Curricular frente a Horas Académicas de nómina (#wp-horas-academicas).
+  * Personal de Soporte (Administrativos y Obreros): Mediante la división de la Matrícula total del liceo entre 30.
+- El informe ejecutivo formal (.docx) fue actualizado con esta sección específica y sus ejemplos prácticos.
